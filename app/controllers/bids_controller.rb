@@ -7,13 +7,13 @@ class BidsController < ApplicationController
 
   def show
     @bid = set_bid
-    # authorize @bid
+    authorize @bid
   end
 
   def new
     @event = Event.find(params[:event_id])
     @bid = Bid.new
-    # authorize @bid
+    authorize @bid
   end
 
   def create
@@ -21,12 +21,13 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.event = @event
     @bid.user = current_user
-    # authorize @bid
+    authorize @bid
     if @bid.save
       flash[:success] = "Bid saved!"
-      redirect_to event_bid_path(@event, @bid)
+      redirect_to event_path(@event)
+      # redirect will be to payment when we get there
     else
-      render :new
+      render "events/show"
     end
   end
 
