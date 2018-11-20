@@ -70,4 +70,4 @@ class EventsController < ApplicationController
     params.require(:event).permit(:user_id, :service_id, :name, :date, :type, :location, :description, :party_size, :service, :max_price, :min_price)
   end
 end
-end
+
