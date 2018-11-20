@@ -1,0 +1,16 @@
+<%= simple_form_for(@event) do |f|%>
+
+<%= f.input :name, :hint => "enter a name for your event" %>
+<%= f.input :min_price, :hint => "prices should be in GBP" %>
+<%= f.input :max_price, :hint => "prices should be in GBP" %>
+<%= f.input :location %>
+<%= f.input :description %>
+<%= f.input :party_size, :hint => "prices should be a number" %>
+<%= f.input :event_type, :hint => "Birthday, Wedding, Dinner party, Stag/Hen party" %>
+<%= f.input :date %>
+<%= f.input :service_id, collection: @services, :include_blank => false, prompt: 'Select Service' %>
+
+
+<%= f.submit %>
+
+ <% end %>
