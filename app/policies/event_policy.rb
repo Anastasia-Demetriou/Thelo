@@ -14,6 +14,10 @@ class EventPolicy < ApplicationPolicy
     #only event_organiser
   end
 
+  def edit?
+    record.user == user
+  end
+
   def update?
     record.user == user
     #only event_organiser
