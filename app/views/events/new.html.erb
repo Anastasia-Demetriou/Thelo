@@ -1,1 +1,42 @@
 <p>events-new</p>
+
+<form action="">
+
+<p>Select the service you require</p>
+  <select name="service">
+    <% @services.each do |service| %>
+      <option value="saab"><%= service.name %></option>
+    <% end %>
+  </select>
+
+<p>Enter the date of your event</p>
+  <input type="date" name="date">
+
+
+<input type="text" name="event_type" required>
+
+
+
+
+
+  <input type="submit" value="Submit">
+</form>
+
+
+
+t.string "name"
+
+    t.string "event_type"
+    t.string "location"
+    t.text "description"
+    t.integer "party_size"
+    t.integer "max_price"
+    t.integer "min_price"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "service_id"
+    t.index ["service_id"], name: "index_events_on_service_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
