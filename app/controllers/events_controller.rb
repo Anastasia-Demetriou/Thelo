@@ -35,21 +35,18 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @services = Service.all()
+    @services = Service.all
     authorize @event
   end
 
   def create
     @event = Event.new(event_params)
-    @services = Service.all()
-    # services.each do |service|
-    #   @services << service
-    # end
+    @services = Service.all
     authorize @event
     if @event.save
       flash[:success] = "Event saved!"
-      redirect_to event_path(@event.user)
 
+      redirect_to event_path(@event)
     else
       render :new
     end
@@ -57,6 +54,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    render
     authorize @event
   end
 

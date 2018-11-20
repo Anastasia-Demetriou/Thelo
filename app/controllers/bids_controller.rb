@@ -43,14 +43,14 @@ class BidsController < ApplicationController
   end
 
   def edit
-    # authorize @bid
+    authorize @bid
   end
 
   def update
-    # authorize @bid
+    authorize @bid
   end
 
   def destroy
-    # authorize @bid
+    authorize @bid
   end
 end
