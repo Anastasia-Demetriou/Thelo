@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
+# not sure if we need to add this- we used this last time but this time I have added
+# the parameters into the devise migration file
+  # def configure_permitted_parameters
+  #   # For additional fields in app/views/devise/registrations/new.html.erb
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :professional])
+  # end
+
 end
