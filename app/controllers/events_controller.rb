@@ -26,19 +26,30 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @user = current_user
+
     @bid = Bid.new()
+
+
     authorize @event
   end
 
   def new
     @event = Event.new
+    @services = Service.all()
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
+    @services = Service.all()
+    # services.each do |service|
+    #   @services << service
+    # end
+    authorize @event
     if @event.save
       flash[:success] = "Event saved!"
       redirect_to event_path(@event.user)
+
     else
       render :new
     end
@@ -46,10 +57,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def update
     @event = Event.find(params[:id])
+    authorize @event
     if @event.update(event_params)
       flash[:success] = "Event updated!"
       redirect_to user_path(@user)
@@ -60,6 +73,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    authorize @event
     if event.destroy
       redirect_to event_path
     else
@@ -70,6 +84,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:user_id, :service_id, :name, :date, :type, :location, :description, :party_size, :service, :max_price, :min_price)
+    params.require(:event).permit(:user_id, :service_id, :name, :date, :type, :location, :description, :party_size, :max_price, :min_price)
   end
 end
