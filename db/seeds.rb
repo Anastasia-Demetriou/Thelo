@@ -40,6 +40,6 @@ Event.create(name:"Birthday Party", date:"2018/12/18", event_type: "birthday", l
  Event.create(name:"Birthday Dinner", date:"2018/12/19", event_type: "birthday", location:"London", description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta convallis erat, in placerat eros mattis id. Cras lectus sem, mollis sed libero nec, sagittis facilisis purus. Etiam tempus aliquam nisi ut accumsan. Quisque dictum varius magna a posuere. Suspendisse ullamcorper justo orci, sit amet suscipit ligula malesuada eu. Praesent in lorem sed odio tempor pretium eu sit amet justo", party_size: 10, service: chef, min_price: 30, max_price: 50, user_id: andrew.id)
 end
 
-#testing
+#testingtestingtest
 
 puts "Seeded"
