@@ -4,4 +4,12 @@ class BidPolicy < ApplicationPolicy
       scope.all
     end
   end
+  def create?
+    true
+  end
+
+  private
+  def professional?
+    user.professional?
+  end
 end
