@@ -10,10 +10,26 @@
   justify-content: space-between;
 }
 
-/* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
+.navbar-wagon {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
 }
+
+/* Logo */
+.logo {
+  color: #ff6a6b;
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+
+}
+
+
+
 
 /* User Avatar */
 .navbar-wagon .avatar {
