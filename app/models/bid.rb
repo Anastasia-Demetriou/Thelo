@@ -2,5 +2,5 @@ class Bid < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  validates_presence_of :price
+  validates :price, presence: true
 end
