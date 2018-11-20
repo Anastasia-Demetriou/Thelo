@@ -1,1 +1,18 @@
-<p>events-index</p>
+<div class="container">
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-xs-12 col-md-4">
+        <a href="/events/<%= event.id %>">
+          <div class="event-card">
+            <h3><%= event.name %></h3>
+            <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+            <p><%= event.party_size %> People</p>
+            <p>£<%= event.min_price%> - £<%= event.max_price %></p>
+            <p><%= event.location %></p>
+          </div>
+        </a>
+      </div>
+      <% end %>
+  </div>
+</div>
+
