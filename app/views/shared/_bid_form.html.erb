@@ -1,0 +1,7 @@
+<div class="bid-form">
+  <%= simple_form_for([@event,@bid]) do |f| %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.submit %>
+   <% end %>
+</div>
