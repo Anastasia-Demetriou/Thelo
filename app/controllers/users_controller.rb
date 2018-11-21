@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+
+  def dashboard
+    @user = current_user
+    authorize @user
+  end
+
   def edit
     @user = User.find(params[:id])
     authorize @user
@@ -42,7 +48,6 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
 
   end
-
 
 
   private
