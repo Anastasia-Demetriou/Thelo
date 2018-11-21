@@ -8,6 +8,10 @@ class BidPolicy < ApplicationPolicy
     true
   end
 
+  def order?
+    record.user == user
+  end
+
   private
   def professional?
     user.professional?

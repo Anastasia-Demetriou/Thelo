@@ -21,25 +21,31 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.event = @event
     @bid.user = current_user
+    @bid.price_cents = 100
+    @bid.sku = @bid.event.name
     authorize @bid
     if @bid.save
       flash[:success] = "Bid saved!"
-      redirect_to event_path(@event)
+      redirect_to order_bid_path(@bid)
       # redirect will be to payment when we get there
     else
       render "events/show"
     end
   end
 
+  def order
+    @bid = Bid.find(params[:id])
+    authorize @bid
+  end
+
   private
 
   def set_bid
     @bid = Bid.find(params[:id])
-
   end
 
   def bid_params
-     params.require(:bid).permit(:price, :description)
+     params.require(:bid).permit(:quote, :description)
   end
 
   def edit
