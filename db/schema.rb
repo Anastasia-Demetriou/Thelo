@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_145928) do
+
+
+ActiveRecord::Schema.define(version: 2018_11_21_164730) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +52,15 @@ ActiveRecord::Schema.define(version: 2018_11_21_145928) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "rating"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.string "bid_sku"
@@ -57,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_145928) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
+
   end
 
   create_table "services", force: :cascade do |t|
@@ -94,7 +108,11 @@ ActiveRecord::Schema.define(version: 2018_11_21_145928) do
   add_foreign_key "bids", "users"
   add_foreign_key "events", "services"
   add_foreign_key "events", "users"
+
+  add_foreign_key "reviews", "users"
+
   add_foreign_key "orders", "users"
+
   add_foreign_key "user_services", "services"
   add_foreign_key "user_services", "users"
 end
