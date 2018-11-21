@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dashboard', to: 'users#dashboard', as: 'dashboard'
   get 'host', to: 'pages#host_landing_page', as: 'host'
-  get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'professional', to: 'pages#professional_landing_page', as: 'professional'
 
   resources :events do
