@@ -8,6 +8,10 @@ class BidPolicy < ApplicationPolicy
     true
   end
 
+  def accept?
+    true
+  end
+
   private
   def professional?
     user.professional?
