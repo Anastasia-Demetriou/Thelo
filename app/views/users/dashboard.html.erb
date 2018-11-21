@@ -16,7 +16,7 @@
         <a href="/events/<%= bid.event.id %>" class="bid-card-link">
           <div class="bid-card">
             <p><%= bid.event.name %></p>
-            <p>Your Offer: £<%= bid.price.to_i %></p>
+            <p>Your Offer: £<%= bid.quote.to_i %></p>
             <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
             <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
             <p>Location:<%= bid.event.location %></p>
