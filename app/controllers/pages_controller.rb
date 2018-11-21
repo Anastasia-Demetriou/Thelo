@@ -20,6 +20,10 @@ class PagesController < ApplicationController
 
   end
 
+  # dashboard where the current user can edit his profile and see his history
+  def dashboard
+  end
+
   private
 
   def confirmed_bid
