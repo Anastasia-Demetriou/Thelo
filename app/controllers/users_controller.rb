@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def dashboard
+    @user = current_user
+    authorize @user
+  end
 
 
   private

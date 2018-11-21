@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'dashboard', to: 'users#dashboard', as: 'dashboard'
   get 'host', to: 'pages#host_landing_page', as: 'host'
   get 'professional', to: 'pages#professional_landing_page', as: 'professional'
 
