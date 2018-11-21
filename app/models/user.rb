@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :bids
   has_many :user_services, dependent: :destroy
   has_many :services, through: :user_services
+  has_many :reviews, dependent: :destroy
 
   # validations means we can't sign up wihtout give a first_name etc, it should be done later on the edit
 
