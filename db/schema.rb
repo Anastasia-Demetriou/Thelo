@@ -10,19 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_135208) do
+
+ActiveRecord::Schema.define(version: 2018_11_21_145928) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bids", force: :cascade do |t|
-    t.decimal "price"
+    t.integer "quote"
     t.text "description"
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "event_id"
+    t.string "sku"
+    t.integer "price_cents", default: 0, null: false
     t.index ["event_id"], name: "index_bids_on_event_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
@@ -44,6 +48,17 @@ ActiveRecord::Schema.define(version: 2018_11_21_135208) do
     t.bigint "service_id"
     t.index ["service_id"], name: "index_events_on_service_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "bid_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -81,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_135208) do
   add_foreign_key "bids", "users"
   add_foreign_key "events", "services"
   add_foreign_key "events", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "user_services", "services"
   add_foreign_key "user_services", "users"
 end
