@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_11_21_145928) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_145928) do
   create_table "bids", force: :cascade do |t|
     t.integer "quote"
     t.text "description"
-    t.boolean "accepted", default: false
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

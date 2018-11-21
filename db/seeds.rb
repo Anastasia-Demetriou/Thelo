@@ -34,4 +34,6 @@ bid4 = Bid.create!(quote: 500, description: "This bid is for whatever event 10 p
 bid5 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , accepted: false ,sku: mixologist.name, user_id: andrew.id, event_id: event5.id, price_cents: 100)
 
 
+
 puts "Seeded"
+

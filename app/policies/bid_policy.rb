@@ -12,6 +12,10 @@ class BidPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def accept?
+    true
+  end
+
   private
   def professional?
     user.professional?
