@@ -58,7 +58,7 @@ class BidsController < ApplicationController
   end
 
   def bid_params
-     params.require(:bid).permit(:price, :description, :status)
+     params.require(:bid).permit(:price, :description, :status, :quote)
   end
 
   def edit
