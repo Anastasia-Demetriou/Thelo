@@ -27,11 +27,11 @@ event5 =  Event.create!(name:"Dinner with Friends", date:"2018/12/19", event_typ
 event6 =  Event.create!(name:"Cocktail Night", date:"2018/12/19", event_type: "party", location:"London", description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta convallis erat, in placerat eros mattis id. Cras lectus sem, mollis sed libero nec, sagittis facilisis purus. Etiam tempus aliquam nisi ut accumsan. Quisque dictum varius magna a posuere. Suspendisse ullamcorper justo orci, sit amet suscipit ligula malesuada eu. Praesent in lorem sed odio tempor pretium eu sit amet justo", party_size: 10, service: mixologist, min_price: 30, max_price: 50, user_id: andrew.id)
 event7 =  Event.create!(name:"Birthday Dinner", date:"2018/12/19", event_type: "birthday", location:"London", description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta convallis erat, in placerat eros mattis id. Cras lectus sem, mollis sed libero nec, sagittis facilisis purus. Etiam tempus aliquam nisi ut accumsan. Quisque dictum varius magna a posuere. Suspendisse ullamcorper justo orci, sit amet suscipit ligula malesuada eu. Praesent in lorem sed odio tempor pretium eu sit amet justo", party_size: 10, service: chef, min_price: 30, max_price: 50, user_id: andrew.id)
 
-bid1 = Bid.create!(quote: 100, description: "This bid is for birthday event 5 people" , accepted: true ,sku: chef.name, user_id: andrew.id, event_id: event1.id, price_cents: 100)
-bid2 = Bid.create!(quote: 500, description: "This bid is for wedding event 50 people" , accepted: true ,sku: chef.name, user_id: john.id, event_id: event2.id, price_cents: 100)
-bid3 = Bid.create!(quote: 1000, description: "This bid is for hen party event 10 people" , accepted: true ,sku: waiter.name, user_id: andrew.id, event_id: event3.id, price_cents: 100)
-bid4 = Bid.create!(quote: 500, description: "This bid is for whatever event 10 people" , accepted: false ,sku: mixologist.name, user_id: john.id, event_id: event4.id, price_cents: 100)
-bid5 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , accepted: false ,sku: mixologist.name, user_id: andrew.id, event_id: event5.id, price_cents: 100)
+bid1 = Bid.create!(quote: 100, description: "This bid is for birthday event 5 people" , sku: chef.name, user_id: andrew.id, event_id: event1.id, price_cents: 100)
+bid2 = Bid.create!(quote: 500, description: "This bid is for wedding event 50 people" , sku: chef.name, user_id: john.id, event_id: event2.id, price_cents: 100)
+bid3 = Bid.create!(quote: 1000, description: "This bid is for hen party event 10 people" , sku: waiter.name, user_id: andrew.id, event_id: event3.id, price_cents: 100)
+bid4 = Bid.create!(quote: 500, description: "This bid is for whatever event 10 people" , sku: mixologist.name, user_id: john.id, event_id: event4.id, price_cents: 100)
+bid5 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , sku: mixologist.name, user_id: andrew.id, event_id: event5.id, price_cents: 100)
 
 
 
