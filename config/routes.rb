@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'host', to: 'pages#host_landing_page', as: 'host'
+  get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'professional', to: 'pages#professional_landing_page', as: 'professional'
 
   resources :events do
     resources :bids, only: [:show, :create]
   end
 
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :update]
 
   resources :bids, only: [:index, :new, :destroy]
 

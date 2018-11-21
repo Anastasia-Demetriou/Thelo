@@ -30,6 +30,19 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def edit
+    @user = User.find(params[:id])
+    authorize @user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    authorize @user
+    @user.update(user_params)
+    redirect_to dashboard_path
+
+  end
+
 
 
   private
@@ -40,6 +53,10 @@ class UsersController < ApplicationController
 
   def accepted
     @user.bid.accepted == true
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :bio, :professional)
   end
 
   # def bookings
