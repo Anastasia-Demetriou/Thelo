@@ -12,3 +12,31 @@
 
 </div>
 
+<% if current_user == @event.user %>
+  <div class="container">
+    <div class="row">
+      <% @event.bids.each do |bid| %>
+        <div class="col-xs-12 col-md-4">
+          <div class="show-bid-card">
+            <p><%= bid.user.first_name %></p>
+            <p>Quote: <%= bid.price %></p>
+            <p>Desc: <%= bid.description %></p>
+            <% if bid.status == "accepted" %>
+              <p class="green-text">Accepted</p>
+            <% elsif bid.status == "pending" %>
+              <p class="orange-text">Pending</p>
+            <% elsif bid.status == "declined" %>
+              <p class="red-text">Declined</p>
+            <% end %>
+            <%= link_to "View Profile" %>
+            <div class="status-buttons">
+              <%= link_to "Accept", accept_bid_path(bid.id, :bid => {"status" => "accepted"}), {:method => :accept} %>
+              <%= link_to "Decline", decline_bid_path(bid.id, :bid => {"status" => "declined"}), {:method => :decline} %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+

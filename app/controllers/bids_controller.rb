@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_action :set_bid, only: [:accept, :show, :edit, :update, :destroy]
 
   def index
     @bids = policy_scope(Bid).order(created_at: :desc)
@@ -31,6 +31,18 @@ class BidsController < ApplicationController
     end
   end
 
+  def accept
+    authorize @bid
+    @bid.update(bid_params)
+    redirect_to event_path(@bid.event)
+  end
+
+  def decline
+    authorize @bid
+    @bid.update(bid_params)
+    redirect_to event_path(@bid.event)
+  end
+
   private
 
   def set_bid
@@ -39,7 +51,7 @@ class BidsController < ApplicationController
   end
 
   def bid_params
-     params.require(:bid).permit(:price, :description)
+     params.require(:bid).permit(:price, :description, :status)
   end
 
   def edit
