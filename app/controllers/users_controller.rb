@@ -8,25 +8,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = Review.where(reviewed_user_id: @user.id
+    @bid = Bid.find(params[:id])
+    @user = @bid.user
     @events = []
     @user.events.each do |event|
       @events << event
     end
-
-    # @professional_bids_accepted = []
-    # @user.bid.accepted
-
-    # @event_bids_accepted = []
-    # @user.event.bid.accepted
-
-
-
-    # @bids = []
-    # @user.bids.each do |bid|
-    #   @bids << bid.event
-    # end
-
-
     authorize @user
   end
 
@@ -46,9 +34,7 @@ class UsersController < ApplicationController
     authorize @user
     @user.update(user_params)
     redirect_to dashboard_path
-
   end
-
 
   private
 
