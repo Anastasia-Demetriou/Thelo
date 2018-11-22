@@ -28,7 +28,7 @@
             <% elsif bid.status == "declined" %>
               <p class="red-text">Declined</p>
             <% end %>
-            <%= link_to "View Profile" %>
+            <%= link_to "View Profile", user_path(@user) %>
             <div class="status-buttons">
               <%= link_to "Accept", accept_bid_path(bid.id, :bid => {"status" => "accepted"}), {:method => :accept} %>
               <%= link_to "Decline", decline_bid_path(bid.id, :bid => {"status" => "declined"}), {:method => :decline} %>
