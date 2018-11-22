@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @bid = Bid.find(params[:id])
+    @user = @bid.user
     @events = []
     @user.events.each do |event|
       @events << event
