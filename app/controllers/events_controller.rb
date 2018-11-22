@@ -10,24 +10,23 @@ class EventsController < ApplicationController
     min_price_filter = params[:min_price].to_i
 
     filter_service = Service.find_by(name: params[:service])
-    filtered_events = []
+    filtered_events = Event.all
       # Filtering By location
     location_search = params[:location]
-    if location_search
+    if !min_price_filter.zero? && !max_price_filter.zero?
+      filtered_events = filtered_events.where('min_price > ? AND max_price < ?', min_price_filter, max_price_filter)
+    end
+    if location_search != ""
       filtered_events = Event.near(location_search, 50)
     end
 
     if end_date == true
       end_date = end_date.to_date
     end
-
     if filter_service
       filtered_events = filtered_events.where('service_id = ?', filter_service.id)
     end
       # Filtering By price
-    if !min_price_filter.zero? && !max_price_filter.zero?
-      filtered_events = filtered_events.where('min_price > ? AND max_price < ?', min_price_filter, max_price_filter)
-    end
     if start_date && end_date
       filtered_events = filtered_events.where('date > ? AND date < ?', start_date, end_date)
       @events = policy_scope(filtered_events).order(created_at: :desc)
