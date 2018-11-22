@@ -17,7 +17,7 @@
      class: "location_input input_margin_2",
      id: "event_location" %>
 
-     <%= select_tag 'service', options_for_select(@services.collect{ |u| u.name }) %>
+     <%= select_tag 'service', options_for_select(@services.collect{ |u| u.name }),:include_blank => true %>
       <div id="slider" style="width: 200px;"></div>
      <%= number_field_tag :min_price, params[:min_price], placeholder: "Min" %>
      <%= number_field_tag :max_price, params[:max_price], placeholder: "Max" %>
