@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @reviews = Review.where(reviewed_user_id: @user.id
     @bid = Bid.find(params[:id])
     @user = @bid.user
     @events = []
