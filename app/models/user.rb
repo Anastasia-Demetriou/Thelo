@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :orders
   validates_presence_of :first_name, :last_name, :password
   validates :email, uniqueness: { case_sensitive: false }
+  # validates :service, presence: true, if: :is_professional?
+
+
+  def is_professional?
+    professional
+  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
