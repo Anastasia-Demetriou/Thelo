@@ -56,6 +56,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
     @services = Service.all
     authorize @event
     if @event.save
@@ -97,6 +98,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:user_id, :service_id, :name, :date, :type, :location, :description, :party_size, :max_price, :min_price)
+    params.require(:event).permit(:user_id, :service_id, :name, :date, :event_type, :location, :description, :party_size, :max_price, :min_price)
   end
 end

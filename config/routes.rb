@@ -14,8 +14,9 @@ Rails.application.routes.draw do
     resources :bids, only: [:show, :create]
   end
 
-  resources :users, only: [:show, :edit, :new, :create, :update]
-
+  resources :users, only: [:show, :edit, :update] do
+    resources :reviews, only: [ :new, :create ]
+  end
   resources :bids, only: [:index, :new, :destroy] do
     member do
       get 'order', to: "bids#order", as: :order
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
 
   resources :user_services, only: [:create]
 
-  resources :reviews, only: [ :new, :create ]
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
