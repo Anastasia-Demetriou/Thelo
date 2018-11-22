@@ -3,24 +3,41 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-  #@events = Event.all
-  #   start_date = params[:starts_at].to_date
-  #   end_date = params[:ends_at]
-  #   location_search = params[:location]
-  #   location_events = Event.near(location_search, 50)
-  #   if end_date == true
-  #     end_date = end_date.to_date
-  #   end
-  #   if start_date && end_date
-  #     filtered_events = location_events.where('date > ? AND date < ?', start_date, end_date)
-  #     @events = policy_scope(filtered_events).order(created_at: :desc)
+    @services = Service.all
+    start_date = params[:starts_at].to_date
+    end_date = params[:ends_at]
+    max_price_filter = params[:max_price].to_i
+    min_price_filter = params[:min_price].to_i
 
-  #   elsif location_events.empty?
-  #     @events = policy_scope(Event).order(created_at: :desc)
+    filter_service = Service.find_by(name: params[:service])
+    filtered_events = []
+      # Filtering By location
+    location_search = params[:location]
+    if location_search
+      filtered_events = Event.near(location_search, 50)
+    end
 
-  #   else
-  #     @events = policy_scope(location_events).order(created_at: :desc)
-  #   end
+    if end_date == true
+      end_date = end_date.to_date
+    end
+
+    if filter_service
+      filtered_events = filtered_events.where('service_id = ?', filter_service.id)
+    end
+      # Filtering By price
+    if !min_price_filter.zero? && !max_price_filter.zero?
+      filtered_events = filtered_events.where('min_price > ? AND max_price < ?', min_price_filter, max_price_filter)
+    end
+    if start_date && end_date
+      filtered_events = filtered_events.where('date > ? AND date < ?', start_date, end_date)
+      @events = policy_scope(filtered_events).order(created_at: :desc)
+     # If filtered_events is empty will display every event
+    elsif filtered_events.empty?
+      @events = policy_scope(Event).order(created_at: :desc)
+      # Displays filtered_events filtered events
+    else
+      @events = policy_scope(filtered_events).order(created_at: :desc)
+    end
   end
 
   def show

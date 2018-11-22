@@ -48,18 +48,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_164730) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-<<<<<<< HEAD
-=======
-
-  create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "rating"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.string "bid_sku"
@@ -78,7 +66,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_164730) do
     t.datetime "updated_at", null: false
     t.integer "rating"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-
   end
 
   create_table "services", force: :cascade do |t|

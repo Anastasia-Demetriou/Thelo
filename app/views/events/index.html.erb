@@ -1,4 +1,31 @@
+ <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
 <div class="container">
+  <div class="search_bar">
+    <%= form_tag events_path,{:class => "filter_index_form", method: :get} do %>
+    <%= text_field_tag :starts_at,
+    params[:starts_at],
+    class: "datepicker input_margin_1",
+    placeholder: "No Start Date Added"%>
+    <%= text_field_tag :ends_at,
+    params[:ends_at],
+    class: "datepicker input_margin_2",
+    placeholder: "No End Date Added" %>
+
+    <%= text_field_tag :location,
+     params[:location],
+     placeholder: "No Location Added",
+     class: "location_input input_margin_2",
+     id: "event_location" %>
+
+     <%= select_tag 'service', options_for_select(@services.collect{ |u| u.name }) %>
+      <div id="slider" style="width: 200px;"></div>
+     <%= number_field_tag :min_price, params[:min_price], placeholder: "Min" %>
+     <%= number_field_tag :max_price, params[:max_price], placeholder: "Max" %>
+
+
+    <%= submit_tag "Search", class: " btn filter_button"%>
+    <% end %>
+  </div>
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-xs-12 col-md-4">
@@ -15,4 +42,4 @@
       <% end %>
   </div>
 </div>
-
+<script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>
