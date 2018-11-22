@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :password, presence: true
 
-  validates :email, uniqueness: { case_sensitive: false }
   # validates :service, presence: true, if: :is_professional?
 
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :bids, only: [:show, :create]
   end
 
-  resources :users, only: [:show, :edit, :new, :create, :update]
+  resources :users, only: [:show, :edit, :update]
 
   resources :bids, only: [:index, :new, :destroy] do
     member do
