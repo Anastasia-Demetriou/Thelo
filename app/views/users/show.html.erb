@@ -62,3 +62,9 @@
         </div>
   </div>
 </div>
+
+<% @reviews.each do |review| %>
+  <%= review.content %>
+  <%= review.rating %>
+  <%= review.user.first_name %>
+<% end %>
