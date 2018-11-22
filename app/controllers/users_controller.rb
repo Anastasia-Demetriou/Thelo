@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = Review.where(reviewed_user_id: @user.id)
     @events = []
     @user.events.each do |event|
       @events << event

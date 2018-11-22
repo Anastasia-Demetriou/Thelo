@@ -43,6 +43,12 @@
             <p>Location:<%= event.location %></p>
             <p>Bids: <%= event.bids.length %></p>
           </div>
+          <% event.bids.where(status: "accepted").each do |bid| %>
+            <span>
+              <%= bid.user.first_name %>
+              <%= link_to "leave a review", new_user_review_path(bid.user)  %>
+            </span>
+          <% end %>
         </a>
       </div>
     <% end %>
