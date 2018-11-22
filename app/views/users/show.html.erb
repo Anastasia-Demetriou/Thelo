@@ -35,6 +35,10 @@
   </div>
 </div>
 
+<% if @user.reviews.count > 0 %>
+  <p>Reviews</p>
+<% end %>
+
 <% @reviews.each do |review| %>
   <%= review.content %>
   <%= review.rating %>

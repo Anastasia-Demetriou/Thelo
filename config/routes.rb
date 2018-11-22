@@ -25,7 +25,6 @@ Rails.application.routes.draw do
 
   resources :user_services, only: [:create]
 
-
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end

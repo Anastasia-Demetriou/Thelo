@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @events = []
     @user.events.each do |event|
       @events << event
-    end
+  end
     authorize @user
   end
 
