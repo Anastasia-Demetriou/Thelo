@@ -6,7 +6,10 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   has_many :orders
-  validates_presence_of :first_name, :last_name, :password
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :password, presence: true
+
   validates :email, uniqueness: { case_sensitive: false }
   # validates :service, presence: true, if: :is_professional?
 
