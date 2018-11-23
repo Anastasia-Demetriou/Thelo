@@ -1,0 +1,49 @@
+  .home-card img{
+    border: none;
+    // height: 250px;
+    width: 150px;
+  }
+// Specific CSS for your home-page
+.banner {
+  color: white;
+  text-align: center;
+  margin: auto;
+  height: calc(100vh - 70px);
+  background-size: cover !important;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+
+}
+
+.search-button{
+  height: 50px;
+}
+
+.work-statement {
+  text-align: center;
+  padding: 50px;
+  font-family:'Noto Sans TC', sans-serif;
+  color: #ff6a6b;
+}
+.card_header{
+  font-size: 50px;
+}
+
+.home-header {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  font-family:'Noto Sans TC', sans-serif;
+  font-weight: 10px;
+  padding-bottom: 50px;
+}
+
+  .free {
+    text-align: center;
+    padding: 40px;
+  }
+
+

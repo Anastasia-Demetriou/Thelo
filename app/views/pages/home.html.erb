@@ -1,63 +1,41 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/daitlzche/image/upload/v1542713390/abstract-background-blue-1056563.jpg');">
-  <div class="banner-content">
-  </div>
-  <div class="form_container">
-    <div class="form_wrapper" style="width: 343px; height: 100px; margin: 0 auto;">
-      <%= form_tag events_path, method: :get do %>
-        <%= text_field_tag :starts_at,
-        params[:starts_at],
-        class: "datepicker input_margin_1",
-        placeholder: "Start Date"%>
-        <%= text_field_tag :ends_at,
-        [:ends_at],
-        class: "datepicker input_margin_2",
-        placeholder: "End Date"%>
 
-        <%= text_field_tag :location,
-         params[:location],
-         placeholder: "Location",
-         class: "location_input input_margin_2",
-         id: "event_location" %>
-        <%= submit_tag "Search", class: " btn submit_button"%>
-      <% end %>
-    </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 40%), url('https://res.cloudinary.com/daitlzche/image/upload/v1542986904/acid-citric-citrus-997725.jpg');">
+  <div class="search-button">
+    <h1 class="home-header">Do more of what you love at home</h1>
+    <%=link_to "Create your event", new_event_path, class: "btn btn-default" %>
   </div>
 </div>
 <div class="container">
-  <div>
-    <h1 class="card_header">How does it work?</h1>
+  <div class="work-statement">
+    <h2 class="card_header">How does it work?</h2>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <div class ="card">
-        <img src="#" alt="">
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class ="home-card">
+        <img src="https://res.cloudinary.com/daitlzche/image/upload/v1542986012/undraw_coding_6mjf.svg" alt="">
       </div>
-      <div>
-        <p>Post your event for FREE</p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <img src="#" alt="">
-      </div>
-      <div>
-        <p>Get up to three quotes</p>
+      <div class="free">
+        <h3>Post your event for FREE</h3>
+        <p>Tell us about your event</p>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <img src="#" alt="">
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class="home-card">
+        <img src="https://res.cloudinary.com/daitlzche/image/upload/v1542986035/undraw_setup_obqo.svg" alt="">
       </div>
-      <div>
-        <p>Select your proffessional</p>
+      <div class="free">
+        <h3>Get a quote</h3>
+        <p>Up to three hospitality Professionals get in touch</p>
       </div>
-        <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <img src="#" alt="">
-        </div>
-        <div>
-          <p>Leave a review</p>
-        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 text-center">
+      <div class="home-card">
+        <img src="https://res.cloudinary.com/daitlzche/image/upload/v1542986035/undraw_mail_2_tqip.svg" alt="">
+      </div>
+      <div class="free">
+        <h3>Rate and Review</h3>
+        <p>Event completed</p>
+      </div>
     </div>
   </div>
 </div>
