@@ -3,7 +3,7 @@
 
   <div class="banner-header">
     <h1>Find events that need staff near you</h1>
-    <h2><%= @events.count %> Events Found</h2>
+    <h2><%= @events.length %> Events Found</h2>
     <div class="search-bar">
             <%= form_tag events_path,{:class => "filter_index_form", method: :get} do %>
 
