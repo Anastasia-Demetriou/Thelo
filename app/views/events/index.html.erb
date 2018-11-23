@@ -3,7 +3,7 @@
 
   <div class="banner-header">
     <h1>Find events that need staff near you</h1>
-    <h2><%= @events.length %> Events Found</h2>
+    <h2><%= @events.to_a.count %> Events Found</h2>
     <div class="search-bar">
             <%= form_tag events_path,{:class => "filter_index_form", method: :get} do %>
 
@@ -45,11 +45,11 @@
                     <div class="card-bottom">
                       <div class="card-btm">
                         <p>What they are looking for </p>
-                        <div class ="card-btn card-btn-green"><%= event.service.name %></div>
+                        <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
                       </div>
                       <div class="card-btm">
                         <p>Budget</p>
-                        <div class="card-btn card-btn-red">
+                        <div class="card-btn card-btn-green">
                           £<%= event.min_price %>-<%= event.max_price %>
                         </div>
                       </div>

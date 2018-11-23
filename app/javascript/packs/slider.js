@@ -75,5 +75,4 @@ select.addEventListener('change', function () {
 inputNumber.addEventListener('change', function () {
     html5Slider.noUiSlider.set([null, this.value]);
 });
-
 export { makeItSlide };
