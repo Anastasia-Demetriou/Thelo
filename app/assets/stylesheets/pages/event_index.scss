@@ -39,7 +39,10 @@
 
   h2{
     padding-bottom: 10px;
-    font-size: 26px;
+    font-size: 26px !important;
+    margin: 0px;
+    text-align: left;
+    margin-bottom: 8px;
   }
 
   .card-btm{
