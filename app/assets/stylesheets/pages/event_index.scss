@@ -39,7 +39,10 @@
 
   h2{
     padding-bottom: 10px;
-    font-size: 26px;
+    font-size: 26px !important;
+    text-align: left !important;
+    margin: 0px;
+    margin-bottom: 5px;
   }
 
   .card-btm{
@@ -62,10 +65,10 @@
       margin-right: 10px;
     }
     .card-btn-orange{
-      background-color: #F8B500;
+      background-color: #F8B500 !important;
     }
     .card-btn-green{
-      background-color: #7ED321 ;
+      background-color: #7ED321 !important;
     }
 
   }
@@ -121,13 +124,13 @@ a:hover{
   }
   #min_price{
     width: 50px;
+    visibility: hidden;
     height: 1px;
-    opacity: 0;
   }
   #max_price{
     width: 50px;
+    visibility: hidden;
     height: 1px;
-    opacity: 0;
   }
   .filter_button{
     background-color: #F8B500;
