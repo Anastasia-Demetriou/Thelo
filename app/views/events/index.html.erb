@@ -1,45 +1,69 @@
  <link href="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.min.css" rel="stylesheet">
-<div class="container">
-  <div class="search_bar">
-    <%= form_tag events_path,{:class => "filter_index_form", method: :get} do %>
-    <%= text_field_tag :starts_at,
-    params[:starts_at],
-    class: "datepicker input_margin_1",
-    placeholder: "No Start Date Added"%>
-    <%= text_field_tag :ends_at,
-    params[:ends_at],
-    class: "datepicker input_margin_2",
-    placeholder: "No End Date Added" %>
+<div class="index-page-wrapper">
 
-    <%= text_field_tag :location,
-     params[:location],
-     placeholder: "No Location Added",
-     class: "location_input input_margin_2",
-     id: "event_location" %>
-
-     <%= select_tag 'service', options_for_select(@services.collect{ |u| u.name }),:include_blank => true %>
-      <div id="slider" style="width: 200px;"></div>
-     <%= number_field_tag :min_price, params[:min_price], placeholder: "Min" %>
-     <%= number_field_tag :max_price, params[:max_price], placeholder: "Max" %>
+  <div class="banner-header">
+    <h1>Find events that need staff near you</h1>
+    <h2><%= @events.count %> Events Found</h2>
+    <div class="search-bar">
+            <%= form_tag events_path,{:class => "filter_index_form", method: :get} do %>
 
 
-    <%= submit_tag "Search", class: " btn filter_button"%>
-    <% end %>
-  </div>
-  <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-xs-12 col-md-4">
-        <a href="/events/<%= event.id %>">
-          <div class="event-card">
-            <h3><%= event.name %></h3>
-            <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
-            <p><%= event.party_size %> People</p>
-            <p>£<%= event.min_price%> - £<%= event.max_price %></p>
-            <p><%= event.location %></p>
+              <%= text_field_tag :location,
+                params[:location],
+                placeholder: "Add A Location",
+                class: "location_input input_margin_2",
+                id: "event_location" %>
+
+              <%= select_tag 'service', options_for_select(@services.collect{ |u| u.name }), prompt: "Select Service" %>
+              <div class="slider-container">
+                <div id="slider" style="width: 200px;"></div>
+                <%= number_field_tag :min_price, params[:min_price], placeholder: "Min" %>
+                <%= number_field_tag :max_price, params[:max_price], placeholder: "Max" %>
+              </div>
+
+
+              <%= submit_tag "Search", class: " btn filter_button"%>
+            <% end %>
           </div>
-        </a>
+  </div>
+  <div class="container">
+
+    <div class="event-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+
+          <div class="row">
+            <% @events.each do |event| %>
+              <div class="col-xs-12">
+                <a href="/events/<%= event.id %>">
+                  <div class="event-card">
+                    <div class="card-top">
+                      <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                      <p><%= event.bids.count %> bids made</p>
+                    </div>
+                    <h2><%= event.name %></h2>
+                    <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>What they are looking for </p>
+                        <div class ="card-btn card-btn-green"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-red">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% end %>
+    </div>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 <script src="//cdn.bootcss.com/noUiSlider/8.5.1/nouislider.js"></script>

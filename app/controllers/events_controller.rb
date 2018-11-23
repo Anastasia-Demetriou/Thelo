@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event).order(created_at: :desc)
     @services = Service.all
-    start_date = params[:starts_at].to_date
+    start_date = params[:starts_at]
     end_date = params[:ends_at]
     max_price_filter = params[:max_price].to_i
     min_price_filter = params[:min_price].to_i
@@ -13,11 +13,16 @@ class EventsController < ApplicationController
     filtered_events = Event.all
       # Filtering By location
     location_search = params[:location]
+
     if !min_price_filter.zero? && !max_price_filter.zero?
       filtered_events = filtered_events.where('min_price > ? AND max_price < ?', min_price_filter, max_price_filter)
     end
     if location_search != ""
       filtered_events = Event.near(location_search, 50)
+    end
+
+    if start_date == true
+      start_date = start_date.to_date
     end
 
     if end_date == true
@@ -43,7 +48,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @user = current_user
     @bid = Bid.new()
-
     authorize @event
   end
 
@@ -68,21 +72,26 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @services = Service.all
     @event = Event.find(params[:id])
     render
-    authorize @event
+    authorize @user
   end
 
   def update
+    @user = current_user
+    @services = Service.all
     @event = Event.find(params[:id])
     authorize @event
     if @event.update(event_params)
       flash[:success] = "Event updated!"
-      redirect_to user_path(@user)
+      redirect_to event_path(@event)
     else
       render :edit
     end
   end
+
 
   def destroy
     @event = Event.find(params[:id])
