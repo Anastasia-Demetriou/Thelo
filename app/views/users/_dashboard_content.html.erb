@@ -1,0 +1,58 @@
+
+
+<div class="container">
+  <h1><%= @user.first_name %>, Welcome to your dashboard!</h1>
+
+
+  <%= link_to "update profile", edit_user_path(current_user) %>
+  <p><%= @user.first_name %></p>
+  <p><%= @user.last_name %></p>
+  <p><%= @user.email %></p>
+  <p><%= @user.bio %></p>
+
+
+  <h2>Your Bids</h2>
+  <div class="row">
+    <% @user.bids.each do |bid| %>
+      <div class="col-xs-12 col-md-6 offset-md-3">
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-card">
+            <p><%= bid.event.name %></p>
+            <p>Your Offer: £<%= bid.quote.to_i %></p>
+            <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
+            <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+            <p>Location:<%= bid.event.location %></p>
+            <% if bid.status == "accepted" %>
+              <p class="green-text">Accepted</p>
+            <% elsif bid.status == "pending" %>
+              <p class="orange-text">Pending</p>
+            <% elsif bid.status == "declined" %>
+              <p class="red-text">Declined</p>
+            <% end %>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+  <h2>Your Events</h2>
+  <div class="row">
+    <% @user.events.each do |event| %>
+      <div class="col-xs-12 col-md-6 offset-md-3">
+        <a href="/events/<%= event.id %>" class="dash-card-link">
+          <div class="dash-event-card">
+            <p><%= event.name %></p>
+            <p>Date: <%= event.date.strftime("%b %e, %l:%M %p") %></p>
+            <p>Location:<%= event.location %></p>
+            <p>Bids: <%= event.bids.length %></p>
+          </div>
+          <% event.bids.where(status: "accepted").each do |bid| %>
+            <span>
+              <%= bid.user.first_name %>
+              <%= link_to "leave a review", new_user_review_path(bid.user)  %>
+            </span>
+          <% end %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
