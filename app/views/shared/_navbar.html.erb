@@ -11,11 +11,12 @@
 
     <% if user_signed_in? %>
       <!-- Links when logged in -->
+        <div class="navbar-links">
+          <%= link_to "Dashboard", dashboard_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Host", new_event_path, class: "navbar-wagon-item navbar-wagon-link"%>
+          <%= link_to "Events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <%= link_to "Bids Dashboard", dashboard_path %>
-      <%= link_to "Host", new_event_path%>
-      <%= link_to "Events", events_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        </div>
 
 
       <!-- Avatar with dropdown menu -->
@@ -44,7 +45,7 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Sign up", new_user_registration_path %>
+      <%= link_to "Sign up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
