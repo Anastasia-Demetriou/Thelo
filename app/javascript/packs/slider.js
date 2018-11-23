@@ -41,12 +41,18 @@ for (var i = -20; i <= 40; i++) {
 var html5Slider = document.getElementById('slider');
 
 noUiSlider.create(html5Slider, {
-    start: [500, 1000],
+    start: [200, 350],
     connect: true,
+    tooltips: true,
     range: {
         'min': 1,
-        'max': 1500
-    }
+        'max': 500
+    },
+    format: wNumb({
+        decimals: 3,
+        thousand: '.',
+        prefix: '£'
+    })
 });
 
 var inputNumber = document.getElementById('max_price');
