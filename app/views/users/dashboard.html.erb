@@ -9,7 +9,7 @@ body {
 
 .sidenav {
     height: 100%;
-    width: 200px;
+    width: 300px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -41,7 +41,32 @@ body {
 }
 
 .main {
-    margin-left: 200px; /* Same as the width of the sidenav */
+    margin-left: 300px; /* Same as the width of the sidenav */
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.avatar-dashboard {
+  vertical-align:middle;
+  display:inline;
+  font-size: 18px;
+  color: black;
+  margin-left: 20px;
+  position: flex;
+}
+
+.logo {
+  color: #ff6a6b;
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  position: flex;
+
 }
 
 @media screen and (max-height: 450px) {
@@ -53,20 +78,35 @@ body {
 <body>
 
 <div class="sidenav">
-  <p>Professional</p>
-  <%= link_to "My future events", user_path(@user) %>
-  <%= link_to "Bids I've placed", user_path(@user) %>
-  <%= link_to "View Profile", user_path(@user) %>
 
-  <p>Host</p>
-  <%= link_to "Events I'm hosting", user_path(@user) %>
-  <%= link_to "Create a new event", user_path(@user) %>
+  <div>
+    <%= link_to root_path, class: "logo" do %>
+      <i class="far fa-lemon"></i> THELO
+    <% end %>
+  </div>
 
-  <p>Account</p>
-  <%= link_to "Update account", edit_user_registration_path %>
-  <%= link_to "Log out", destroy_user_session_path %>
+  <div class= "avatar-dashboard">
+    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+    <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+  </div>
 
+  <div>
+    <p>Professional</p>
+    <%= link_to "My future events", user_path(@user) %>
+    <%= link_to "Bids I've placed", user_path(@user) %>
+    <%= link_to "View Profile", user_path(@user) %>
+  </div>
 
+  <div>
+    <p>Host</p>
+    <%= link_to "Events I'm hosting", user_path(@user) %>
+    <%= link_to "Create a new event", user_path(@user) %>
+  </div>
+
+  <div>
+    <p>Account</p>
+    <%= link_to "Log out", destroy_user_session_path %>
+  </div>
 
 </div>
 
