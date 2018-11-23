@@ -17,6 +17,8 @@ body {
     background-color: #F2F4FB;
     overflow-x: hidden;
     padding-top: 20px;
+    direction: column;
+
 }
 
 .sidenav a {
@@ -35,6 +37,11 @@ body {
   display: block;
 }
 
+h1 {
+  font-size: 25px;
+  color: #F8B500;
+  text-align: center;
+}
 .sidenav a:hover {
     color: black;
     font-weight: bold;
@@ -42,6 +49,12 @@ body {
 
 .main {
     margin-left: 300px; /* Same as the width of the sidenav */
+
+}
+
+.row {
+  position: fixed;
+    margin-top: 0;
 }
 
 .avatar {
@@ -58,6 +71,8 @@ body {
   color: black;
   margin-left: 20px;
   position: flex;
+  padding-bottom: 40px;
+  position: fixed;
 }
 
 .logo {
@@ -65,8 +80,17 @@ body {
   font-family: 'Allerta Stencil', sans-serif;
   font-size: 30px;
   font-weight: 800;
-  position: flex;
 
+}
+
+.dash-logo {
+    padding-bottom: 40px;
+    position: flex;
+}
+
+.menu-dash {
+  position: fixed;
+  bottom: 150px;
 }
 
 @media screen and (max-height: 450px) {
@@ -79,40 +103,76 @@ body {
 
 <div class="sidenav">
 
-  <div>
+  <div class= "dash-logo">
     <%= link_to root_path, class: "logo" do %>
       <i class="far fa-lemon"></i> THELO
     <% end %>
   </div>
+
 
   <div class= "avatar-dashboard">
     <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
     <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
   </div>
 
-  <div>
-    <p>Professional</p>
-    <%= link_to "My future events", user_path(@user) %>
-    <%= link_to "Bids I've placed", user_path(@user) %>
-    <%= link_to "View Profile", user_path(@user) %>
-  </div>
+  <div class= "menu-dash">
+      <div>
+        <p>Professional</p>
+        <%= link_to "My future events", events_path(@user.events) %>
+        <%= link_to "Bids I've placed", bids_path %>
+        <%= link_to "View Profile", user_path(@user) %>
+      </div>
 
-  <div>
-    <p>Host</p>
-    <%= link_to "Events I'm hosting", user_path(@user) %>
-    <%= link_to "Create a new event", user_path(@user) %>
-  </div>
+      <div>
+        <p>Host</p>
+        <%= link_to "Events I'm hosting", user_path(@user) %>
+        <%= link_to "Create a new event", new_event_path(@user) %>
+      </div>
 
-  <div>
-    <p>Account</p>
-    <%= link_to "Log out", destroy_user_session_path %>
+      <div>
+        <p>Account</p>
+        <%= link_to "Log out", destroy_user_session_path %>
+      </div>
   </div>
 
 </div>
 
 <div class="main">
-  <h2>Sidenav Example</h2>
-  <p>This sidenav is always shown.</p>
+      <div class="event-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+          <h1>Events you are hosting</h1>
+          <div class="row">
+            <% @user.events.each do |event| %>
+              <div class="col-xs-12">
+                <a href="/events/<%= event.id %>">
+                  <div class="event-card">
+                    <div class="card-top">
+                      <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                      <p><%= event.bids.count %> bids made</p>
+                    </div>
+                    <h2><%= event.name %></h2>
+                    <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>What they are looking for </p>
+                        <div class ="card-btn card-btn-green"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-red">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 </body>

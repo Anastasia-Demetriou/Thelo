@@ -1,0 +1,39 @@
+<%= render 'users/dashboard' %>
+
+  <div class="container">
+
+    <div class="event-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+
+          <div class="row">
+            <% @user.events.each do |event| %>
+              <div class="col-xs-12">
+                <a href="/events/<%= event.id %>">
+                  <div class="event-card">
+                    <div class="card-top">
+                      <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                      <p><%= event.bids.count %> bids made</p>
+                    </div>
+                    <h2><%= event.name %></h2>
+                    <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>What they are looking for </p>
+                        <div class ="card-btn card-btn-green"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-red">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
