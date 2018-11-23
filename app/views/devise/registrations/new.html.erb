@@ -16,7 +16,12 @@
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :professional %></div>
+
+      <h5>Are you a Professional?</h5>
+      <p><%= f.input :professional %>(Check this box if you have a professional service to offer)</p>
+
+      <h6>Select your professional service</h6>
+      <%= f.input :service_ids, collection: Service.all, :include_blank => false, prompt: 'Select Service' %>
   </div>
 
   <div class="form-actions">

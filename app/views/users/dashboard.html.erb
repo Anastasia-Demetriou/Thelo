@@ -1,56 +1,179 @@
-<div class="container">
-  <h1><%= @user.first_name %>, Welcome to your dashboard!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #F2F4FB;
+    overflow-x: hidden;
+    padding-top: 20px;
+    direction: column;
+
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
+
+.sidenav p {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #F8B500;
+  display: block;
+}
+
+h1 {
+  font-size: 25px;
+  color: #F8B500;
+  text-align: center;
+}
+.sidenav a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.main {
+    margin-left: 300px; /* Same as the width of the sidenav */
+
+}
+
+.row {
+  position: fixed;
+    margin-top: 0;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.avatar-dashboard {
+  vertical-align:middle;
+  display:inline;
+  font-size: 18px;
+  color: black;
+  margin-left: 20px;
+  position: flex;
+  padding-bottom: 40px;
+  position: fixed;
+}
+
+.logo {
+  color: #ff6a6b;
+  font-family: 'Allerta Stencil', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+
+}
+
+.dash-logo {
+    padding-bottom: 40px;
+    position: flex;
+}
+
+.menu-dash {
+  position: fixed;
+  bottom: 150px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+
+  <div class= "dash-logo">
+    <%= link_to root_path, class: "logo" do %>
+      <i class="far fa-lemon"></i> THELO
+    <% end %>
+  </div>
 
 
-  <%= link_to "update profile", edit_user_path(current_user) %>
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
-  <p><%= @user.email %></p>
-  <p><%= @user.bio %></p>
+  <div class= "avatar-dashboard">
+    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+    <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+  </div>
 
+  <div class= "menu-dash">
+      <div>
+        <p>Professional</p>
+        <%= link_to "My future events", events_path(@user.events) %>
+        <%= link_to "Bids I've placed", bids_path %>
+        <%= link_to "View Profile", user_path(@user) %>
+      </div>
 
-  <h2>Your Bids</h2>
-  <div class="row">
-    <% @user.bids.each do |bid| %>
-      <div class="col-xs-12 col-md-6 offset-md-3">
-        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
-          <div class="bid-card">
-            <p><%= bid.event.name %></p>
-            <p>Your Offer: £<%= bid.quote.to_i %></p>
-            <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
-            <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
-            <p>Location:<%= bid.event.location %></p>
-            <% if bid.status == "accepted" %>
-              <p class="green-text">Accepted</p>
-            <% elsif bid.status == "pending" %>
-              <p class="orange-text">Pending</p>
-            <% elsif bid.status == "declined" %>
-              <p class="red-text">Declined</p>
+      <div>
+        <p>Host</p>
+        <%= link_to "Events I'm hosting", user_path(@user) %>
+        <%= link_to "Create a new event", new_event_path(@user) %>
+      </div>
+
+      <div>
+        <p>Account</p>
+        <%= link_to "Log out", destroy_user_session_path %>
+      </div>
+  </div>
+
+</div>
+
+<div class="main">
+      <div class="event-container">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+          <h1>Events you are hosting</h1>
+          <div class="row">
+            <% @user.events.each do |event| %>
+              <div class="col-xs-12">
+                <a href="/events/<%= event.id %>">
+                  <div class="event-card">
+                    <div class="card-top">
+                      <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                      <p><%= event.bids.count %> bids made</p>
+                    </div>
+                    <h2><%= event.name %></h2>
+                    <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>What they are looking for </p>
+                        <div class ="card-btn card-btn-green"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-red">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             <% end %>
           </div>
-        </a>
+        </div>
       </div>
-    <% end %>
-  </div>
-  <h2>Your Events</h2>
-  <div class="row">
-    <% @user.events.each do |event| %>
-      <div class="col-xs-12 col-md-6 offset-md-3">
-        <a href="/events/<%= event.id %>" class="dash-card-link">
-          <div class="dash-event-card">
-            <p><%= event.name %></p>
-            <p>Date: <%= event.date.strftime("%b %e, %l:%M %p") %></p>
-            <p>Location:<%= event.location %></p>
-            <p>Bids: <%= event.bids.length %></p>
-          </div>
-          <% event.bids.where(status: "accepted").each do |bid| %>
-            <span>
-              <%= bid.user.first_name %>
-              <%= link_to "leave a review", new_user_review_path(bid.user)  %>
-            </span>
-          <% end %>
-        </a>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
+
+</body>
+</html>
