@@ -1,0 +1,4 @@
+$("#content").html("<%= j (render 'edit_profile') %>");
+$("#content").html("<%= j (render 'host_events_dashboard') %>");
+
+$("#content").prepend('<%= escape_javascript(render 'views/shared/registration_edit') %>');

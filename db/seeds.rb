@@ -11,7 +11,7 @@ chef = Service.create!(name: "Chef")
 mixologist = Service.create!(name: "Mixologist")
 waiter = Service.create!(name: "Waiter")
 
-test1 = User.create!(first_name: "test", last_name:"test", email:"test11@test.com", password:"test123", professional: true, bio:"Experienced Chef")
+test1 = User.create!(first_name: "test", last_name:"test", email:"test@test.com", password:"test123", professional: true, bio:"Experienced Chef")
 john = User.create!(first_name: "John", last_name:"Doe", email:"johndoe@gmail.com", password:"password", professional: true, bio:"Experienced Chef")
 andrew = User.create!(first_name: "Andrew", last_name:"Smith", email:"andrewsmith@gmail.com", password:"password", professional: false, bio:"Looking for chef")
 
