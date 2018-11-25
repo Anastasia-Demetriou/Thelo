@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @professional_bids = @user.bids
     #accepted bids - profesional
     #list all professional events
-    @accepted_bids = @user.bids.where(status: "accepted")
+    @accepted_bids = @user.bids.where(status: "accepted").where(user_id: @user.id)
     #pending
     @pending_bids = @user.bids.where(status: "pending")
     #declined bids - profesional
@@ -35,10 +35,13 @@ class UsersController < ApplicationController
     #   @professional_events << event
     # end
 
+
+
   #HOST
 
    #list all host events
     @host_events = Event.where(user_id: @user.id)
+
 
     #bids recieved for each event
     @host_bids = Bid.where(user_id: @user.id)
@@ -47,12 +50,26 @@ class UsersController < ApplicationController
     #reviews made by user
     @reviews = Review.where(reviewed_user_id: @user.id)
 
-    respond_to do |format|
-      format.html #looks for views/users/dashboard.html.erb
-      format.js   #looks for views/users/dashboard.js.erb
+    # respond_to do |format|
+    #   format.html #looks for views/users/dashboard.html.erb
+    #   format.js   #looks for views/users/dashboard.js.erb
+    # end
+    def past
+      @datetime = bid.event.date
+      @datetime.to_date.past? # => false (only based on date)
+      #datetime <= Date.today
+    end
+
+    def future
+      @datetime = bid.event.date
+      @datetime.to_date.future? # => false  (only based on date)
+      #datetime >= Date.today
     end
 
   end
+
+
+
 
   def host_events_dashboard
     @user = current_user
@@ -66,9 +83,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @reviews = Review.where(reviewed_user_id: @user.id)
-    @bid = Bid.find(params[:id])
+    @bid = Bid.where(user_id: @user.id)
     # @userbids = @bid.user
     # @events = []
     # @userbids.events.each do |event|
@@ -101,7 +118,7 @@ class UsersController < ApplicationController
     @user.bid.accepted == true
   end
 
-  def decline
+  def declined
     @user.bid.declined == true
   end
 

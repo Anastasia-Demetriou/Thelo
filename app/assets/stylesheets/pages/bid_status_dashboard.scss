@@ -64,13 +64,24 @@
   }
   .pending {
     border: 5px solid  #FFFFC9;
-  background-color: #FFFFC9;
+    background-color: #FFFFC9;
   }
   .declined {
     border: 5px solid #BFBFBF;
     background-color: #BFBFBF;
 
   }
+  .future {
+    background-color: #BAD9A2;
+  }
+
+  .past {
+    background-color: #BFBFBF;
+  }
+  .booked {
+    border: 5px solid #BAD9A2;
+  }
+
 //   .card-btm{
 //     display: flex;
 //     .card-btn{

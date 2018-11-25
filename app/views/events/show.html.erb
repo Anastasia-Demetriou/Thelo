@@ -1,22 +1,25 @@
+
+<!-- Event details -->
 <div>
   <h2><%= @event.name %></h2>
+  <h2><%= @event.user_id %></h2>
   <h3>Serice Required:<%= @event.service.name %></h3>
   <p>Party size:<%= @event.party_size %></p>
   <p>Location:<%= @event.location %></p>
   <p>Event Description:<%= @event.description %></p>
 
+<!-- if the user is the creator of the event they will be able to edit it -->
   <% if @event.user == current_user %>
     <%= link_to "edit event", edit_event_path(@event) %>
   <% end %>
 
-
+<!-- if the current user is not the creator of the event they can make a bid -->
 <% if @event.user != current_user  %>
   <p>Want to make a bid?</p>
   <%= render "shared/bid_form" %>
-
 <% end %>
 
-
+<!-- if the user is not signed in they will be asked to sign up or sign in -->
 <% if user_signed_in? == false %>
   <%= link_to "Login", new_user_session_path%>
   <%= link_to "Sign up", new_user_registration_path %>
@@ -24,13 +27,25 @@
 
 </div>
 
-<% if current_user == @event.user %>
+<!-- if the user has placed a bid on this event they will be displayed a message to say they have placed a bid already and 'click here' to view the status of their bids - redirct to dashboard bids status page -->
+  <% @event.bids.each do |bid| %>
+    <% if bid.user == current_user%>
+      <p> have bid on this event - click here to check the status of your bids</p>
+    <% end %>
+  <% end %>
+
+
+<!-- if the event was created by the logged in used they will be able to see the bids that have been placed on the event -->
+<% if @event.user == current_user %>
+  <h3>Bids for your event:</h3>
+
   <div class="container">
     <div class="row">
       <% @event.bids.each do |bid| %>
         <div class="col-xs-12 col-md-4">
           <div class="show-bid-card">
             <p><%= bid.user.first_name %></p>
+            <%= bid.user_id %>
             <p>Quote: <%= bid.price %></p>
             <p>Desc: <%= bid.description %></p>
             <% if bid.status == "accepted" %>

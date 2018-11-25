@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
 
+  get 'dashboard_pro_bids', to: 'bids#dashboard', as: 'dashboard_pro_bids'
   get 'dashboard', to: 'users#dashboard', as: 'dashboard'
+  # root to: "users#dashboard_edit_profile"
+  # root to: "dashboard_host_events"
+  # root to: "dashboard_pro_bids"
+  # root to: "dashboard_pro_events"
+  # root to: "dashboard_profile"
+
+
+
   get 'host_events', to: 'users#host_events_dashboard', as: 'host_events'
 
   get 'host', to: 'pages#host_landing_page', as: 'host'
