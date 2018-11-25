@@ -1,141 +1,120 @@
-<!DOCTYPE html>
-<html>
-<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    font-family: "Lato", sans-serif;
-}
 
-.sidenav {
-    height: 100%;
-    width: 300px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #F2F4FB;
-    overflow-x: hidden;
-    padding-top: 20px;
-    direction: column;
+  <div class="sidenav">
 
-}
+    <div class= "dash-logo">
+      <%= link_to root_path, class: "logo" do %>
+        <i class="far fa-lemon"></i> THELO
+      <% end %>
+    </div>
 
-.sidenav a {
-    padding: 6px 6px 6px 32px;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    display: block;
-}
+    <div class= "avatar-dashboard sidenava">
+      <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-dash" %>
+      <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+    </div>
 
-.sidenav p {
-  padding: 6px 6px 6px 32px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #F8B500;
-  display: block;
-}
+    <div class= "menu-dash sidenava">
 
-h1 {
-  font-size: 25px;
-  color: #F8B500;
-  text-align: center;
-}
-.sidenav a:hover {
-    color: black;
-    font-weight: bold;
-}
+      <p>Professional</p>
+      <%= link_to "Events I'm working at", events_path(current_user.events), remote: true %>
+      <%= link_to "Bids I've placed", bids_path, remote: true %>
+      <%= link_to "View Profile", edit_user_registration_path%>
 
-.main {
-    margin-left: 300px; /* Same as the width of the sidenav */
+      <p>Host</p>
+      <%= link_to "Events I'm hosting", host_events_path(@user), remote: true %>
+      <%= link_to "Create a new event", new_event_path(@user), remote: true %>
 
-}
 
-.row {
-  position: fixed;
-    margin-top: 0;
-}
-
-.avatar {
-    vertical-align: middle;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.avatar-dashboard {
-  vertical-align:middle;
-  display:inline;
-  font-size: 18px;
-  color: black;
-  margin-left: 20px;
-  position: flex;
-  padding-bottom: 40px;
-  position: fixed;
-}
-
-.logo {
-  color: #ff6a6b;
-  font-family: 'Allerta Stencil', sans-serif;
-  font-size: 30px;
-  font-weight: 800;
-
-}
-
-.dash-logo {
-    padding-bottom: 40px;
-    position: flex;
-}
-
-.menu-dash {
-  position: fixed;
-  bottom: 150px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</head>
-<body>
-
-<div class="sidenav">
-
-  <div class= "dash-logo">
-    <%= link_to root_path, class: "logo" do %>
-      <i class="far fa-lemon"></i> THELO
-    <% end %>
+      <p>Account</p>
+      <%= link_to "Log out", destroy_user_session_path %>
+    </div>
   </div>
 
+<body class= "dashboard-container body-dash" id="content">
 
-  <div class= "avatar-dashboard">
-    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-    <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
-  </div>
 
-  <div class= "menu-dash">
-      <div>
-        <p>Professional</p>
-        <%= link_to "My future events", events_path(@user.events) %>
-        <%= link_to "Bids I've placed", bids_path %>
-        <%= link_to "View Profile", user_path(@user) %>
-      </div>
+<!-- PROFESSIONAL EVENTS/Bookings display the booked/confirmed events that the professional has bid on -->
 
-      <div>
-        <p>Host</p>
-        <%= link_to "Events I'm hosting", user_path(@user) %>
-        <%= link_to "Create a new event", new_event_path(@user) %>
-      </div>
-
-      <div>
-        <p>Account</p>
-        <%= link_to "Log out", destroy_user_session_path %>
-      </div>
-  </div>
-
+<div class="row status-header">
+  <div class="col-xs-12 col-md-6" style="text-align: center; background-color:none;"><p>Upcoming Booked Events</p> </div>
+  <div class="col-xs-12 col-md-6 " style="text-align: center; background-color:none;"> <p>Past Booked Events</p> </div>
 </div>
+
+
+
+<!-- (future events) -->
+</div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12" >
+
+
+     <div class="col-xs-12 col-md-6" style="background-color:none;">
+      <% @accepted_bids.each do |bid| %>
+        <% if bid.event.date.past? == false%>
+        <div class="row">
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-status-card future">
+            <div class="card-top">
+              <p><%= bid.event.name %></p>
+              <%= bid.user_id %>
+              <p>Your Offer: £<%= bid.quote.to_i %></p>
+              <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+
+              <p>Event location:<%= bid.event.location %></p>
+            </div>
+            <div class="card-btm">
+              <% if bid.status == "accepted" %>
+              <% elsif bid.status == "pending" %>
+              <% elsif bid.status == "declined" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% end %>
+    <% end %>
+    </div>
+
+
+
+<!-- (past events) -->
+
+
+     <div class="col-xs-12 col-md-6" style="background-color:none;">
+      <% @accepted_bids.each do |bid| %>
+      <% if bid.event.date.past? == true%>
+        <div class="row">
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-status-card past">
+            <div class="card-top">
+              <p><%= bid.event.name %></p>
+              <%= bid.user_id %>
+              <p>Your Offer: £<%= bid.quote.to_i %></p>
+              <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Event location:<%= bid.event.location %></p>
+            </div>
+            <div class="card-btm">
+              <% if bid.status == "accepted" %>
+              <% elsif bid.status == "pending" %>
+              <% elsif bid.status == "declined" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% end %>
+    <% end %>
+
+
+  </div>
+</div>
+
+<!-- HOST EVENTS - display list of events created -->
+
+                    <!-- BOOKINGS need to add a green border around the events that have been confirmed with bids -->
+
 
 <div class="main">
       <div class="event-container">
@@ -143,7 +122,7 @@ h1 {
         <div class="col-xs-12 col-md-8 offset-md-2">
           <h1>Events you are hosting</h1>
           <div class="row">
-            <% @user.events.each do |event| %>
+            <% @host_events.order(date: :asc).each do |event| %>
               <div class="col-xs-12">
                 <a href="/events/<%= event.id %>">
                   <div class="event-card">
@@ -152,6 +131,8 @@ h1 {
                       <p><%= event.bids.count %> bids made</p>
                     </div>
                     <h2><%= event.name %></h2>
+                    <%= event.user_id%>
+
                     <div class="card-bottom">
                       <div class="card-btm">
                         <p>What they are looking for </p>
@@ -175,5 +156,98 @@ h1 {
   </div>
 </div>
 
+
+<!-- PROFESSIONAL BIDS - -->
+
+<div class="row status-header">
+  <div class="col-xs-12 col-md-4" style="text-align: center; background-color:none;"><p>Accepted</p> </div>
+  <div class="col-xs-12 col-md-4 " style="text-align: center; background-color:none;"> <p>Pending</p> </div>
+  <div class="col-xs-12 col-md-4 " style=" text-align: center; background-color:none;"><p>Declined</p> </div>
+</div>
+
+
+</div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12" >
+     <div class="col-xs-12 col-md-4" style="background-color:none;">
+      <% @accepted_bids.each do |bid| %>
+        <div class="row">
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-status-card accepted">
+            <div class="card-top">
+              <p><%= bid.event.name %></p>
+              <%= bid.user_id %>
+              <p>Your Offer: £<%= bid.quote.to_i %></p>
+              <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Event location:<%= bid.event.location %></p>
+            </div>
+            <div class="card-btm">
+              <% if bid.status == "accepted" %>
+              <% elsif bid.status == "pending" %>
+              <% elsif bid.status == "declined" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% end %>
+    </div>
+    <div >
+     <div class="col-xs-12 col-md-4 " style="background-color:none;">
+      <% @pending_bids.each do |bid| %>
+        <div class="row">
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-status-card pending">
+            <div class="card-top">
+              <p><%= bid.event.name %></p>
+              <%= bid.user_id %>
+              <p>Your Offer: £<%= bid.quote.to_i %></p>
+              <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
+              <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location:<%= bid.event.location %></p>
+            </div>
+            <div class="card-btm">
+              <% if bid.status == "accepted" %>
+              <% elsif bid.status == "pending" %>
+              <% elsif bid.status == "declined" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+
+  <div >
+    <div class="col-xs-12 col-md-4 " style="background-color:none;">
+      <% @declined_bids.each do |bid| %>
+        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+          <div class="bid-status-card declined">
+            <div class="card-top">
+              <p><%= bid.event.name %></p>
+              <%= bid.user_id %>
+              <p>Your Offer: £<%= bid.quote.to_i %></p>
+              <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
+              <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+              <p>Location:<%= bid.event.location %></p>
+            </div>
+            <div class="card-btm">
+              <% if bid.status == "accepted" %>
+              <% elsif bid.status == "pending" %>
+              <% elsif bid.status == "declined" %>
+            </div>
+            <% end %>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+
+<!-- CREATE NEW EVENT  -->
+
+
+
 </body>
-</html>
+

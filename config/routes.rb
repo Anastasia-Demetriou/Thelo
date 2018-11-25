@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+
+  get 'dashboard_pro_bids', to: 'bids#dashboard', as: 'dashboard_pro_bids'
   get 'dashboard', to: 'users#dashboard', as: 'dashboard'
+  # root to: "users#dashboard_edit_profile"
+  # root to: "dashboard_host_events"
+  # root to: "dashboard_pro_bids"
+  # root to: "dashboard_pro_events"
+  # root to: "dashboard_profile"
+
+
+
+  get 'host_events', to: 'users#host_events_dashboard', as: 'host_events'
+
   get 'host', to: 'pages#host_landing_page', as: 'host'
   get 'professional', to: 'pages#professional_landing_page', as: 'professional'
+
 
   get 'reviews', to: 'reviews#new', as: 'review'
 
@@ -28,6 +42,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

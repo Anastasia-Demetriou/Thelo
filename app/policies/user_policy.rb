@@ -20,4 +20,8 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     true
   end
+
+  def host_events_dashboard?
+    true
+  end
 end

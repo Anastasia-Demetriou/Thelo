@@ -1,0 +1,30 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <div class="sidenav">
+
+    <div class= "dash-logo">
+      <%= link_to root_path, class: "logo" do %>
+        <i class="far fa-lemon"></i> THELO
+      <% end %>
+    </div>
+
+    <div class= "avatar-dashboard sidenava">
+      <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-dash" %>
+      <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+    </div>
+
+    <div class= "menu-dash sidenava">
+
+      <p>Professional</p>
+      <%= link_to "My future events", events_path(@user.events), remote: true %>
+      <%= link_to "Bids I've placed", dashboard_pro_bids_path %>
+      <%= link_to "View Profile", edit_user_registration_path, remote: true %>
+
+      <p>Host</p>
+      <%= link_to "Events I'm hosting", dashboard_host_events_path %>
+      <%= link_to "Create a new event", new_event_path(@user), remote: true %>
+
+      <p>Account</p>
+      <%= link_to "Log out", destroy_user_session_path %>
+    </div>
+  </div>

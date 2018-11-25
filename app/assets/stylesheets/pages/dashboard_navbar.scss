@@ -1,0 +1,103 @@
+.body-dash {
+    font-family: "Lato", sans-serif;
+    background-color: #F2F4FB;
+    top: 0;
+}
+
+.dash-logo {
+  padding-bottom: 40px;
+  position: flex;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-left: 30px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    direction: column;
+    background-color: white;
+}
+
+
+
+.sidenava a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+    display: block;
+    padding-top: 0px;
+}
+
+.sidenav p {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #F8B500;
+  display: block;
+  margin: 0;
+  padding-top:20px;
+}
+
+h1 {
+  font-size: 25px;
+  color: #F8B500;
+  text-align: center;
+}
+.sidenav a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+
+.row-dashboard {
+  position: fixed;
+  margin-top: 0;
+}
+
+.avatar-dash {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px;
+    border: 2px solid #F2F4FB;
+}
+
+.avatar-dashboard {
+  vertical-align: middle;
+  display: inline;
+  font-size: 16px;
+  color: black;
+  margin-left: 25px;
+  position: flex;
+  z-index: 2;
+  height: 40px;
+}
+
+
+
+
+.menu-dash {
+  margin-top: 10px;
+  position: flex;
+  z-index: 3;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+//this is the class for the first div/container of each page
+.dashboard-container {
+    margin-left: 300px; /* Same as the width of the sidenav */
+}
