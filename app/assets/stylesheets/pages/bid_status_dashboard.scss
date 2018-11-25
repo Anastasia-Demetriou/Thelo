@@ -1,0 +1,123 @@
+// .index-page-wrapper{
+//   background-color: #F2F4FB;
+// }
+
+// .banner-header{
+//   background-color: #D22780;
+//   height: 300px;
+//   text-align: center;
+//   h1{
+//     color: white;
+//     font-size: 46px;
+//     padding-top: 100px;
+//   }
+//   h2{
+//     color: white;
+//     font-size: 32px;
+//     font-weight: 200;
+//     margin-top: 24px;
+//   }
+// }
+// .event-container{
+//   margin-top: 80px;
+// }
+
+.status-header  p{
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  margin-bottom: 8px;
+  text-align: center;
+
+}
+.bid-status-card{
+  border-radius: 5px;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: rgba(0,0,0,0.9);
+  background-color: white;
+  height: 150px;
+  position:relative;
+  p{
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: rgba(0,0,0,0.6)
+  }
+
+  h2{
+    padding-bottom: 10px;
+    font-size: 20px;
+    margin: 0px;
+    margin-bottom: 8px;
+    text-align: center;
+
+  }
+}
+ .accepted {
+  border: 5px solid #BAD9A2;
+  background-color: #BAD9A2;
+
+  }
+  .pending {
+    border: 5px solid  #FFFFC9;
+  background-color: #FFFFC9;
+  }
+  .declined {
+    border: 5px solid #BFBFBF;
+    background-color: #BFBFBF;
+
+  }
+//   .card-btm{
+//     display: flex;
+//     .card-btn{
+//       width: auto;
+//       height: 35px;
+//       text-align: center;
+//       padding-top: 8px;
+//       padding-right: 10px;
+//       padding-left: 10px;
+//       color: white;
+//       border-radius: 10px;
+//       font-size: 14px;
+//       font-weight: 600;
+//     }
+//     p{
+//       padding-top: 5px;
+//       margin-bottom: 0px !important;
+//       margin-right: 10px;
+//     }
+//     .card-btn-orange{
+//       background-color: #F8B500 !important;
+//     }
+//     .card-btn-green{
+//       background-color: #7ED321 !important;
+//     }
+
+//   }
+// }
+// a:hover{
+//   text-decoration: none !important;
+// }
+// .event-card:hover{
+//   box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+//   text-decoration: none;
+// }
+
+// .bid-status-btm {
+//   display: absolute;
+//   justify-content: space-between;
+// }
+
+// .bid-status-top{
+//   display: absolute;
+//   justify-content: space-between;
+// }
+
+// .bid-status-bottom{
+//   display: absolute;
+//   justify-content: space-between;
+// }

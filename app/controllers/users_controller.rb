@@ -21,11 +21,11 @@ class UsersController < ApplicationController
     @professional_bids = @user.bids
     #accepted bids - profesional
     #list all professional events
-    @accepted_bids = @professional_bids.where(status: "accepted")
+    @accepted_bids = @user.bids.where(status: "accepted")
     #pending
-    @pending_bids = @professional_bids.where(status: "pending")
+    @pending_bids = @user.bids.where(status: "pending")
     #declined bids - profesional
-    @declined_bids = @professional_bids.where(status: "declined")
+    @declined_bids = @user.bids.where(status: "declined")
 
     #list of events the professional has bid on
     @professional_events = Bid.where(user_id: @user.id)
