@@ -17,6 +17,15 @@ class User < ApplicationRecord
     professional
   end
 
+  def average_review_score
+    given_reviews = Review.where(reviewed_user: self).map(&:rating)
+    if given_reviews.any?
+      return (given_reviews.sum / given_reviews.count.to_f).round
+    else
+      return 0
+    end
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

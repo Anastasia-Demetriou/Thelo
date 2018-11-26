@@ -66,6 +66,8 @@ class UsersController < ApplicationController
       #datetime >= Date.today
     end
 
+
+
   end
 
 
@@ -83,14 +85,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @reviews = Review.where(reviewed_user_id: @user.id)
-    @bid = Bid.where(user_id: @user.id)
+    @user = User.find(params[:id])
     # @userbids = @bid.user
     # @events = []
     # @userbids.events.each do |event|
     #   @events << event
     # end
+    @reviews = Review.where(reviewed_user: @user)
     authorize @user
   end
 
