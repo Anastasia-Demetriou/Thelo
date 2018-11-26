@@ -1,4 +1,4 @@
-.container{
+.container {
  margin-left: 160px;
  margin-right: 160px;
  margin-top: 40px;
@@ -7,36 +7,63 @@
 h2{
  margin-left: 160px;
  margin-right: 160px;
+ padding-bottom: 32px;
  text-align: center;
  padding-top: 30px;
  font-size: 48px !important;
 }
 
-.event_form{
- background: rgb(255, 255, 255);
+.form-inputs {
+ margin-top: 20px;
+ background-color: $light-background !important;
  border: $light-background, !important;
- border-radius: 35px;
+ border-radius: 8px !important;
  font-family: 'Montserrat', sans-serif;
- text-align: left;
- font-size: 19px !important;
+ text-align: center;
+ font-size: 16px !important;
  box-shadow: none !important;
  padding-top: 20px !important;
+ padding-bottom: 16px !important;
 }
 
-.form-control{
+.form-control-label {
+ display: none;
+}
+.form-control {
  height: 50px !important;
 }
 
-.create-event{
+.form-check-label {
+ font-size: 10px;
+ margin-left: 16px;
+ margin-top: 10px;
+
+}
+
+#user_remember_me {
+ margin-right: 10px;
+ margin-top: 13px;
+}
+
+.button {
  width: 180px;
  height:60px;
- font-size: 20px;
+ font-size: 20px !important;
  padding: 5px;
  padding-top: 9px;
  margin-top: 50px;
  margin-bottom: 30px;
  background-color: $primary;
- opacity: 0.9;
  color: white;
+ border: none;
  border-radius: 8px;
+  &:hover {
+   background-color: #991D5D;
+   transition: 0.3s;
+ }
+  &:disabled {
+   background-color: gray;
+   cursor: not-allowed;
+ }
 }
+
