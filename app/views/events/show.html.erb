@@ -25,6 +25,7 @@
             </div>
           </div>
           <p><i class="fas fa-users"></i> <%= @event.party_size %></p>
+          <p> Budget £<%= @event.min_price %>-<%= @event.max_price %></p>
           <% if @event.user == current_user %>
             <div class="show-edit-btn-div">
               <%= link_to "Edit event", edit_event_path(@event), class: "show-edit-btn" %>
