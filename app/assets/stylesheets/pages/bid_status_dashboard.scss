@@ -23,35 +23,29 @@
 // }
 
 .status-header  p{
-  padding: 20px;
+  padding: 5px;
   font-size: 16px;
-  font-weight: bold;
   margin: 0px;
-  margin-bottom: 8px;
   text-align: center;
-
-
+  color: grey;
+  border-bottom: 2px solid grey;
 }
 
 .professional-events p {
   padding: 20px;
-  font-size: 23px;
-  font-weight: bold;
+  font-size: 20px;
   margin: 0px;
-  margin-bottom: 8px;
   text-align: center;
   background-color:none;
   border-bottom: 3px solid #F8B500;
-  color: #F8B500;
-  padding-top: 60px;
+  color: white;
+  background-color: #F8B500;
 }
 
 
 
 .bid-status-card{
-  border-radius: 5px;
-  margin: 10px;
-  margin-top: 30px;
+  margin: 0;
   padding: 20px;
   padding-left: 24px;
   padding-right: 24px;
@@ -59,6 +53,7 @@
   background-color: white;
   height: 150px;
   position:relative;
+  border-bottom: 1px solid #BFBFBF;
 
   p{
     margin-bottom: 8px;
@@ -66,27 +61,46 @@
     color: rgba(0,0,0,0.6)
   }
 
-  h2{
+  h5{
     padding-bottom: 10px;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0px;
     margin-bottom: 8px;
     text-align: center;
+    top: 20px;
+    right: 5px;
+    position: absolute;
 
   }
+
 }
+
+ .past {
+
+    background-color: #f9f9f9;
+    border-bottom: 1px solid white !important;
+    border-color: white !important;
+    p {
+      color: grey;
+    }
+  }
+
  .accepted {
   border: 5px solid #BAD9A2;
   background-color: #BAD9A2;
+  padding: 15px;
+
 
   }
   .pending {
     border: 5px solid  #FFFFC9;
     background-color: #FFFFC9;
+
   }
   .declined {
     border: 5px solid #BFBFBF;
     background-color: #BFBFBF;
+
 
   }
   .future {
@@ -98,13 +112,6 @@
     }
   }
 
-
-  .past {
-    background-color: #BFBFBF;
-  }
-  .booked {
-    border: 5px solid #BAD9A2;
-  }
 
 //   .card-btm{
 //     display: flex;
