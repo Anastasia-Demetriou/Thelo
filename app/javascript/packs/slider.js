@@ -1,4 +1,4 @@
-// function makeItSlide() {
+ function makeItSlide() {
 //   var snapSlider = document.getElementById('slider-snap');
 
 //   noUiSlider.create(snapSlider, {
@@ -24,12 +24,11 @@
 //   snapSlider.noUiSlider.on('update', function (values, handle) {
 //       snapValues[handle].innerHTML = values[handle];
 //   });
-// }
 
 var select = document.getElementById('min_price');
 
 // Append the option elements
-for (var i = -20; i <= 40; i++) {
+for (var i = 1; i <= 500; i++) {
 
     var option = document.createElement("option");
     option.text = i;
@@ -69,10 +68,19 @@ html5Slider.noUiSlider.on('update', function (values, handle) {
 });
 
 select.addEventListener('change', function () {
-    html5Slider.noUiSlider.set([this.value, null]);
+  html5Slider.noUiSlider.set([this.value, null]);
 });
 
 inputNumber.addEventListener('change', function () {
-    html5Slider.noUiSlider.set([null, this.value]);
+  html5Slider.noUiSlider.set([null, this.value]);
+  console.log(this.value)
 });
+
+html5Slider.noUiSlider.on('change', e => {
+  document.getElementById('min_price').value = e[0].replace(/£/, '')
+  document.getElementById('max_price').value = e[1].replace(/£/, '')
+})
+
+var sliderValues = html5Slider.noUiSlider.get()
+}
 export { makeItSlide };
