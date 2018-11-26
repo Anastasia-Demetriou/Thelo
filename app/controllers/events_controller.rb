@@ -13,6 +13,8 @@ class EventsController < ApplicationController
     filtered_events = Event.all
       # Filtering By location
     location_search = params[:location]
+
+
     if !min_price_filter.zero? && !max_price_filter.zero?
       filtered_events = filtered_events.where('min_price > ? AND min_price < ?', min_price_filter, max_price_filter)
     end
