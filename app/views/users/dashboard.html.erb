@@ -202,6 +202,7 @@
 
             <% @host_events.order(date: :asc).each do |event| %>
 
+            <%if event.date.to_date.future? %>
               <a href="/events/<%= event.id %>">
                 <div class="event-dash-card">
                   <div class="card-top">
@@ -219,7 +220,7 @@
 
                   <div class="card-bottom">
                       <div class="card-btm">
-                        <p>What they are looking for </p>
+                        <p>Looking for: </p>
                         <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
                       </div>
                       <div class="card-btm">
@@ -231,8 +232,47 @@
                     </div>
                 </div>
               </a>
-            <% end %>
+              <% end %>
+              <% end %>
 
+
+  <div class="professional-events" id="hosteventspast">
+    <p>Events you have hosted</p>
+  </div>
+          <% @host_events.order(date: :asc).each do |event| %>
+            <%if event.date.to_date.past? %>
+              <a href="/events/<%= event.id %>">
+                <div class="event-dash-card past">
+                  <div class="card-top">
+                    <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+
+                    <% if event.bids.count == 0 %>
+                      <p style= "color:#D0021B;">You have <strong><%= event.bids.count %></strong> bids</p>
+                      <% end %>
+                    <% if event.bids.count >= 1 %>
+                      <p style= "color:#7ED321;">You have <strong><%= event.bids.count %></strong> bids</p>
+                    <% end %>
+                  </div>
+                  <h2><%= event.name %></h2>
+                  <% event.user_id%>
+
+                  <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>Looking for: </p>
+                        <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-green">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </a>
+
+          <% end %>
+          <% end %>
     </div>
    </div>
 </div>
