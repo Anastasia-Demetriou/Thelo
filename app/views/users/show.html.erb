@@ -1,0 +1,68 @@
+
+<div class="show-navbar hidden-navbar">
+  <div class="navbar-profile-details">
+    <%# if @user.photo %>
+          <!-- Display the photo -->
+        <%# else %>
+          <!-- Display a placeholder -->
+        <%# end %>
+    <h1 class="user-details-nav"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
+    <h1 class="nav-details"><%= @user.bio %></h1>
+  </div>
+</div>
+
+
+<div class="show-wrapper">
+  <div class="show-banner">
+    <div class="show-banner-content">
+      <div class="avatar-profile">
+        <%# if @user.photo %>
+          <!-- Display the photo -->
+        <%# else %>
+          <!-- Display a placeholder -->
+        <%# end %>
+      </div>
+      <div class="profile-details">
+        <h1 class="user-details"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
+        <% if @user.professional %>
+          <% end %>
+          <p><%= @user.services.first.name %></p>
+          <p><%= @user.bio %></p>
+       <% if @user.professional %>
+        <h1 class="user-details">Overall Rating</h1>
+        <% @user.average_review_score.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <!-- <p>Overall rating <%= @reviews_avg %>/5</p> -->
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="show-content">
+    <div class="show-left">
+      <% @reviews.each do |review| %>
+        <div class="show-left-card">
+        <i class="fas fa-star"></i>
+        <% review.rating.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+          <p><%= review.content %></p>
+          <p>Date of review: <%= review.created_at.strftime("%e %b %Y") %></p>
+          <p>This review has been written by: <%= review.user.first_name %></p>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="show-right">
+      <h1>Areas Serviced</h1>
+     <div class="mapimage">
+        <p>static map goes here</p>
+     </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+

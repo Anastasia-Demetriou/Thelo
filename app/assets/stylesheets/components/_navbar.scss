@@ -10,11 +10,14 @@
   justify-content: space-between;
 }
 
-.navbar-wagon {
+.navbar-wagon.sticky {
     position: sticky;
-    width: 100%;
     left: 0;
     top: 0;
+}
+
+.navbar-wagon {
+    width: 100%;
     z-index: 100;
     border-top: 0;
 }
