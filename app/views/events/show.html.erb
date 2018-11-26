@@ -16,6 +16,7 @@
     <div class="row">
       <div class="col-xs-8">
         <div class="event-show-description">
+          <h1>Details</h1>
           <p class = "main-body"><%= @event.description %></p>
           <div class="display-inline">
             <p>What they are looking for</p>
@@ -24,7 +25,11 @@
             </div>
           </div>
           <p><i class="fas fa-users"></i> <%= @event.party_size %></p>
-
+          <% if @event.user == current_user %>
+            <div class="show-edit-btn-div">
+              <%= link_to "Edit event", edit_event_path(@event), class: "show-edit-btn" %>
+            </div>
+          <% end %>
         </div>
         <div class="event-show-bids">
           <% if @event.user == current_user %>
@@ -68,9 +73,6 @@
             </div>
           <% end %>
         </div>
-        <% if @event.user == current_user %>
-          <%= link_to "edit event", edit_event_path(@event) %>
-        <% end %>
       </div>
       <div class="col-xs-4">
         <div class="event-show-form">
