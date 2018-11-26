@@ -15,7 +15,7 @@
 
   <div class= "menu-dash sidenava">
 
-    <p>Professional</p>
+    <p id= "pro-pink">Professional</p>
     <%= link_to "Events I'm working at", "#proevents" %>
     <%= link_to "Bids I've placed", "#probids" %>
     <%= link_to "View Profile", user_path(@user)%>
@@ -24,7 +24,7 @@
     <%= link_to "Events I'm hosting", "#hostevents" %>
     <%= link_to "Create a new event", new_event_path%>
 
-    <p>Account</p>
+    <p id="account">Account</p>
     <%= link_to "Log out", destroy_user_session_path %>
   </div>
 </div>
@@ -192,7 +192,7 @@
 
 
 <div class="professional-events-card">
-  <div class="professional-events" id="hostevents">
+  <div class="host-events" id="hostevents">
     <p>Events you are Hosting</p>
   </div>
 
