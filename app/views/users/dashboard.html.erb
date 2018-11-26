@@ -18,7 +18,7 @@
     <p>Professional</p>
     <%= link_to "Events I'm working at", "#proevents" %>
     <%= link_to "Bids I've placed", "#probids" %>
-    <%= link_to "View Profile", edit_user_registration_path%>
+    <%= link_to "View Profile", user_path(@user)%>
 
     <p>Host</p>
     <%= link_to "Events I'm hosting", "#hostevents" %>
@@ -113,57 +113,6 @@
 </div>
 
 
-  <!-- HOST EVENTS - display list of events created -->
-
-  <!-- BOOKINGS need to add a green border around the events that have been confirmed with bids -->
-
-
-
-  <div class="main" >
-    <div class="professional-events" id="hostevents">
-      <p>Events you are Hosting</p>
-    </div>
-    <div class="event-container">
-      <div class="row">
-        <div class="col-xs-12 col-md-8 offset-md-2">
-          <div class="row">
-            <% @host_events.order(date: :asc).each do |event| %>
-            <div class="col-xs-12">
-              <a href="/events/<%= event.id %>">
-                <div class="event-card">
-                  <div class="card-top">
-                    <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
-                    <p><%= event.bids.count %> bids made</p>
-                  </div>
-                  <h2><%= event.name %></h2>
-                  <%= event.user_id%>
-
-                  <div class="card-bottom">
-                    <div class="card-btm">
-                      <p>What they are looking for </p>
-                      <div class ="card-btn card-btn-green"><%= event.service.name %></div>
-                    </div>
-                    <div class="card-btm">
-                      <p>Budget</p>
-                      <div class="card-btn card-btn-red">
-                        £<%= event.min_price %>-<%= event.max_price %>
-                      </div>
-                      <div class="card-btm">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <!-- PROFESSIONAL BIDS - -->
 
 <div class="professional-events-card">
@@ -173,21 +122,20 @@
 
 <div class="events-flex">
 
-  <div class="bids-flex-item accepted" style="background-color:none;">
-  <div class=""><p>Accepted</p> </div>
+  <div class="bids-flex-item" style="background-color:none;">
+  <div class="bid-status-header" style=   "border-bottom: 2px solid #7ED321;"
+ ><p>Accepted</p> </div>
     <% @accepted_bids.each do |bid| %>
       <a href="/events/<%= bid.event.id %>" class="bid-card-link">
         <div class="bid-status-card accepted">
-
-            <p><%= bid.event.name %></p>
-            <%= bid.user_id %>
-            <p>Your Offer: £<%= bid.quote.to_i %></p>
-            <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
-            <p>Event location:<%= bid.event.location %></p>
+            <p><%= bid.event.name %> - <%= bid.event.location %></p>
+            <% bid.user_id %>
+            <p>Quoted: £<%= bid.quote.to_i %></p>
+            <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
+            <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
             <% if bid.status == "accepted" %>
             <% elsif bid.status == "pending" %>
             <% elsif bid.status == "declined" %>
-
           <% end %>
         </div>
       </a>
@@ -196,17 +144,16 @@
 
 
 
-  <div class="bids-flex-item pending" style="background-color:none;">
-    <div class=""> <p>Pending</p> </div>
+  <div class="bids-flex-item " style="background-color:none;">
+    <div class="bid-status-header" style = "border-bottom: 2px solid #F8B500;" ><p>Pending</p> </div>
     <% @pending_bids.each do |bid| %>
       <a href="/events/<%= bid.event.id %>" class="bid-card-link">
         <div class="bid-status-card pending">
-            <p><%= bid.event.name %></p>
-            <%= bid.user_id %>
-            <p>Your Offer: £<%= bid.quote.to_i %></p>
-            <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
-            <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
-            <p>Location:<%= bid.event.location %></p>
+            <p><%= bid.event.name %> - <%= bid.event.location %></p>
+            <% bid.user_id %>
+            <p >Quoted: £<%= bid.quote.to_i %></p>
+            <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
+            <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
             <% if bid.status == "accepted" %>
             <% elsif bid.status == "pending" %>
             <% elsif bid.status == "declined" %>
@@ -216,17 +163,17 @@
     <% end %>
   </div>
 
-  <div class="bids-flex-item pending" style="background-color:none;">
-     <div class=""><p>Declined</p> </div>
+  <div class="bids-flex-item" style="background-color:none;">
+     <div class="bid-status-header" style= "border-bottom: 2px solid grey;" ><p>Declined</p> </div>
     <% @declined_bids.each do |bid| %>
     <a href="/events/<%= bid.event.id %>" class="bid-card-link">
       <div class="bid-status-card declined">
-          <p><%= bid.event.name %></p>
-          <%= bid.user_id %>
-          <p>Your Offer: £<%= bid.quote.to_i %></p>
-          <p>Price Range: £<%= bid.event.min_price %>-<%= bid.event.max_price %></p>
-          <p>Date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
-          <p>Location:<%= bid.event.location %></p>
+          <p><%= bid.event.name %> - <%= bid.event.location %></p>
+          <% bid.user_id %>
+          <p>Quoted: £<%= bid.quote.to_i %></p>
+          <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
+          <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+
           <% if bid.status == "accepted" %>
           <% elsif bid.status == "pending" %>
           <% elsif bid.status == "declined" %>
@@ -238,6 +185,60 @@
 
 </div>
 </div>
+
+  <!-- HOST EVENTS - display list of events created -->
+
+  <!-- BOOKINGS need to add a green border around the events that have been confirmed with bids -->
+
+
+<div class="professional-events-card">
+  <div class="professional-events" id="hostevents">
+    <p>Events you are Hosting</p>
+  </div>
+
+  <div class="events-host-flex">
+
+    <div class="events-host-flex-item">
+
+            <% @host_events.order(date: :asc).each do |event| %>
+
+              <a href="/events/<%= event.id %>">
+                <div class="event-dash-card">
+                  <div class="card-top">
+                    <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+
+                    <% if event.bids.count == 0 %>
+                      <p style= "color:#D0021B;">You have <strong><%= event.bids.count %></strong> bids</p>
+                      <% end %>
+                    <% if event.bids.count >= 1 %>
+                      <p style= "color:#7ED321;">You have <strong><%= event.bids.count %></strong> bids</p>
+                    <% end %>
+                  </div>
+                  <h2><%= event.name %></h2>
+                  <% event.user_id%>
+
+                  <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>What they are looking for </p>
+                        <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
+                      </div>
+                      <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-green">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </a>
+            <% end %>
+
+    </div>
+   </div>
+</div>
+
+
+
 <!-- CREATE NEW EVENT  -->
 
 

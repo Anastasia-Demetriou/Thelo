@@ -1,5 +1,5 @@
 // .index-page-wrapper{
-//   background-color: #F2F4FB;
+//   background-color: #F2F4F;
 // }
 
 // .banner-header{
@@ -31,17 +31,25 @@
   border-bottom: 2px solid grey;
 }
 
+.bid-status-header p{
+  padding: 5px;
+  font-size: 16px;
+  margin: 0px;
+  text-align: center;
+  color: grey;
+
+}
+
 .professional-events p {
   padding: 20px;
   font-size: 20px;
   margin: 0px;
   text-align: center;
   background-color:none;
-  border-bottom: 3px solid #F8B500;
+  border-bottom: 3px solid #D22780;
   color: white;
-  background-color: #F8B500;
+  background-color: #D22780;
 }
-
 
 
 .bid-status-card{
@@ -54,6 +62,7 @@
   height: 150px;
   position:relative;
   border-bottom: 1px solid #BFBFBF;
+  margin-bottom: 3px;
 
   p{
     margin-bottom: 8px;
@@ -70,9 +79,13 @@
     top: 20px;
     right: 5px;
     position: absolute;
-
+    color: rgba(0,0,0,0.6)
   }
 
+}
+
+.bid-status-card:hover {
+   box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 }
 
  .past {
@@ -85,24 +98,24 @@
     }
   }
 
- .accepted {
-  border: 5px solid #BAD9A2;
-  background-color: #BAD9A2;
-  padding: 15px;
+  .accepted:hover {
+    box-shadow: 0px 3px 4px #7ED321;
+  }
+
+
+  .pending:hover {
+    box-shadow: 0px 3px 4px #F8B500;
+  }
+
+  .declined:hover {
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+    background-color:rgba(0,0,0,0.2);
 
 
   }
-  .pending {
-    border: 5px solid  #FFFFC9;
-    background-color: #FFFFC9;
-
-  }
-  .declined {
-    border: 5px solid #BFBFBF;
-    background-color: #BFBFBF;
 
 
-  }
+
   .future {
     background-color:none;
 
@@ -112,54 +125,76 @@
     }
   }
 
+.event-dash-card{
+  border-bottom: 1px solid #BFBFBF;
+  padding: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: rgba(0,0,0,0.9);
+  background-color: white;
+  p{
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: rgba(0,0,0,0.6)
+  }
 
-//   .card-btm{
-//     display: flex;
-//     .card-btn{
-//       width: auto;
-//       height: 35px;
-//       text-align: center;
-//       padding-top: 8px;
-//       padding-right: 10px;
-//       padding-left: 10px;
-//       color: white;
-//       border-radius: 10px;
-//       font-size: 14px;
-//       font-weight: 600;
-//     }
-//     p{
-//       padding-top: 5px;
-//       margin-bottom: 0px !important;
-//       margin-right: 10px;
-//     }
-//     .card-btn-orange{
-//       background-color: #F8B500 !important;
-//     }
-//     .card-btn-green{
-//       background-color: #7ED321 !important;
-//     }
+  h2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 26px !important;
+    margin: 0px;
+    margin-bottom: 8px;
+    text-align: left !important;
+  }
+}
 
-//   }
-// }
-// a:hover{
-//   text-decoration: none !important;
-// }
-// .event-card:hover{
-//   box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-//   text-decoration: none;
-// }
+  .card-btm{
+    display: flex;
+    .card-btn{
+      width: auto;
+      height: 35px;
+      text-align: center;
+      padding-top: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
+      color: white;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    p{
+      padding-top: 5px;
+      margin-bottom: 0px !important;
+      margin-right: 10px;
+    }
+    .card-btn-orange{
+      background-color: #F8B500 !important;
+    }
+    .card-btn-green{
+      background-color: #7ED321 !important;
+    }
 
-// .bid-status-btm {
-//   display: absolute;
-//   justify-content: space-between;
-// }
+  }
 
-// .bid-status-top{
-//   display: absolute;
-//   justify-content: space-between;
-// }
+a:hover{
+  text-decoration: none !important;
+}
+.event-dash-card:hover{
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
 
-// .bid-status-bottom{
-//   display: absolute;
-//   justify-content: space-between;
-// }
+.bid-status-btm {
+  display: absolute;
+  justify-content: space-between;
+}
+
+.bid-status-top{
+  display: absolute;
+  justify-content: space-between;
+}
+
+.bid-status-bottom{
+  display: absolute;
+  justify-content: space-between;
+}
