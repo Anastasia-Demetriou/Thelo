@@ -1,80 +1,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <div class="sidenav">
+<div class="sidenav">
 
-    <div class= "dash-logo">
-      <%= link_to root_path, class: "logo" do %>
-        <i class="far fa-lemon"></i> THELO
-      <% end %>
-    </div>
-
-    <div class= "avatar-dashboard sidenava">
-      <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-dash" %>
-      <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
-    </div>
-
-    <div class= "menu-dash sidenava">
-
-      <p>Professional</p>
-      <%= link_to "Events I'm working at", events_path(current_user.events), remote: true %>
-      <%= link_to "Bids I've placed", bids_path, remote: true %>
-      <%= link_to "View Profile", edit_user_registration_path%>
-
-      <p>Host</p>
-      <%= link_to "Events I'm hosting", host_events_path(@user), remote: true %>
-      <%= link_to "Create a new event", new_event_path(@user), remote: true %>
-
-
-      <p>Account</p>
-      <%= link_to "Log out", destroy_user_session_path %>
-    </div>
+  <div class= "dash-logo">
+    <%= link_to root_path, class: "logo" do %>
+      <i class="far fa-lemon"></i> THELO
+    <% end %>
   </div>
 
-<body class= "dashboard-container body-dash" id="content">
+  <div class= "avatar-dashboard sidenava">
+    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-dash" %>
+    <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+  </div>
+
+  <div class= "menu-dash sidenava">
+
+    <p>Professional</p>
+    <%= link_to "Events I'm working at", events_path(current_user.events), remote: true %>
+    <%= link_to "Bids I've placed", bids_path, remote: true %>
+    <%= link_to "View Profile", edit_user_registration_path%>
+
+    <p>Host</p>
+    <%= link_to "Events I'm hosting", host_events_path(@user), remote: true %>
+    <%= link_to "Create a new event", new_event_path(@user), remote: true %>
+
+
+    <p>Account</p>
+    <%= link_to "Log out", destroy_user_session_path %>
+  </div>
+</div>
+
+<body class= "dashboard-container body-dash">
 
 
 <!-- PROFESSIONAL EVENTS/Bookings display the booked/confirmed events that the professional has bid on -->
+  <div class="professional-events dashboard-container">
+    <p>Your Professional Events</p>
+  </div>
 
-<div class="row status-header">
-  <div class="col-xs-12 col-md-6" style="text-align: center; background-color:none;"><p>Upcoming Booked Events</p> </div>
-  <div class="col-xs-12 col-md-6 " style="text-align: center; background-color:none;"> <p>Past Booked Events</p> </div>
-</div>
-
-
-
-<!-- (future events) -->
-</div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12" >
+  <div class="row status-header" >
+    <div class="col-xs-12 col-md-6" style="text-align: center; background-color:none;"><p>Upcoming Booked Events</p> </div>
+    <div class="col-xs-12 col-md-6 " style="text-align: center; background-color:none;"> <p>Past Booked Events</p> </div>
+  </div>
 
 
-     <div class="col-xs-12 col-md-6" style="background-color:none;">
-      <% @accepted_bids.each do |bid| %>
-        <% if bid.event.date.past? == false%>
-        <div class="row">
-        <a href="/events/<%= bid.event.id %>" class="bid-card-link">
-          <div class="bid-status-card future">
-            <div class="card-top">
-              <p><%= bid.event.name %></p>
-              <%= bid.user_id %>
-              <p>Your Offer: £<%= bid.quote.to_i %></p>
-              <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
 
-              <p>Event location:<%= bid.event.location %></p>
+  <!-- (future events) -->
+  </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12" >
+
+
+       <div class="col-xs-12 col-md-6" style="background-color:none;">
+        <% @accepted_bids.each do |bid| %>
+          <% if bid.event.date.past? == false%>
+          <div class="row">
+          <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+            <div class="bid-status-card future">
+              <div class="card-top">
+                <p><%= bid.event.name %></p>
+                <%= bid.user_id %>
+                <p>Your Offer: £<%= bid.quote.to_i %></p>
+                <h5>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></h5>
+
+                <p>Event location:<%= bid.event.location %></p>
+              </div>
+              <div class="card-btm">
+                <% if bid.status == "accepted" %>
+                  <div></div>
+                <% elsif bid.status == "pending" %>
+                <% elsif bid.status == "declined" %>
+              </div>
+              <% end %>
             </div>
-            <div class="card-btm">
-              <% if bid.status == "accepted" %>
-              <% elsif bid.status == "pending" %>
-              <% elsif bid.status == "declined" %>
-            </div>
-            <% end %>
           </div>
+          </a>
         </div>
-        </a>
+      <% end %>
+      <% end %>
       </div>
-    <% end %>
-    <% end %>
-    </div>
 
 
 
@@ -116,11 +120,14 @@
                     <!-- BOOKINGS need to add a green border around the events that have been confirmed with bids -->
 
 
+
 <div class="main">
+  <div class="professional-events">
+    <p>Events you are Hosting</p>
+  </div>
       <div class="event-container">
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
-          <h1>Events you are hosting</h1>
           <div class="row">
             <% @host_events.order(date: :asc).each do |event| %>
               <div class="col-xs-12">
@@ -143,6 +150,8 @@
                         <div class="card-btn card-btn-red">
                           £<%= event.min_price %>-<%= event.max_price %>
                         </div>
+                        <div class="card-btm">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -158,6 +167,10 @@
 
 
 <!-- PROFESSIONAL BIDS - -->
+
+<div class="professional-events">
+    <p>Bids you have placed as a Professional</p>
+  </div>
 
 <div class="row status-header">
   <div class="col-xs-12 col-md-4" style="text-align: center; background-color:none;"><p>Accepted</p> </div>

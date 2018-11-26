@@ -30,7 +30,24 @@
   margin-bottom: 8px;
   text-align: center;
 
+
 }
+
+.professional-events p {
+  padding: 20px;
+  font-size: 23px;
+  font-weight: bold;
+  margin: 0px;
+  margin-bottom: 8px;
+  text-align: center;
+  background-color:none;
+  border-bottom: 3px solid #F8B500;
+  color: #F8B500;
+  padding-top: 60px;
+}
+
+
+
 .bid-status-card{
   border-radius: 5px;
   margin: 10px;
@@ -42,6 +59,7 @@
   background-color: white;
   height: 150px;
   position:relative;
+
   p{
     margin-bottom: 8px;
     font-size: 15px;
@@ -72,8 +90,14 @@
 
   }
   .future {
-    background-color: #BAD9A2;
+    background-color:none;
+
+    h5{
+    color: #F8B500;
+    font-weight: bold;
+    }
   }
+
 
   .past {
     background-color: #BFBFBF;

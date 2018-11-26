@@ -2,6 +2,8 @@
     font-family: "Lato", sans-serif;
     background-color: #F2F4FB;
     top: 0;
+
+
 }
 
 .dash-logo {
@@ -15,7 +17,7 @@
 
 .sidenav {
     height: 100%;
-    width: 300px;
+    width: 290px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -69,7 +71,7 @@ h1 {
     height: 40px;
     border-radius: 50%;
     margin: 5px;
-    border: 2px solid #F2F4FB;
+    border: 2px solid #F8B500;
 }
 
 .avatar-dashboard {
@@ -99,5 +101,6 @@ h1 {
 
 //this is the class for the first div/container of each page
 .dashboard-container {
-    margin-left: 300px; /* Same as the width of the sidenav */
+
+    margin-left: 340px; /* Same as the width of the sidenav */
 }

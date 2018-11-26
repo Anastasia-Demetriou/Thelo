@@ -30,18 +30,11 @@ class UsersController < ApplicationController
     #list of events the professional has bid on
     @professional_events = Bid.where(user_id: @user.id)
 
-    # @professional_events = []
-    # @professional_bids.events.each do |event|
-    #   @professional_events << event
-    # end
-
-
 
   #HOST
 
    #list all host events
     @host_events = Event.where(user_id: @user.id)
-
 
     #bids recieved for each event
     @host_bids = Bid.where(user_id: @user.id)
@@ -74,12 +67,10 @@ class UsersController < ApplicationController
   def host_events_dashboard
     @user = current_user
     authorize @user
-
       #HOST
 
    #list all host events
     @host_events = Event.where(user_id: @user.id)
-
   end
 
   def show
