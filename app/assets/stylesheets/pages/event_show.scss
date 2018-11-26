@@ -95,9 +95,14 @@
 .event-show-wrapper{
   background-color: #F2F4FB;
   padding: 10px;
-  height: 60vh;
+  height: 100%;
 }
 .event-show-description{
+  text-align: left;
+  h1{
+    text-align: left;
+    font-size: 30px;
+  }
   p{
     font-size: 24px;
   }
@@ -117,12 +122,12 @@
   width: auto;
   height: 35px;
   text-align: center;
-  padding-top: 8px;
+  padding-top: 5px;
   padding-right: 10px;
   padding-left: 10px;
   color: white;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
   p{
@@ -151,7 +156,10 @@
   }
   h3{
     font-size: 20px;
+    margin: 5px;
     margin-bottom: 10px;
+    margin-top: 10px;
+
   }
 }
 
@@ -189,11 +197,23 @@
     display:flex;
     justify-content: right;
     width: 80%;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 }
 
 .bid-title{
   font-size: 34px;
   margin-top: 60px;
+}
+
+.show-edit-btn-div{
+  margin-top: 30px;
+
+}
+.show-edit-btn{
+  color: black;
+  font-size: 14px;
+}
+.show-edit-btn:hover{
+  color: rgba(0,0,0,0.6)
 }
