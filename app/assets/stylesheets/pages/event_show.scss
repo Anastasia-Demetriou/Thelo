@@ -13,6 +13,11 @@
     color: red;
   }
 }
+.event-show-bids{
+  .col-xs-12{
+    padding-left: 0px;
+  }
+}
 
 .show-bid-card:hover{
   box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
@@ -20,8 +25,175 @@
 
 .status-buttons{
   display: flex;
+  font-size: 50px;
   a{
     padding: 10px;
   }
+  .tick{
+    color: #F2F4FB;
+  }
+  .cross{
+    color: #F2F4FB;
+  }
+  .tick:hover{
+    color: green;
+    transition: 0.5s;
+  }
+  .cross:hover{
+    transition: 0.5s;
+    color: red;
+  }
+  .accepted-green{
+    color: green;
+  }
+  .declined-red{
+    color: red;
+  }
 }
 
+.event-show-header{
+  padding-left: 200px;
+  padding-bottom: 10px;
+
+  h2{
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 10px;
+    font-size: 32px;
+  }
+  .date{
+    font-size: 20px;
+    margin-bottom: 10px !important;
+    margin-top: 10px;
+  }
+  .avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  .event-show-header-inline{
+    display: flex;
+    p{
+      font-size: 20px;
+      margin-left: 10px;
+      padding-top: 27px;
+    }
+  }
+  .header-description{
+    display: flex;
+    padding-left: 10px;
+    .text-yellow{
+      color: #F8B500;
+    }
+    p{
+      margin: 2px;
+    }
+  }
+}
+
+.event-show-wrapper{
+  background-color: #F2F4FB;
+  padding: 10px;
+  height: 60vh;
+}
+.event-show-description{
+  p{
+    font-size: 24px;
+  }
+  .main-body{
+    font-size: 20px;
+  }
+  .display-inline{
+    display: flex;
+    margin-top: 10px;
+  }
+  .card-btn{
+    margin-top: 5px;
+  }
+}
+
+.card-btn{
+  width: auto;
+  height: 35px;
+  text-align: center;
+  padding-top: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+  p{
+    padding-top: 5px;
+    margin-bottom: 0px !important;
+    margin-right: 10px;
+}
+  .card-btn-orange{
+    background-color: #F8B500 !important;
+}
+  .card-btn-green{
+    background-color: #7ED321 !important;
+}
+
+.event-show-form{
+  width: 280px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  h6{
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  h3{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.show-bid-card{
+  background-color: white;
+  .avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .bid-name{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  p{
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    margin-right: 0px;
+  }
+  .view-profile-btn{
+    background-color: #D22780;
+    color: white;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    width: 60%;
+    text-align: center;
+  }
+  .view-profile-btn:hover{
+    opacity: 0.9;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2)
+  }
+  .right-corner{
+    display:flex;
+    justify-content: right;
+    width: 80%;
+    margin-top: 10px;
+  }
+}
+
+.bid-title{
+  font-size: 34px;
+  margin-top: 60px;
+}

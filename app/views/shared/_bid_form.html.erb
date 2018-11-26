@@ -1,8 +1,8 @@
 <div class="bid-form">
-  <h6>The bid price is: £1</h6>
+  <h6>Bid price is £1</h6>
   <%= simple_form_for([@event,@bid]) do |f| %>
-    <%= f.input :quote %>
-    <%= f.input :description %>
-    <%= f.submit %>
+    <%= f.input :description , placeholder: "Write a short message"%>
+    <%= f.input :quote, placeholder: "Whats your price?"%>
+    <%= f.submit "Place Bid", class: "bid-submit"%>
    <% end %>
 </div>
