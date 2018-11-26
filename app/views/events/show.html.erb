@@ -1,69 +1,91 @@
-
-<!-- Event details -->
-<div>
+<div class="event-show-header">
+  <p class="date">On <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
   <h2><%= @event.name %></h2>
-  <h2><%= @event.user_id %></h2>
-  <h3>Serice Required:<%= @event.service.name %></h3>
-  <p>Party size:<%= @event.party_size %></p>
-  <p>Location:<%= @event.location %></p>
-  <p>Event Description:<%= @event.description %></p>
-
-<!-- if the user is the creator of the event they will be able to edit it -->
-  <% if @event.user == current_user %>
-    <%= link_to "edit event", edit_event_path(@event) %>
-  <% end %>
-
-<!-- if the current user is not the creator of the event they can make a bid -->
-<% if @event.user != current_user  %>
-  <p>Want to make a bid?</p>
-  <%= render "shared/bid_form" %>
-<% end %>
-
-<!-- if the user is not signed in they will be asked to sign up or sign in -->
-<% if user_signed_in? == false %>
-  <%= link_to "Login", new_user_session_path%>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
-
-</div>
-
-<!-- if the user has placed a bid on this event they will be displayed a message to say they have placed a bid already and 'click here' to view the status of their bids - redirct to dashboard bids status page -->
-  <% @event.bids.each do |bid| %>
-    <% if bid.user == current_user%>
-      <p> have bid on this event - click here to check the status of your bids</p>
-    <% end %>
-  <% end %>
-
-
-<!-- if the event was created by the logged in used they will be able to see the bids that have been placed on the event -->
-<% if @event.user == current_user %>
-  <h3>Bids for your event:</h3>
-
-  <div class="container">
-    <div class="row">
-      <% @event.bids.each do |bid| %>
-        <div class="col-xs-12 col-md-4">
-          <div class="show-bid-card">
-            <p><%= bid.user.first_name %></p>
-            <%= bid.user_id %>
-            <p>Quote: <%= bid.price %></p>
-            <p>Desc: <%= bid.description %></p>
-            <% if bid.status == "accepted" %>
-              <p class="green-text">Accepted</p>
-            <% elsif bid.status == "pending" %>
-              <p class="orange-text">Pending</p>
-            <% elsif bid.status == "declined" %>
-              <p class="red-text">Declined</p>
-            <% end %>
-            <%= link_to "View Profile", user_path(@user) %>
-            <div class="status-buttons">
-              <%= link_to "Accept", accept_bid_path(bid.id, :bid => {"status" => "accepted"}), {:method => :accept} %>
-              <%= link_to "Decline", decline_bid_path(bid.id, :bid => {"status" => "declined"}), {:method => :decline} %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+  <div class="event-show-header-inline">
+    <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+    <div class="header-description">
+      <p>Hosted by </p>
+      <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
+      <p>at</p>
+      <p class="text-yellow"><%= @event.location %></p>
     </div>
   </div>
-<% end %>
+</div>
+<div class="event-show-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="event-show-description">
+          <p class = "main-body"><%= @event.description %></p>
+          <div class="display-inline">
+            <p>What they are looking for</p>
+            <div class="card-btn card-btn-orange">
+              <%= @event.service.name %>
+            </div>
+          </div>
+          <p><i class="fas fa-users"></i> <%= @event.party_size %></p>
+
+        </div>
+        <div class="event-show-bids">
+          <% if @event.user == current_user %>
+            <h3 class="bid-title">New Bids</h3>
+
+            <div class="container">
+              <div class="row">
+                <% @event.bids.each do |bid| %>
+                  <div class="col-xs-12 col-md-6">
+                    <div class="show-bid-card">
+                      <div class="right-corner">
+                        <div class="card-btn card-btn-orange">
+                           <%= @event.service.name %>
+                        </div>
+                      </div>
+                      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                      <p class="bid-name"><%= bid.user.first_name %></p>
+                      <p>Quote: £<%= bid.price.to_i %></p>
+                      <p> <%= bid.description %></p>
+                      <% if bid.status == "accepted" %>
+                        <p class="green-text">Accepted</p>
+                      <% elsif bid.status == "pending" %>
+                        <p class="orange-text">Pending</p>
+                      <% elsif bid.status == "declined" %>
+                        <p class="red-text">Declined</p>
+                      <% end %>
+                      <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
+                      <div class="status-buttons">
+                        <% if bid.status == "accepted" %>
+                          <a href="/bids/1?bid%5Bstatus%5D=accepted" data-method="accept"><i class="fas fa-check tick accepted-green"></i></a>
+                          <a href="/bids/1?bid%5Bstatus%5D=declined" data-method="decline"><i class="fas fa-times cross"></i></a>
+                        <% else %>
+                          <a href="/bids/1?bid%5Bstatus%5D=accepted" data-method="accept"><i class="fas fa-check tick"></i></a>
+                          <a href="/bids/1?bid%5Bstatus%5D=declined" data-method="decline"><i class="fas fa-times cross declined-red"></i></a>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <% if @event.user == current_user %>
+          <%= link_to "edit event", edit_event_path(@event) %>
+        <% end %>
+      </div>
+      <div class="col-xs-4">
+        <div class="event-show-form">
+          <% if @event.user != current_user  %>
+            <h3>Place a bid to work for this event!</h3>
+              <%= render "shared/bid_form" %>
+            <% else %>
+              <style> .event-show-form{ opacity: 0;}</style>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
