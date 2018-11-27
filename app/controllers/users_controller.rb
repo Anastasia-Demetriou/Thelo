@@ -34,10 +34,23 @@ class UsersController < ApplicationController
   #HOST
 
    #list all host events
-    @host_events = Event.where(user_id: @user.id)
+    @host_events = Event.where(user_id: @user)
+    @bids = @host_events.map { |event| event.bids }.flatten.select { |bid| bid.status == "accepted" }
 
     #bids recieved for each event
     @host_bids = Bid.where(user_id: @user.id)
+
+    @host_bookings = Bid.where(event_id: @host_events)
+    @host_bids_test = Bid.where(status: "accepted")
+
+
+    # @host_bookings = @user.events.bids.where(status: "accepted").where(user_id: @user.id)
+
+
+    # @host_bids_events = event.bids.where(status: "accepted")
+    # raise
+    # @hostbooking = @user.event.bids.where(status: "accepted").where(event_id: @event.id)
+
 
   #BOTH
     #reviews made by user

@@ -46,9 +46,18 @@
   margin: 0px;
   text-align: center;
   background-color:none;
-  border-bottom: 3px solid #D22780;
   color: white;
   background-color: #D22780;
+}
+
+.host-events p {
+  padding: 20px;
+  font-size: 20px;
+  margin: 0px;
+  text-align: center;
+  background-color:none;
+  color: white;
+  background-color: #F8B500;
 }
 
 
@@ -99,18 +108,16 @@
   }
 
   .accepted:hover {
-    box-shadow: 0px 3px 4px #7ED321;
+    box-shadow: 0px 4px 5px #7ED321;
   }
 
 
   .pending:hover {
-    box-shadow: 0px 3px 4px #F8B500;
+    box-shadow: 0px 4px 5px #F8B500;
   }
 
   .declined:hover {
-    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
-    background-color:rgba(0,0,0,0.2);
-
+    box-shadow: 0px 4px 5px rgba(0,0,0,0.2);
 
   }
 
@@ -120,7 +127,7 @@
     background-color:none;
 
     h5{
-    color: #F8B500;
+    color: #D22780;
     font-weight: bold;
     }
   }
@@ -132,6 +139,7 @@
   padding-right: 24px;
   color: rgba(0,0,0,0.9);
   background-color: white;
+  margin-bottom: 5px;
   p{
     margin-bottom: 8px;
     font-size: 15px;
@@ -146,6 +154,35 @@
     margin-bottom: 8px;
     text-align: left !important;
   }
+
+}
+
+.event-dash-card.past {
+      background-color: rgba(0,0,0,0.05)!important;
+  }
+
+.event-dash-card.past:hover {
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.20);
+  text-decoration: none;
+}
+
+#hosteventspast {
+  margin-bottom: 2.5px;
+}
+
+#hosteventspast p {
+  background-color: white;
+  color: grey;
+  padding: 20px;
+
+}
+
+#pro-pink {
+  color: #D22780;
+}
+
+#account {
+  color:grey;
 }
 
   .card-btm{
@@ -174,15 +211,69 @@
       background-color: #7ED321 !important;
     }
 
+    .card-btn-grey {
+      background-color: rgba(0,0,0,0.2);
+    }
+
   }
+
+  .orange-service {
+
+  }
+
+.green-button {
+    width: auto;
+    height: 35px;
+    text-align: center;
+    padding-top: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #7ED321 !important;
+}
+
+.red-button {
+    width: auto;
+    height: 35px;
+    text-align: center;
+    padding-top: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #D0021B !important;
+
+}
+
+.grey-button {
+    width: auto;
+    height: 35px;
+    text-align: center;
+    padding-top: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: rgba(0,0,0,0.2) !important;
+
+}
 
 a:hover{
   text-decoration: none !important;
 }
 .event-dash-card:hover{
-  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
   text-decoration: none;
 }
+
+
 
 .bid-status-btm {
   display: absolute;
@@ -198,3 +289,75 @@ a:hover{
   display: absolute;
   justify-content: space-between;
 }
+
+.events-flex {
+  display: flex;
+
+  .accepted {
+  color: #7ED321;;
+  }
+
+  .pending {
+    color: #F8B500;
+  }
+  .declined {
+    color: rgba(0,0,0,0.2);
+
+  }
+}
+
+.events-host-flex {
+  vertical-align: middle;
+  display: inline;
+  font-size: 16px;
+  color: black;
+  margin-left: 25px;
+  position: flex;
+  z-index: 2;
+  height: 40px;
+}
+
+.events-flex-item {
+  // flex: 0 0 50%;
+  padding: 15px;
+  flex: 0 0 50%;
+}
+
+.bids-flex-item {
+  // flex: 0 0 50%;
+  padding: 15px;
+  flex: 0 0 33.33%;
+}
+
+.events-host-flex-item {
+  padding: 60px;
+  padding-top: 10px;
+  flex: 0 0 100%;
+}
+
+
+.menu-dash {
+  margin-top: 10px;
+  position: flex;
+  z-index: 3;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+//this is the class for the first div/container of each page
+.dashboard-container {
+    margin-left: 300px; /* Same as the width of the sidenav */
+}
+
+.professional-events-card {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin: 30px;
+    background: white;
+    border-radius: 5px;
+
+}
+
+
