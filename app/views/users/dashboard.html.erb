@@ -25,8 +25,9 @@
     <%= link_to "Create a new event", new_event_path%>
 
     <p id="account">Account</p>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
     <%= link_to "Log out", destroy_user_session_path %>
-    <%= link_to "Edit Profile" %>
+
   </div>
 </div>
 
