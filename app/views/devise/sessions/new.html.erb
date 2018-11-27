@@ -12,9 +12,14 @@
                 required: false,
                 placeholder: "Password",
                 input_html: { class: "form-inputs", autocomplete: "current-password" } %>
+
+
+
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+<div class="flex-btn">
       <%= f.submit "Log in", class: "button" %>
+</div>
     <% end %>
 
 
