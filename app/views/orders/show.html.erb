@@ -1,6 +1,18 @@
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.state %></li>
-  <li>Item: <%= @order.bid_sku %></li>
-  <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-<ul>
+<div class="container">
+  <div class="order-show">
+    <h1>Thanks for placing a bid!</h1>
+    <h2>The host is now looking at your bid and we will let you know when they make their choice</h2>
+    <%= link_to "View Your Dashboard", dashboard_path, class: "dashboard-link"%>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
