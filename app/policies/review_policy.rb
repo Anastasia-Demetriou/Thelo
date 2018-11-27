@@ -10,7 +10,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user != user
+    true
   end
 
 end

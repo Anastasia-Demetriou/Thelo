@@ -90,6 +90,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @review = Review.new
     # @userbids = @bid.user
     # @events = []
     # @userbids.events.each do |event|
@@ -108,8 +109,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # raise
     authorize @user
     @user.update(user_params)
+    params[:user][:service_ids].each do |id|
+      unless @user.services.map(&:id).include?(id)
+        UserService.create(user: @user, service_id: id)
+      end
+    end
     redirect_to dashboard_path
   end
 

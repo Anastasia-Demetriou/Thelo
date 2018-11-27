@@ -1,77 +1,103 @@
 
+
+
+
 <div class="show-navbar hidden-navbar">
-  <div class="navbar-profile-details">
-    <%# if @user.photo %>
-          <!-- Display the photo -->
-        <%# else %>
-          <!-- Display a placeholder -->
-        <%# end %>
-    <h1 class="user-details-nav"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
-    <h1 class="nav-details"><%= @user.bio %></h1>
+  <h4 class="nav-titles"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h4>
+  <h4 class="nav-title-service"><%= @user.services.first.name %></h4>
+</div>
+
+<div class="wrapper">
+  <div class="container">
+
+    <div class="show-header">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/tgenaitay", class: "avatar" %>
+      <div class="header-text">
+        <h1><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
+        <h4>Worked at <%= @user.accepted_bids_number %> events!</h4>
+        <div class="stars">
+          <% @user.average_review_score.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="show-wrapper">
-  <div class="show-banner">
-    <div class="show-banner-content">
-      <div class="avatar-profile">
-        <%# if @user.photo %>
-          <!-- Display the photo -->
-        <%# else %>
-          <!-- Display a placeholder -->
-        <%# end %>
-      </div>
-      <div class="profile-details">
-        <h1 class="user-details"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
-        <% if @user.professional %>
-          <% end %>
-          <p class="user-details"><%= @user.services.first.name %></p>
+<div class="wrapper-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-9">
 
-       <% if @user.professional %>
-        <h1 class="user-details"></h1>
-        <% @user.average_review_score.times do %>
-          <i class="fas fa-star"></i>
-        <% end %>
-        <!-- <p>Overall rating <%= @reviews_avg %>/5</p> -->
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="show-content">
+        <div class="user-description">
+          <h3>About <%="#{@user.first_name.capitalize}" %></h3>
+          <p><%= @user.bio %></p>
+        </div>
 
-    <div class="show-left">
-      <div class="bio">
-        <h1 class="about">About <%="#{@user.first_name.capitalize}" %></h1>
-        <% if @user.professional %>
-          <% end %>
-        <p><%= @user.bio %></p>
-      </div>
-        <% @reviews.each do |review| %>
-          <div class="show-left-card">
-            <div class="review-avatar"></div>
-            <p class="review-name"> <%= review.user.first_name %></p>
-            <p class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></p>
-            <div class="star-holder">
-              <% review.rating.times do %>
-                <i class="fas fa-star"></i>
-              <% end %>
+        <div class="user-reviews">
+          <% @reviews.each do |review| %>
+            <div class="review-card">
+              <div class="r-avatar"></div>
+              <div class="r-content">
+                <p><strong><%= review.user.first_name %></strong></p>
+                <p><%= review.content %></p>
+              </div>
+              <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
+              <div class="stars">
+                <% review.rating.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+              </div>
             </div>
-          </div>
-      <% end %>
+          <% end %>
+        </div>
 
-    </div>
-    <div class="show-right">
-      <h1 class="show-right-title">Info</h1>
-      <p class="info-heading">SKILLS</p>
-      <div class="info-right">
-        <p class="info-right-service"><%= @user.services.first.name %></p>
-        <p class="info-right-service"><%= @user.services.first.name %></p>
-     </div>
-      <p class="info-heading">CONTACT</p>
-      <p class="email-details"><%= @user.email %></p>
+        <!-- todo when we get the condition from Tiffany from the dashboard (arthur) -->
+        <% if true %>
+          <div class="reviews-form">
+            <h3>Add a review</h3>
+            <%= simple_form_for [@user, @review] do |f| %>
+              <%= f.input :content, placeholder: "Great Chef"%>
+              <%= f.input :rating %>
+              <%= f.submit "Post Review", class: 'btn btn primary' %>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+      <div class="col-xs-3">
+        <div class="user-skills">
+          <h3>More info</h3>
+          <span>SKILLS</span>
+          <div class="skill-list">
+            <% @user.services.each do |service| %>
+              <span class="user-service"><%= service.name %></span>
+            <% end %>
+          </div>
+          <span>CONTACT</span>
+          <spam><%= @user.email %></span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
