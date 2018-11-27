@@ -10,7 +10,8 @@ class EventsController < ApplicationController
     min_price_filter = params[:min_price].to_i
 
     filter_service = Service.find_by(name: params[:service])
-    filtered_events = Event.all
+    date_filtered_events = Event.all.where("date > ?", DateTime.now)
+    filtered_events = date_filtered_events
       # Filtering By location
     location_search = params[:location]
 
@@ -35,13 +36,13 @@ class EventsController < ApplicationController
       # Filtering By price
     if start_date.present? && end_date.present?
       filtered_events = filtered_events.where('date > ? AND date < ?', start_date, end_date)
-      @events = policy_scope(filtered_events).order(created_at: :desc)
+      @events = policy_scope(filtered_events).order(date: :asc)
      # If filtered_events is empty will display every event
     elsif filtered_events.empty?
-      @events = policy_scope(Event).order(created_at: :desc)
+      @events = policy_scope(date_filtered_events).order(date: :asc)
       # Displays filtered_events filtered events
     else
-      @events = policy_scope(filtered_events).order(created_at: :desc)
+      @events = policy_scope(filtered_events).order(date: :asc)
     end
   end
 
