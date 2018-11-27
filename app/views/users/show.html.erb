@@ -26,9 +26,9 @@
         <% if @user.professional %>
           <% end %>
           <p class="user-details"><%= @user.services.first.name %></p>
-          <p class="user-details"><%= @user.bio %></p>
+
        <% if @user.professional %>
-        <h1 class="user-details">Overall Rating</h1>
+        <h1 class="user-details"></h1>
         <% @user.average_review_score.times do %>
           <i class="fas fa-star"></i>
         <% end %>
@@ -38,27 +38,37 @@
     </div>
   </div>
   <div class="show-content">
+
     <div class="show-left">
-      <% @reviews.each do |review| %>
-        <div class="show-left-card">
-        <i class="fas fa-star"></i>
-        <% review.rating.times do %>
-          <i class="fas fa-star"></i>
-        <% end %>
-          <p class="review-content"><%= review.content %></p>
-          <p class="date-review">Date of review: <%= review.created_at.strftime("%e %b %Y") %></p>
-          <p class="review-name">This review has been written by: <%= review.user.first_name %></p>
-        </div>
+      <div class="bio">
+        <h1 class="about">About <%="#{@user.first_name.capitalize}" %></h1>
+        <% if @user.professional %>
+          <% end %>
+        <p><%= @user.bio %></p>
+      </div>
+        <% @reviews.each do |review| %>
+          <div class="show-left-card">
+            <div class="review-avatar"></div>
+            <p class="review-name"> <%= review.user.first_name %></p>
+            <p class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></p>
+            <div class="star-holder">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+            </div>
+          </div>
       <% end %>
 
     </div>
     <div class="show-right">
-      <h1>Areas Serviced</h1>
-     <div class="mapimage">
-        <p>static map goes here</p>
+      <h1 class="show-right-title">Info</h1>
+      <p class="info-heading">SKILLS</p>
+      <div class="info-right">
+        <p class="info-right-service"><%= @user.services.first.name %></p>
+        <p class="info-right-service"><%= @user.services.first.name %></p>
      </div>
-
-
+      <p class="info-heading">CONTACT</p>
+      <p class="email-details"><%= @user.email %></p>
     </div>
   </div>
 </div>
