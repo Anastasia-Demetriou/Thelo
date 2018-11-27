@@ -17,6 +17,10 @@ class User < ApplicationRecord
     professional
   end
 
+  def accepted_bids_number
+    bids.where(status: "accepted").count
+  end
+
   def average_review_score
     given_reviews = Review.where(reviewed_user: self).map(&:rating)
     if given_reviews.any?

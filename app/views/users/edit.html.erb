@@ -29,6 +29,7 @@
       <h6>Select your professional service</h6>
       <%= f.input :service_ids,
                   collection: Service.all,
+                  as: :check_boxes,
                   :include_blank => false,
                   prompt: 'Select Service',
                   input_html: { class: "form-inputs" } %>
