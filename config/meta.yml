@@ -1,5 +1,7 @@
 meta_product_name: "Thelo"
-meta_title: "Thelo - Do more of what you love"
-meta_description: "Post your event and get direct quotes without the middleman"
-meta_image: "https://res.cloudinary.com/daitlzche/image/upload/v1541933262/d5kigxj8tcz86qb3g8u7.jpg"                       # should exist in `app/assets/images/`
-  # required for Twitter Cards
+
+meta_title: "Thelo - Create your event for free without the middleman, connecting you to hospitality professionals near you now"
+meta_description: "Thelo - do more of what you love"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"
+
