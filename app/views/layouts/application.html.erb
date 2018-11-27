@@ -38,7 +38,7 @@
   </head>
   <body>
     <!-- Don't show top navbar on dashboard -->
-    <% unless params[:controller] == 'users'&& params[:action] == 'dashboard' %>
+    <% unless params[:controller] == 'users'&& params[:action] == 'dashboard' || 'users'&& params[:action] == 'edit'  %>
       <%= render 'shared/navbar' %>
     <% end %>
 
