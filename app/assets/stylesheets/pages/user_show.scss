@@ -10,9 +10,6 @@
 }
 
 .show-banner-content{
-  height: 176px;
-  width: 550px;
-  background-color: white;
   position: absolute;
   bottom: 50px;
   left: 20px;
@@ -21,11 +18,17 @@
 
 }
 
+.profile-details {
+  color: white;
+  margin-left: 30px;
+  margin: 30px;
+}
+
 .avatar-profile {
   height: 176px;
   width: 176px;
   background: #f2f4fa;
-  border-radius: 5px;
+  border-radius: 100px;
 }
 
 .user-details{
@@ -76,42 +79,111 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 70%;
+  width: 60%;
   background: #f2f4fa;
   height: 700px;
 }
 
 .show-left-card{
-height: 200px;
+height: 150px;
 width: 600px;
 background: white;
 margin: 0 auto;
+padding: 50px;
+position: relative;
+}
+
+.bio{
+height: 150px;
+width: 600px;
+background: white;
+margin: 0 auto;
+padding: 50px;
 
 }
+
+
+
+.about {
+text-align: top;
+}
+
 
 .review-content {
   font-size: 18px;
 }
 
 .date-review{
-  font-size: 14px;
+  font-size: 12px;
+  position: absolute;
+  top: 44px;
+  left: 80px;
 
 }
 
 .review-name{
   font-size: 14px;
+  position: absolute;
+  top: 22px;
+  left: 80px;
 }
 
 .show-right {
+    width: 20%;
+    height: 470px;
+    background: white;
+    margin: 13px 0;
 
-  display: flex;
-  width: 30%;
-  background: #f2f4fa;
 }
 
+.info-heading{
+  font-size: 16px;
+  position: relative;
+  left: 10px;
+  padding: 20px;
+}
 
+.info-right {
+  display: flex;
+  justify-content: space-around
+}
 
+.show-right-title {
+    text-align: center;
+    color: #3c3c3c;
+    font-size: 18px;
+    padding-top: 20px;
+}
 
+.info-right-service {
+  background-color: #dca93e;
+  padding: 10px 15px;
+  border-radius: 3px;
 
+}
+
+.star-holder {
+  position: absolute;
+  top: 22px;
+  right: 40px;
+}
+
+.review-avatar {
+  position: absolute;
+  border-radius: 50%;
+  background: gray;
+  height: 50px;
+  width: 50px;
+  left: 20px;
+  top: 20px;
+
+}
+
+.email-details {
+    position: relative;
+    left: 32px;
+    font-size: 16px;
+
+}
 
 
