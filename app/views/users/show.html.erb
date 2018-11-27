@@ -11,7 +11,6 @@
   </div>
 </div>
 
-
 <div class="show-wrapper">
   <div class="show-banner">
     <div class="show-banner-content">
@@ -26,8 +25,8 @@
         <h1 class="user-details"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
         <% if @user.professional %>
           <% end %>
-          <p><%= @user.services.first.name %></p>
-          <p><%= @user.bio %></p>
+          <p class="user-details"><%= @user.services.first.name %></p>
+          <p class="user-details"><%= @user.bio %></p>
        <% if @user.professional %>
         <h1 class="user-details">Overall Rating</h1>
         <% @user.average_review_score.times do %>
@@ -46,9 +45,9 @@
         <% review.rating.times do %>
           <i class="fas fa-star"></i>
         <% end %>
-          <p><%= review.content %></p>
-          <p>Date of review: <%= review.created_at.strftime("%e %b %Y") %></p>
-          <p>This review has been written by: <%= review.user.first_name %></p>
+          <p class="review-content"><%= review.content %></p>
+          <p class="date-review">Date of review: <%= review.created_at.strftime("%e %b %Y") %></p>
+          <p class="review-name">This review has been written by: <%= review.user.first_name %></p>
         </div>
       <% end %>
 
