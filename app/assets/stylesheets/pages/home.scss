@@ -1,9 +1,11 @@
-  .home-card img{
-    border: none;
-    // height: 250px;
-    width: 150px;
-  }
 // Specific CSS for your home-page
+
+.home-card img {
+  border: none;
+  // height: 250px;
+  width: 150px;
+}
+
 .banner {
   color: white;
   text-align: center;
@@ -18,17 +20,13 @@
 
 }
 
-.search-button{
-  height: 50px;
-}
-
 .work-statement {
   text-align: center;
   padding: 50px;
   font-family:'Noto Sans TC', sans-serif;
   color: #ff6a6b;
 }
-.card_header{
+.card_header {
   font-size: 50px;
 }
 
@@ -41,9 +39,7 @@
   padding-bottom: 50px;
 }
 
-  .free {
-    text-align: center;
-    padding: 40px;
-  }
-
-
+.free {
+  text-align: center;
+  padding: 40px;
+}
