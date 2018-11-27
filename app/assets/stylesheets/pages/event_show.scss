@@ -210,8 +210,13 @@
   }
 }
 .accepted-bids{
+  margin-top: 50px;
   .container{
     padding-left: 0px;
+    margin-bottom: 50px;
+  }
+  .empty-bid-text{
+    margin-left: 20px;
   }
 }
 
@@ -242,5 +247,6 @@
 
 .empty-bid-text{
   color: rgba(0,0,0,0.5);
-  margin-left: 20px;
+
+  font-size: 24px;
 }
