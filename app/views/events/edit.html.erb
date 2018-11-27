@@ -1,1 +1,56 @@
-<%= render 'event_form'  %>
+<div class= "container">
+<center>
+
+<h2>Edit your Event</h2>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+    <%= simple_form_for(@event) do |f|%>
+      <%= f.input :name,
+                label: false,
+                required: false,
+                placeholder: "Name",
+                input_html: { class: "form-inputs" } %>
+      <%= f.input :min_price,
+                label: false,
+                required: false,
+                placeholder: "Minimum Price",
+                input_html: { class: "form-inputs" }  %>
+      <%= f.input :max_price,
+                label: false,
+                required: false,
+                placeholder: "Maximum Price",
+                input_html: { class: "form-inputs" }  %>
+      <%= f.input :location,
+                label: false,
+                required: false,
+                placeholder: "Location",
+                input_html: { class: "form-inputs" } %>
+      <%= f.input :description,
+                label: false,
+                required: false,
+                placeholder: "Description",
+                input_html: { class: "form-inputs" } %>
+      <%= f.input :party_size,
+                label: false,
+                required: false,
+                placeholder: "Party Size",
+                input_html: { class: "form-inputs" } %>
+      <%= f.input :date,
+                as: :string,
+                required: false,
+                placeholder: "Date",
+                input_html: { class: "datepicker form-inputs" } %>
+      <%= f.input :service_id,
+                label: false,
+                collection: @services,
+                include_blank: false,
+                prompt: 'Select Service',
+                input_html: { class: "form-inputs" }%>
+
+      <%= f.submit "Edit Event", class: "button" %>
+
+    <% end %>
+  </div>
+
+</center>
+</div>

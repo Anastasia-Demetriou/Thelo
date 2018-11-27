@@ -1,6 +1,47 @@
 <%= render 'shared/dashboard_navbar' %>
   <body class= "dashboard-container body-dash" id="content">
+    <div class= "container">
+<center>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <h2>Sign up</h2>
 
-<%= render '../views/shared/registration_edit' %>
+      <%= simple_form_for(@user) do |f| %>
+      <%= f.error_notification %>
 
-</body>
+      <%= f.input :first_name,
+                  placeholder: "First name",
+                  input_html: { class: "form-inputs", autocomplete: "First Name" } %>
+      <%= f.input :last_name,
+                  placeholder: "Last name",
+                  input_html: { class: "form-inputs", autocomplete: "Last Name" } %>
+      <%= f.input :email,
+                  autofocus: true,
+                  placeholder: "Email address",
+                  input_html: { class: "form-inputs", autocomplete: "email" }%>
+      <%= f.input :password,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  placeholder: "Create a password",
+                  input_html: { class: "form-inputs", autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  placeholder: "Confirm your password",
+                  input_html: { class: "form-inputs", autocomplete: "new-password" } %>
+
+      <h5>Are you a Professional?</h5>
+      <p><%= f.input :professional %>(Check this box if you have a professional service to offer)</p>
+
+      <h6>Select your professional service</h6>
+      <%= f.input :service_ids,
+                  collection: Service.all,
+                  :include_blank => false,
+                  prompt: 'Select Service',
+                  input_html: { class: "form-inputs" } %>
+
+      <%= f.submit "Sign Up", class: "button" %>
+
+      <% end %>
+  </div>
+
+</center>
+</div>
+    <%= render '../views/shared/registration_edit' %>
+  </body>
