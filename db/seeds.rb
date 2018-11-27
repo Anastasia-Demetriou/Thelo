@@ -13,7 +13,7 @@ waiter = Service.create!(name: "Waiter")
 
 test1 = User.create!(first_name: "test", last_name:"test", email:"test@test.com", password:"test123", professional: true, bio:"Experienced Chef")
 john = User.create!(first_name: "John", last_name:"Doe", email:"johndoe@gmail.com", password:"password", professional: true, bio:"Experienced Chef")
-andrew = User.create!(first_name: "Andrew", last_name:"Smith", email:"andrewsmith@gmail.com", password:"password", professional: false, bio:"Looking for chef")
+andrew = User.create!(first_name: "Andrew", last_name:"Smith", email:"andrewsmith@gmail.com", password:"password", professional: true, bio:"Looking for chef")
 
 UserService.create!(service: chef , user: test1)
 UserService.create!(service: waiter , user: john)
@@ -45,11 +45,17 @@ event23 =  Event.create!(name:"Tea party", date:"2018/07/08", event_type: "tea p
 
 
 
-bid1 = Bid.create!(quote: 100, description: "This bid is for birthday event 5 people" , status: "accepted", sku: chef.name, user_id: andrew.id, event_id: event1.id, price_cents: 100)
+bid1 = Bid.create!(quote: 200, description: "This bid is for birthday event 5 people" , status: "accepted", sku: chef.name, user_id: andrew.id, event_id: event1.id, price_cents: 100)
 bid2 = Bid.create!(quote: 500, description: "This bid is for wedding event 50 people" , status: "accepted", sku: chef.name, user_id: john.id, event_id: event2.id, price_cents: 100)
 bid3 = Bid.create!(quote: 1000, description: "This bid is for hen party event 10 people" ,status: "accepted", sku: waiter.name, user_id: andrew.id, event_id: event3.id, price_cents: 100)
 bid4 = Bid.create!(quote: 500, description: "This bid is for whatever event 10 people" , sku: mixologist.name, user_id: john.id, event_id: event4.id, price_cents: 100)
-bid5 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , sku: mixologist.name, user_id: andrew.id, event_id: event5.id, price_cents: 100)
+bid5 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , sku: mixologist.name, user_id: andrew.id, event_id: event10.id, price_cents: 100)
+bid6 = Bid.create!(quote: 600, description: "This bid is for birthday event 5 people" , status: "accepted", sku: chef.name, user_id: andrew.id, event_id: event22.id, price_cents: 100)
+bid7 = Bid.create!(quote: 850, description: "This bid is for birthday event 5 people" , status: "accepted", sku: chef.name, user_id: andrew.id, event_id: event23.id, price_cents: 100)
+bid8 = Bid.create!(quote: 1000, description: "This bid is for whatever 2 event 10 people" , status: "declined", sku: mixologist.name, user_id: andrew.id, event_id: event19.id, price_cents: 100)
+bid9 = Bid.create!(quote: 250, description: "This bid is for wedding event 50 people" , status: "accepted", sku: chef.name, user_id: john.id, event_id: event18.id, price_cents: 100)
+bid10 = Bid.create!(quote: 930, description: "This bid is for wedding event 50 people" , status: "declined", sku: chef.name, user_id: andrew.id, event_id: event16.id, price_cents: 100)
+bid11 = Bid.create!(quote: 650, description: "This bid is for wedding event 50 people" , status: "accepted", sku: chef.name, user_id: john.id, event_id: event16.id, price_cents: 100)
 
 
 

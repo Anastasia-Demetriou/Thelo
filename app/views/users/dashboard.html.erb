@@ -15,7 +15,7 @@
 
   <div class= "menu-dash sidenava">
 
-    <p>Professional</p>
+    <p id= "pro-pink">Professional</p>
     <%= link_to "Events I'm working at", "#proevents" %>
     <%= link_to "Bids I've placed", "#probids" %>
     <%= link_to "View Profile", user_path(@user)%>
@@ -24,8 +24,9 @@
     <%= link_to "Events I'm hosting", "#hostevents" %>
     <%= link_to "Create a new event", new_event_path%>
 
-    <p>Account</p>
+    <p id="account">Account</p>
     <%= link_to "Log out", destroy_user_session_path %>
+    <%= link_to "Edit Profile" %>
   </div>
 </div>
 
@@ -79,8 +80,8 @@
       <!-- (past events) -->
 
 
-      <div class="events-flex-item past" style="background-color:none;">
-      <div class="status-header " style="text-align: center; background-color:none;"> <p>Past Booked Events</p> </div>
+      <div class="events-flex-item past" >
+      <div class="status-header"> <p>Past Booked Events</p> </div>
 
         <% @accepted_bids.each do |bid| %>
         <% if bid.event.date.past? == true%>
@@ -132,7 +133,7 @@
             <% bid.user_id %>
             <p>Quoted: £<%= bid.quote.to_i %></p>
             <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
-            <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+            <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
             <% if bid.status == "accepted" %>
             <% elsif bid.status == "pending" %>
             <% elsif bid.status == "declined" %>
@@ -153,7 +154,7 @@
             <% bid.user_id %>
             <p >Quoted: £<%= bid.quote.to_i %></p>
             <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
-            <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+            <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
             <% if bid.status == "accepted" %>
             <% elsif bid.status == "pending" %>
             <% elsif bid.status == "declined" %>
@@ -172,7 +173,7 @@
           <% bid.user_id %>
           <p>Quoted: £<%= bid.quote.to_i %></p>
           <p>Host Budget: £<%= bid.event.min_price %> - £<%= bid.event.max_price %></p>
-          <p><%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
+          <p>Event date: <%= bid.event.date.strftime("%b %e, %l:%M %p") %></p>
 
           <% if bid.status == "accepted" %>
           <% elsif bid.status == "pending" %>
@@ -192,7 +193,7 @@
 
 
 <div class="professional-events-card">
-  <div class="professional-events" id="hostevents">
+  <div class="host-events" id="hostevents">
     <p>Events you are Hosting</p>
   </div>
 
@@ -202,41 +203,87 @@
 
             <% @host_events.order(date: :asc).each do |event| %>
 
+            <%if event.date.to_date.future? %>
               <a href="/events/<%= event.id %>">
                 <div class="event-dash-card">
                   <div class="card-top">
                     <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
 
-                    <% if event.bids.count == 0 %>
-                      <p style= "color:#D0021B;">You have <strong><%= event.bids.count %></strong> bids</p>
-                      <% end %>
-                    <% if event.bids.count >= 1 %>
-                      <p style= "color:#7ED321;">You have <strong><%= event.bids.count %></strong> bids</p>
-                    <% end %>
                   </div>
                   <h2><%= event.name %></h2>
                   <% event.user_id%>
 
                   <div class="card-bottom">
                       <div class="card-btm">
-                        <p>What they are looking for </p>
+                        <p>Looking for: </p>
                         <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
                       </div>
-                      <div class="card-btm">
+                      <% if event.bids.where(status: "accepted")[0] %>
+                        <p class= "green-button" >You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
+                      <% elsif event.bids.count == 0 %>
+                        <p class= "grey-button" >You have <strong><%= event.bids.count %></strong> bids</p>
+                      <% elsif event.bids.count >= 1 %>
+                        <p class= "green-button">You have <strong><%= event.bids.count %></strong> bids</p>
+                      <% end %>
+                      <!-- <div class="card-btm">
                         <p>Budget</p>
-                        <div class="card-btn card-btn-green">
-                          £<%= event.min_price %>-<%= event.max_price %>
+                        <div >
+                          <p>£<%= event.min_price %>-<%= event.max_price %></p>
+
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                 </div>
               </a>
-            <% end %>
+              <% end %>
+              <% end %>
+
+
+  <div class="professional-events" id="hosteventspast">
+    <p>Events you have hosted</p>
+  </div>
+          <% @host_events.order(date: :asc).each do |event| %>
+
+            <%if event.date.to_date.past? %>
+              <a href="/events/<%= event.id %>">
+                <div class="event-dash-card past">
+                  <div class="card-top">
+                    <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+
+                  </div>
+                  <h2><%= event.name %></h2>
+                  <% event.user_id%>
+
+                  <div class="card-bottom">
+                      <div class="card-btm">
+                        <p>Looking for: </p>
+                        <div class ="card-btn card-btn-grey"><%= event.service.name %></div>
+                      </div>
+                        <% if event.bids.where(status: "accepted")[0] %>
+                          <p class ="grey-button">You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
+                        <% elsif event.bids.count == 0 %>
+                          <p class ="grey-button">You revceived <strong><%= event.bids.count %></strong> bids</p>
+                        <% elsif event.bids.count >= 1 %>
+                          <p class ="grey-button">You received <strong><%= event.bids.count %></strong> bids</p>
+                        <% end %>
+
+                      <!-- <div class="card-btm">
+                        <p>Budget</p>
+                        <div class="card-btn card-btn-grey">
+                          £<%= event.min_price %>-<%= event.max_price %>
+                        </div>
+                      </div> -->
+                    </div>
+                </div>
+              </a>
+
+          <% end %>
+          <% end %>
+
 
     </div>
    </div>
 </div>
-
 
 
 <!-- CREATE NEW EVENT  -->
