@@ -69,3 +69,92 @@ h2{
  }
 }
 
+.sign-in-new {
+  margin: 130px 400px!important;
+
+}
+
+ .user_remember_me{
+  padding: 0 135px;
+
+  }
+
+.full-width {
+  margin-left: 100px;
+  margin-right: 100px;
+
+}
+
+.event_min_price {
+  width:  50% !important;
+  padding-right: 10px;
+}
+
+.event_max_price {
+  width:  50% !important;
+  padding-left: 10px;
+}
+
+.event_date{
+  width:  50% !important;
+  padding-right: 10px;
+}
+
+.algolia-places{
+  width:  560px !important;
+  padding-left: 10px;
+
+}
+
+.event_party_size{
+  width:  50% !important;
+  padding-right: 10px;
+}
+
+.event_service_id{
+  width:  50% !important;
+  padding-left: 10px;
+
+}
+
+.user_service_ids {
+  width:  560px !important;
+  padding-right: 10px;
+}
+
+.service-centre{
+  text-align:center;
+}
+
+input.button {
+    text-align: center;
+  }
+
+.professional-new-form {
+  display: flex;
+  padding-top: 20px;
+  p  {
+    padding: 0 8px;
+    margin: 0 ;
+    font-size: 16px;
+  }
+  h5 {
+    margin: 0;
+    font-size: 16px;
+  }
+  label {
+    padding: 0 5px;
+    margin: 0;
+    font-size: 16px;
+  }
+}
+input#user_professional {
+  margin-right: 100px;
+}
+
+.flex-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

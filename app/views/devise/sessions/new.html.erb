@@ -1,6 +1,5 @@
-<div class= "container">
-<center>
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+<body class= "body-dash ">
+  <div class="form-card sign-in-new ">
     <h2>Log in</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,12 +12,17 @@
                 required: false,
                 placeholder: "Password",
                 input_html: { class: "form-inputs", autocomplete: "current-password" } %>
+
+
+
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+<div class="flex-btn">
       <%= f.submit "Log in", class: "button" %>
+</div>
     <% end %>
 
 
+</div>
 
-</center>
 </div>

@@ -1,17 +1,20 @@
-<div class= "container">
-<center>
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+<body class= "body-dash">
+  <div class="form-card ">
+
     <h2>Sign up</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
+    <div class="edit-form">
       <%= f.input :first_name,
                   placeholder: "First name",
                   input_html: { class: "form-inputs", autocomplete: "First Name" } %>
       <%= f.input :last_name,
                   placeholder: "Last name",
                   input_html: { class: "form-inputs", autocomplete: "Last Name" } %>
+
+    </div>
       <%= f.input :email,
                   autofocus: true,
                   placeholder: "Email address",
@@ -23,21 +26,23 @@
       <%= f.input :password_confirmation,
                   placeholder: "Confirm your password",
                   input_html: { class: "form-inputs", autocomplete: "new-password" } %>
-
+    <div class= "professional-new-form">
       <h5>Are you a Professional?</h5>
-      <p><%= f.input :professional %>(Check this box if you have a professional service to offer)</p>
-
-      <h6>Select your professional service</h6>
+      <p><%= f.input :professional %></p>
+        <p>(Check this box if you have a professional service to offer)</p>
+    </div>
       <%= f.input :service_ids,
                   collection: Service.all,
                   :include_blank => false,
                   prompt: 'Select Service',
                   input_html: { class: "form-inputs" } %>
+      <div class="flex-btn">
+        <%= f.submit "Sign Up", class: "button" %>
 
-      <%= f.submit "Sign Up", class: "button" %>
+      </div>
 
       <% end %>
-  </div>
 
-</center>
+
+  </div>
 </div>

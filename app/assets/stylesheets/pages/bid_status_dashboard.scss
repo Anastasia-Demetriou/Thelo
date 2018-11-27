@@ -352,12 +352,84 @@ a:hover{
     margin-left: 300px; /* Same as the width of the sidenav */
 }
 
+
+
 .professional-events-card {
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     margin: 30px;
     background: white;
     border-radius: 5px;
 
+}
+
+.form-card {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin: 30px;
+    background: white;
+    border-radius: 5px;
+    padding: 10px 130px;
+
+    h2 {
+      font-size: 20px !important;
+      padding-bottom: 5px;
+      padding-top: 50px;
+    }
+
+
+}
+
+.edit-form{
+  display: flex;
+  width: 100% !important;
+}
+
+.user_first_name {
+  width:  50% !important;
+  padding-right: 10px;
+}
+
+.user_last_name {
+  width:  50% !important;
+  padding-left: 10px;
+}
+
+
+
+.pulse-button {
+  width: auto;
+  height: 35px;
+  text-align: center;
+  padding-top: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: white !important;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #7ED321 !important;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(0,0,0, .6);
+  -webkit-animation: pulse 2s infinite;
+}
+.pulse-button:hover {
+  -webkit-animation: none;
+}
+
+@keyframes pulse {
+    0%{
+        box-shadow: 0 0 0 0 rgba(#7ED321,0.8), 0 0 0 0 rgba(#7ED321,0.5)
+    }
+    40%{
+        box-shadow: 0 0 0 20px rgba(#7ED321,0), 0 0 0 10px rgba(#7ED321,0)
+    }
+    80%{
+        box-shadow: 0 0 0 20px rgba(#7ED321,0), 0 0 0 10px rgba(#7ED321,0)
+    }
+    100%{
+        box-shadow: 0 0 0 0 rgba(#7ED321,0), 0 0 0 15px rgba(#7ED321,0)
+    }
 }
 
 

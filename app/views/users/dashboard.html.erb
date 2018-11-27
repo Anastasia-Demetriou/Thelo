@@ -220,11 +220,11 @@
                         <div class ="card-btn card-btn-orange"><%= event.service.name %></div>
                       </div>
                       <% if event.bids.where(status: "accepted")[0] %>
-                        <p class= "green-button" >You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
+                          <p class= "green-button" >You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
                       <% elsif event.bids.count == 0 %>
                         <p class= "grey-button" >You have <strong><%= event.bids.count %></strong> bids</p>
                       <% elsif event.bids.count >= 1 %>
-                        <p class= "green-button">You have <strong><%= event.bids.count %></strong> bids</p>
+                        <p class= "green-button pulse-button">You have <strong><%= event.bids.count %></strong> bids</p>
                       <% end %>
                       <!-- <div class="card-btm">
                         <p>Budget</p>
