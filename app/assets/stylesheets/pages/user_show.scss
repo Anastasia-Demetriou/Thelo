@@ -30,6 +30,7 @@
 
 .user-details{
   font-size: 20px;
+  text-align: left;
 }
 
 
@@ -59,9 +60,9 @@
   float: right;
   margin: 20px 380px;
 }
+
 .fa-star {
   color: #dca93e;
-
 }
 
 
@@ -86,6 +87,19 @@ width: 600px;
 background: white;
 margin: 0 auto;
 
+}
+
+.review-content {
+  font-size: 18px;
+}
+
+.date-review{
+  font-size: 14px;
+
+}
+
+.review-name{
+  font-size: 14px;
 }
 
 .show-right {

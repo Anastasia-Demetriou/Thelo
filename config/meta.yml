@@ -1,5 +1,7 @@
 meta_product_name: "Thelo"
+
 meta_title: "Thelo - Create your event for free without the middleman, connecting you to hospitality professionals near you now"
-meta_description: "Thelo - events"
+meta_description: "Thelo - do more of what you love"
 meta_image: "cover.png"                       # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"
+
