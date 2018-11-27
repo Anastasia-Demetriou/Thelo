@@ -38,41 +38,62 @@
 
             <div class="container">
               <div class="row">
+                <% if @event.bids.empty? %>
+                  <h3 class="empty-bid-text">No bids yet...</h3>
+                <% end %>
                 <% @event.bids.each do |bid| %>
-                  <div class="col-xs-12 col-md-6">
-                    <div class="show-bid-card">
-                      <div class="right-corner">
-                        <div class="card-btn card-btn-orange">
-                           <%= @event.service.name %>
+                  <% if bid.status == "pending" %>
+                    <div class="col-xs-12 col-md-6">
+                      <div class="show-bid-card">
+                        <div class="right-corner">
+                          <div class="card-btn card-btn-orange">
+                             <%= @event.service.name %>
+                          </div>
+                        </div>
+                        <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                        <p class="bid-name"><%= bid.user.first_name %></p>
+                        <p>Quote: £<%= bid.price.to_i %></p>
+                        <p> <%= bid.description %></p>
+                        <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
+                        <p>Bid is pending, accept or decline below</p>
+                        <div class="status-buttons">
+                          <%= link_to(accept_bid_path(bid, :bid => {:status => "accepted"}) , {method: :accept}) do  %>
+                            <i class="fas fa-check tick"></i>
+                          <% end %>
+                          <%= link_to(accept_bid_path(bid, :bid => {:status => "declined"}) , {method: :accept}) do  %>
+                            <i class="fas fa-times cross"></i>
+                          <% end %>
                         </div>
                       </div>
-                      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
-                      <p class="bid-name"><%= bid.user.first_name %></p>
-                      <p>Quote: £<%= bid.price.to_i %></p>
-                      <p> <%= bid.description %></p>
-                      <% if bid.status == "accepted" %>
-                        <p class="green-text">Accepted</p>
-                      <% elsif bid.status == "pending" %>
-                        <p class="orange-text">Pending</p>
-                      <% elsif bid.status == "declined" %>
-                        <p class="red-text">Declined</p>
-                      <% end %>
-                      <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
-                      <div class="status-buttons">
-                        <% if bid.status == "accepted" %>
-                          <a href="/bids/1?bid%5Bstatus%5D=accepted" data-method="accept"><i class="fas fa-check tick accepted-green"></i></a>
-                          <a href="/bids/1?bid%5Bstatus%5D=declined" data-method="decline"><i class="fas fa-times cross"></i></a>
-                        <% else %>
-                          <a href="/bids/1?bid%5Bstatus%5D=accepted" data-method="accept"><i class="fas fa-check tick"></i></a>
-                          <a href="/bids/1?bid%5Bstatus%5D=declined" data-method="decline"><i class="fas fa-times cross declined-red"></i></a>
-                        <% end %>
-                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>
           <% end %>
+        </div>
+        <div class="accepted-bids">
+          <div class="container">
+            <h2 class="accepted-title">Who's Working at the event</h2>
+            <div class="row">
+              <% accepted_bids_full = false %>
+              <% @event.bids.each do |bid| %>
+                <% if bid.status == "accepted" %>
+                  <% accepted_bids_full = true %>
+                  <div class="col-xs-6 col-md-4">
+                    <div class="show-bid-card accepted-card">
+                      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                      <p class="bid-name"><%= bid.user.first_name %></p>
+                      <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <% if accepted_bids_full == false %>
+                <h3 class="empty-bid-text">No one working yet...</h3>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-xs-4">

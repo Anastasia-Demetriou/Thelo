@@ -52,7 +52,7 @@
 }
 
 .event-show-header{
-  padding-left: 200px;
+  padding-left: 204px;
   padding-bottom: 10px;
 
   h2{
@@ -201,6 +201,28 @@
   }
 }
 
+.accepted-card{
+  height: 200px;
+  padding: 15px;
+  .avatar{
+    width: 80px;
+    height: 80px;
+  }
+}
+.accepted-bids{
+  .container{
+    padding-left: 0px;
+  }
+}
+
+.accepted-title{
+  text-align: left;
+  font-size: 34px !important;
+  margin: 0px;
+  margin-bottom: 20px;
+  padding: 0px;
+}
+
 .bid-title{
   font-size: 34px;
   margin-top: 60px;
@@ -215,5 +237,10 @@
   font-size: 14px;
 }
 .show-edit-btn:hover{
-  color: rgba(0,0,0,0.6)
+  color: rgba(0,0,0,0.6);
+}
+
+.empty-bid-text{
+  color: rgba(0,0,0,0.5);
+  margin-left: 20px;
 }

@@ -88,11 +88,6 @@ class BidsController < ApplicationController
     redirect_to event_path(@bid.event)
   end
 
-  def decline
-    authorize @bid
-    @bid.update(bid_params)
-    redirect_to event_path(@bid.event)
-  end
 
   private
 

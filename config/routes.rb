@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'reviews', to: 'reviews#new', as: 'review'
 
   post '/bids/:id', to: 'bids#accept', as: 'accept_bid'
-  post '/bids/:id', to: 'bids#decline', as: 'decline_bid'
 
   resources :events do
     resources :bids, only: [:show, :create]
