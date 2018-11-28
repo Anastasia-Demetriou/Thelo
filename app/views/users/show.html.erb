@@ -1,7 +1,4 @@
 
-
-
-
 <div class="show-navbar hidden-navbar">
   <h4 class="nav-titles"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h4>
   <h4 class="nav-title-service"><%= @user.services.first.name %></h4>
@@ -46,8 +43,10 @@
               </div>
               <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
               <div class="stars">
-                <% review.rating.times do %>
-                  <i class="fas fa-star"></i>
+                <% if review.rating != nil %>
+                  <% review.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -60,12 +59,13 @@
             <h3>Add a review</h3>
             <%= simple_form_for [@user, @review] do |f| %>
               <%= f.input :content, placeholder: "Great Chef"%>
-              <%= f.input :rating %>
-              <%= f.submit "Post Review", class: 'btn btn primary' %>
+              <%= f.collection_radio_buttons :rating, [[1,"Hello"], [2], [3], [4], [5]], :first, :last, item_wrapper_class: "rating", boolean_style: :inline do |b| %>
+  <%= b.radio_button + b.label {''} %>
+<% end %>
+              <%= f.submit "Post Review", class: 'btn btn-primary' %>
             <% end %>
           </div>
         <% end %>
-
       </div>
       <div class="col-xs-3">
         <div class="user-skills">
