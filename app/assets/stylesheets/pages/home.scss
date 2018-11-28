@@ -1,45 +1,34 @@
 // Specific CSS for your home-page
 
-.home-card img {
-  border: none;
-  // height: 250px;
-  width: 150px;
-}
-
 .banner {
-  color: white;
   text-align: center;
   margin: auto;
   height: calc(100vh - 70px);
   background-size: cover !important;
   background-position: center;
-  display: flex;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-
-}
-
-.work-statement {
-  text-align: center;
-  padding: 50px;
-  font-family:'Noto Sans TC', sans-serif;
-  color: #ff6a6b;
-}
-.card_header {
-  font-size: 50px;
 }
 
 .home-header {
-  text-align: center;
+  padding-top: 35px;
+  padding-left: 40px;
+  text-align: left;
   font-size: 50px;
-  color: white;
-  font-family:'Noto Sans TC', sans-serif;
+  color: $gray;
   font-weight: 10px;
-  padding-bottom: 50px;
+  #p {
+    font-size: 26px;
+  }
 }
 
-.free {
+.banner-image img {
+  border: none;
+  width: 50px;
+}
+
+.card-header {
   text-align: center;
   padding: 40px;
 }
