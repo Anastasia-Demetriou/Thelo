@@ -401,4 +401,26 @@ a:hover{
     }
 }
 
+.no-results-card.past {
+      background-color: #f9f9f9!important;
+  }
+.no-results-card{
+  margin: 0;
+  padding: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: rgba(0,0,0,0.9);
+  background-color: white;
+  height: 100px;
+  position:relative;
+  content-align:center;
+  text-align:center;
 
+  p{
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: rgba(0,0,0,0.6)
+
+  }
+
+}

@@ -15,10 +15,12 @@
 
   <div class= "menu-dash sidenava">
 
+  <%if @user.professional == true %>
     <p id= "pro-pink">Professional</p>
     <%= link_to "Events I'm working at", "#proevents" %>
     <%= link_to "Bids I've placed", "#probids" %>
     <%= link_to "View Profile", user_path(@user)%>
+  <% end %>
 
     <p>Host</p>
     <%= link_to "Events I'm hosting", "#hostevents" %>
@@ -33,11 +35,13 @@
 
 <body class= "dashboard-container body-dash">
 
-
+<%if @user.professional == true %>
   <!-- PROFESSIONAL EVENTS/Bookings display the booked/confirmed events that the professional has bid on -->
   <div class="professional-events-card">
+
+
     <div class="professional-events " id="proevents">
-      <p>Your Professional Events</p>
+      <p>Your Professional Event Bookings</p>
     </div>
 
 
@@ -74,6 +78,11 @@
           </a>
         <% end %>
         <% end %>
+
+        <%if @accepted_bids.count == 0 %>
+          <div class="no-results-card "><p>You have no future bookings</p> </div>
+        <% end %>
+
         </div>
 
 
@@ -107,6 +116,11 @@
           </a>
           <% end %>
           <% end %>
+        <div class="no-results-card past">
+          <%if @accepted_bids.count == 0 %>
+            <p>You have no past bookings</p>
+          <% end %>
+        </div>
       </div>
 
 
@@ -119,7 +133,7 @@
 
 <div class="professional-events-card">
   <div class="professional-events" id="probids">
-    <p>Bids you have placed as a Professional</p>
+    <p>Your Professional Event Bids</p>
   </div>
 
 <div class="events-flex">
@@ -185,8 +199,14 @@
   <% end %>
   </div>
 
+
 </div>
+        <%if @accepted_bids.count == 0 %>
+          <div class="no-results-card "><p>You have not placed any bids</p> </div>
+        <% end %>
 </div>
+
+<% end %>
 
   <!-- HOST EVENTS - display list of events created -->
 
@@ -242,7 +262,13 @@
 
 
   <div class="professional-events" id="hosteventspast">
+    <% if @user.events.count >= 1 %>
     <p>Events you have hosted</p>
+    <% else %>
+    <%if @accepted_bids.count == 0 %>
+          <div class="no-results-card "><p>You are not hosting any events</p> </div>
+        <% end %>
+    <% end %>
   </div>
           <% @host_events.order(date: :asc).each do |event| %>
 
@@ -285,6 +311,8 @@
 
     </div>
    </div>
+
+
 </div>
 
 
