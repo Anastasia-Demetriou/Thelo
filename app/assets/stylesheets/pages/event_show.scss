@@ -90,10 +90,16 @@
   .header-description{
     display: flex;
     padding-left: 10px;
-    .text-yellow{
+    .text-yellow-location{
+      position: absolute;
+      margin-top: 29px;
       color: #F8B500;
     }
+
+
+
     p{
+      color: #F8B500;
       margin: 2px;
     }
   }
