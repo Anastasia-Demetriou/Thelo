@@ -10,4 +10,8 @@ class Event < ApplicationRecord
 
   validates_presence_of :name, :date, :location, :description, :party_size, :min_price, :max_price
 
+  def accepted_bid
+    bids.find_by(status: "accepted")
+  end
+
 end

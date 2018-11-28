@@ -201,11 +201,10 @@
   <% end %>
   </div>
 
-
 </div>
-        <%if @accepted_bids.count == 0 %>
-          <div class="no-results-card "><p>You have not placed any bids</p> </div>
-        <% end %>
+  <%if @accepted_bids.count == 0 %>
+    <div class="no-results-card "><p>You have not placed any bids</p> </div>
+  <% end %>
 </div>
 
 <% end %>
@@ -231,7 +230,9 @@
                 <div class="event-dash-card">
                   <div class="card-top">
                     <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
-
+                    <% if event.bids.where(status: "accepted")[0] %>
+                      <div class= "pink-review-button"><%= link_to "View Professional", user_path(event.accepted_bid.user)%></div>
+                    <% end %>
                   </div>
                   <h2><%= event.name %></h2>
                   <% event.user_id%>
@@ -279,7 +280,9 @@
                 <div class="event-dash-card past">
                   <div class="card-top">
                     <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
-
+                    <% if event.bids.where(status: "accepted")[0] %>
+                      <div class= "pink-review-button"><%= link_to "Review Professional", user_path(event.accepted_bid.user)%></div>
+                    <% end %>
                   </div>
                   <h2><%= event.name %></h2>
                   <% event.user_id%>
@@ -288,21 +291,16 @@
                       <div class="card-btm">
                         <p>Looking for: </p>
                         <div class ="card-btn card-btn-grey"><%= event.service.name %></div>
-                        <div>
-
-                        </div>
                       </div>
-                      <% if event.bids.where(status: "accepted")[0] %>
-                            <button clas= "pink-review-button">Review Professional</button>
-                          <% end %>
+                      <div>
                         <% if event.bids.where(status: "accepted")[0] %>
-                          <p class ="grey-button">You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
+                          <p class ="grey-button">You accepted a bid for £ <%= event.accepted_bid.quote %></p>
                         <% elsif event.bids.count == 0 %>
                           <p class ="grey-button">You received <strong><%= event.bids.count %></strong> bids</p>
                         <% elsif event.bids.count >= 1 %>
                           <p class ="grey-button">You received <strong><%= event.bids.count %></strong> bids</p>
                         <% end %>
-
+                      </div>
                       <!-- <div class="card-btm">
                         <p>Budget</p>
                         <div class="card-btn card-btn-grey">
