@@ -75,13 +75,29 @@ margin-top: 20px;
   background-color: white;
   position: relative;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 }
 
+.r-avatar {
+position: absolute;
+border-radius: 50%;
+background: gray;
+height: 50px;
+width: 50px;
+//   left: 20px;
+//   top: 20px;
+}
 
+.r-content {
+  position: relative;
+  margin-left: 70px;
 
+}
 
 .date-review {
+  position: relative;
+  margin-left: 70px;
+
 
 }
 .user-skills {
