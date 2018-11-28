@@ -29,7 +29,7 @@
     <p id="account">Account</p>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
     <%= link_to destroy_user_session_path, method: :delete do %>
-      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+      <%= t(".sign_out", default: "Log out") %>
     <% end %>
 
   </div>
@@ -288,7 +288,13 @@
                       <div class="card-btm">
                         <p>Looking for: </p>
                         <div class ="card-btn card-btn-grey"><%= event.service.name %></div>
+                        <div>
+
+                        </div>
                       </div>
+                      <% if event.bids.where(status: "accepted")[0] %>
+                            <button clas= "pink-review-button">Review Professional</button>
+                          <% end %>
                         <% if event.bids.where(status: "accepted")[0] %>
                           <p class ="grey-button">You accepted a bid for £ <%= event.bids.where(status: "accepted")[0].quote %></p>
                         <% elsif event.bids.count == 0 %>
@@ -316,11 +322,6 @@
 
 
 </div>
-
-
-<!-- CREATE NEW EVENT  -->
-
-
 
 </body>
 
