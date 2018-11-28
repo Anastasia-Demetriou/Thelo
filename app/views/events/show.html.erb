@@ -17,6 +17,7 @@
       <div class="show-edit-btn-div">
         <%= link_to  edit_event_path(@event), class: "show-edit-btn" do %>
           <i class="far fa-edit"></i>
+          <p>Edit</p>
         <% end %>
       </div>
     <% end %>
@@ -45,11 +46,10 @@
 
             <div class="container">
               <div class="row">
-                <% if @event.bids.empty? %>
-                  <h3 class="empty-bid-text">No bids yet...</h3>
-                <% end %>
+                <% bids_empty = true %>
                 <% @event.bids.each do |bid| %>
                   <% if bid.status == "pending" %>
+                    <% bids_empty = false %>
                     <div class="col-xs-12 col-md-4">
                       <div class="show-bid-card">
                         <div class="card-top">
@@ -57,13 +57,13 @@
                              <%= @event.service.name %>
                           </div>
                           <div class="card-btn card-btn-green">
-                            £<%= bid.price.to_i %>
+                            £<%= bid.quote.to_i %>
                           </div>
                         </div>
                         <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
                         <p class="bid-name"><%= bid.user.first_name %></p>
                         <p> <%= bid.description %></p>
-                        <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
+                        <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn", target:"_blank"%>
                         <p>Bid is pending, accept or decline below</p>
                         <div class="status-buttons">
                           <%= link_to(accept_bid_path(bid, :bid => {:status => "accepted"}) , {method: :accept}) do  %>
@@ -77,6 +77,9 @@
                     </div>
                   <% end %>
                 <% end %>
+                <% if bids_empty == true %>
+                  <h3 class="empty-bid-text">No bids yet...</h3>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -89,11 +92,11 @@
               <% @event.bids.each do |bid| %>
                 <% if bid.status == "accepted" %>
                   <% accepted_bids_full = true %>
-                  <div class="col-xs-6 col-md-4">
+                  <div class="col-xs-6 col-md-3">
                     <div class="show-bid-card accepted-card">
                       <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
                       <p class="bid-name"><%= bid.user.first_name %></p>
-                      <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
+                      <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn",  target:"_blank"%>
                     </div>
                   </div>
                 <% end %>
