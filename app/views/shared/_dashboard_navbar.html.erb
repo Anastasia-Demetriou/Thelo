@@ -15,18 +15,24 @@
 
   <div class= "menu-dash sidenava">
 
+
+  <%if @user.professional == true %>
     <p id= "pro-pink">Professional</p>
-    <%= link_to "Events I'm working at", "#proevents" %>
-    <%= link_to "Bids I've placed", "#probids" %>
+    <%= link_to "Events I'm working at", dashboard_path( anchor: "proevents") %>
+    <%= link_to "Bids I've placed", dashboard_path(anchor: "probids") %>
     <%= link_to "View Profile", user_path(@user)%>
+  <% end %>
 
     <p>Host</p>
-    <%= link_to "Events I'm hosting", "#hostevents" %>
+    <%= link_to "Events I'm hosting", dashboard_path(anchor: "hostevents") %>
     <%= link_to "Create a new event", new_event_path%>
 
     <p id="account">Account</p>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
-    <%= link_to "Log out", destroy_user_session_path %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+    <% end %>
 
   </div>
 </div>
+

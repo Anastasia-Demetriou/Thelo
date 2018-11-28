@@ -28,7 +28,9 @@
 
     <p id="account">Account</p>
     <%= link_to "Edit Profile", edit_user_path(@user) %>
-    <%= link_to "Log out", destroy_user_session_path %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+    <% end %>
 
   </div>
 </div>
@@ -57,33 +59,33 @@
       <!-- <div class="col-xs-12 col-sm-12" > -->
 
 
-       <div class="events-flex-item" style="background-color:none;">
+      <div class="events-flex-item" style="background-color:none;">
         <div class="status-header" style="text-align: center; background-color:none;"><p>Upcoming Booked Events</p> </div>
         <% @accepted_bids.each do |bid| %>
-        <% if bid.event.date.past? == false%>
-        <!-- <div class="row"> -->
-          <a href="/events/<%= bid.event.id %>" class="bid-card-link">
-            <div class="bid-status-card future">
-                <p><%= bid.event.name %></p>
-                <% bid.user_id %>
-                <p>Accepted Quote: £<%= bid.quote.to_i %></p>
-                <h5><%= bid.event.date.strftime("%b %e, %l:%M %p") %></h5>
-                <p>Service: <%= bid.event.service.name %></p>
-                <p>Location: <%= bid.event.location %></p>
-                <% if bid.status == "accepted" %>
-                <% elsif bid.status == "pending" %>
-                <% elsif bid.status == "declined" %>
-              <% end %>
-            </div>
-          </a>
-        <% end %>
+          <% if bid.event.date.past? == false%>
+          <!-- <div class="row"> -->
+            <a href="/events/<%= bid.event.id %>" class="bid-card-link">
+              <div class="bid-status-card future">
+                  <p><%= bid.event.name %></p>
+                  <% bid.user_id %>
+                  <p>Accepted Quote: £<%= bid.quote.to_i %></p>
+                  <h5><%= bid.event.date.strftime("%b %e, %l:%M %p") %></h5>
+                  <p>Service: <%= bid.event.service.name %></p>
+                  <p>Location: <%= bid.event.location %></p>
+                  <% if bid.status == "accepted" %>
+                  <% elsif bid.status == "pending" %>
+                  <% elsif bid.status == "declined" %>
+                <% end %>
+              </div>
+            </a>
+          <% end %>
         <% end %>
 
-        <%if @accepted_bids.count == 0 %>
+        <% if @accepted_bids.count == 0 %>
           <div class="no-results-card "><p>You have no future bookings</p> </div>
         <% end %>
 
-        </div>
+      </div>
 
 
 
@@ -116,11 +118,11 @@
           </a>
           <% end %>
           <% end %>
-        <div class="no-results-card past">
           <%if @accepted_bids.count == 0 %>
-            <p>You have no past bookings</p>
+            <div class="no-results-card past">
+              <p>You have no past bookings</p>
+            </div>
           <% end %>
-        </div>
       </div>
 
 
