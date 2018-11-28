@@ -90,7 +90,7 @@ class BidsController < ApplicationController
     elsif bid_params["status"] == "declined"
       flash[:alert] = "You have declined #{@bid.user.first_name}"
     end
-    redirect_to event_path(@bid.event)
+    redirect_to dashboard_path(anchor: "hostevents")
   end
 
 
