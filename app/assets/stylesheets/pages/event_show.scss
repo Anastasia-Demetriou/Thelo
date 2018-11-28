@@ -249,8 +249,11 @@
 }
 .show-edit-btn{
   color: black;
-  font-size: 34px;
   color: #D22780;
+  font-size: 12px;
+  .fa-edit{
+    font-size: 34px;
+  }
 }
 .show-edit-btn:hover{
   color: #AC2069;
