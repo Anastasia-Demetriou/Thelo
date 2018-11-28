@@ -1,8 +1,9 @@
 <body class= "body-dash">
   <div class="form-card ">
 
-    <h2>Sign up</h2>
-
+    <div class = "sign-up">
+      <h2>Sign up</h2>
+    </div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
@@ -27,9 +28,9 @@
                   placeholder: "Confirm your password",
                   input_html: { class: "form-inputs", autocomplete: "new-password" } %>
     <div class= "professional-new-form">
-      <h5>Are you a Professional?</h5>
+      <p>Are you a Professional?</p>
       <p><%= f.input :professional %></p>
-        <p>(Check this box if you have a professional service to offer)</p>
+      <p>(Check this box if you have a professional service to offer)</p>
     </div>
       <%= f.input :service_ids,
                   collection: Service.all,
