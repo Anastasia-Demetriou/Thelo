@@ -24,7 +24,7 @@ class User < ApplicationRecord
   def average_review_score
     given_reviews = Review.where(reviewed_user: self).map(&:rating)
     if given_reviews.any?
-      return 0 if given_reviews.include?(nil)
+      given_reviews = given_reviews.reject {|v| v.nil?} if given_reviews.include?(nil)
       return (given_reviews.sum / given_reviews.count.to_f).round
     else
       return 0

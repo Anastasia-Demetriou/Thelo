@@ -1,7 +1,7 @@
 
 <div class="show-navbar hidden-navbar">
   <h4 class="nav-titles"><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h4>
-  <h4 class="nav-title-service"><%= @user.services.first.name %></h4>
+  <!-- <h4 class="nav-title-service"><%= @user.services.first.name %></h4> -->
 </div>
 
 <div class="wrapper">
@@ -12,14 +12,13 @@
       <div class="header-text">
         <h1><%="#{@user.first_name.capitalize} #{@user.last_name.capitalize}" %></h1>
         <h4>Worked at <%= @user.accepted_bids_number %> events!</h4>
-        <div class="stars">
+        <div class="user-stars">
           <% @user.average_review_score.times do %>
             <i class="fas fa-star"></i>
           <% end %>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -37,11 +36,6 @@
           <% @reviews.each do |review| %>
             <div class="review-card">
               <div class="r-avatar"></div>
-              <div class="r-content">
-                <p><strong><%= review.user.first_name %></strong></p>
-                <p><%= review.content %></p>
-              </div>
-              <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
               <div class="stars">
                 <% if review.rating != nil %>
                   <% review.rating.times do %>
@@ -49,6 +43,13 @@
                   <% end %>
                 <% end %>
               </div>
+              <div class="r-content">
+                <p><strong><%= review.user.first_name %></strong></p>
+
+                <p><%= review.content %></p>
+              </div>
+              <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
+
             </div>
           <% end %>
         </div>
@@ -56,13 +57,13 @@
         <!-- todo when we get the condition from Tiffany from the dashboard (arthur) -->
         <% if true %>
           <div class="reviews-form">
-            <h3>Add a review</h3>
+            <h3 class="review-heading-input">Add a review</h3>
             <%= simple_form_for [@user, @review] do |f| %>
-              <%= f.input :content, placeholder: "Great Chef"%>
+              <%= f.input :content, placeholder: "Type your review here", class: 'reveiw-box'%>
               <%= f.collection_radio_buttons :rating, [[1,"Hello"], [2], [3], [4], [5]], :first, :last, item_wrapper_class: "rating", boolean_style: :inline do |b| %>
   <%= b.radio_button + b.label {''} %>
 <% end %>
-              <%= f.submit "Post Review", class: 'btn btn-primary' %>
+              <%= f.submit "Post Review", class: 'button btn-review' %>
             <% end %>
           </div>
         <% end %>
@@ -70,14 +71,14 @@
       <div class="col-xs-3">
         <div class="user-skills">
           <h3>More info</h3>
-          <span>SKILLS</span>
+          <span class="info-box">SKILLS</span>
           <div class="skill-list">
             <% @user.services.each do |service| %>
               <span class="user-service"><%= service.name %></span>
             <% end %>
           </div>
-          <span>CONTACT</span>
-          <spam><%= @user.email %></span>
+          <span class="info-box">CONTACT</span>
+          <spam class="contact-email"><%= @user.email %></span>
         </div>
       </div>
     </div>
