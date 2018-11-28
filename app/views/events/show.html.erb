@@ -1,14 +1,25 @@
 <div class="event-show-header">
-  <p class="date">On <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
-  <h2><%= @event.name %></h2>
-  <div class="event-show-header-inline">
-    <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
-    <div class="header-description">
-      <p>Hosted by </p>
-      <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
-      <p>at</p>
-      <p class="text-yellow"><%= @event.location %></p>
+  <div class="event-show-header-left">
+    <p class="date">On <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
+    <h2><%= @event.name %></h2>
+    <div class="event-show-header-inline">
+      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+      <div class="header-description">
+        <p>Hosted by </p>
+        <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
+        <p>at</p>
+        <p class="text-yellow"><%= @event.location %></p>
+      </div>
     </div>
+  </div>
+  <div class="event-show-header-right">
+    <% if @event.user == current_user %>
+      <div class="show-edit-btn-div">
+        <%= link_to  edit_event_path(@event), class: "show-edit-btn" do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="event-show-wrapper">
@@ -26,11 +37,7 @@
           </div>
           <p><i class="fas fa-users"></i> <%= @event.party_size %></p>
           <p> Budget £<%= @event.min_price %>-<%= @event.max_price %></p>
-          <% if @event.user == current_user %>
-            <div class="show-edit-btn-div">
-              <%= link_to "Edit event", edit_event_path(@event), class: "show-edit-btn" %>
-            </div>
-          <% end %>
+
         </div>
         <div class="event-show-bids">
           <% if @event.user == current_user %>
@@ -43,16 +50,18 @@
                 <% end %>
                 <% @event.bids.each do |bid| %>
                   <% if bid.status == "pending" %>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-4">
                       <div class="show-bid-card">
-                        <div class="right-corner">
+                        <div class="card-top">
                           <div class="card-btn card-btn-orange">
                              <%= @event.service.name %>
+                          </div>
+                          <div class="card-btn card-btn-green">
+                            £<%= bid.price.to_i %>
                           </div>
                         </div>
                         <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
                         <p class="bid-name"><%= bid.user.first_name %></p>
-                        <p>Quote: £<%= bid.price.to_i %></p>
                         <p> <%= bid.description %></p>
                         <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn"%>
                         <p>Bid is pending, accept or decline below</p>

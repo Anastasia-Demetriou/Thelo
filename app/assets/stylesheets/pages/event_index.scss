@@ -151,6 +151,9 @@ a:hover{
   }
 }
 
+.slider-container{
+  height: 42px;
+}
 .noUi-connect{
   height: 0px;
   color: black;
@@ -162,7 +165,7 @@ a:hover{
 
 .noUi-target{
   height: 0px !important;
-  margin-top: 10px;
+  margin-top: 21px;
   background-color: black;
   border: 1px solid black;
 }
@@ -181,6 +184,9 @@ a:hover{
   content: none !important;
 }
 
+.noUi-base{
+  margin-top: -8px;
+}
 
 
 .algolia-places{
