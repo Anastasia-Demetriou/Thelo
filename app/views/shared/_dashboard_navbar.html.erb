@@ -9,7 +9,7 @@
   </div>
 
   <div class= "avatar-dashboard sidenava">
-    <%= cl_image_tag @user.photo, class: "avatar-dash" %>
+    <%= cl_image_tag current_user.photo, class: "avatar-dash", crop: :lfill %>
     <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
   </div>
 
