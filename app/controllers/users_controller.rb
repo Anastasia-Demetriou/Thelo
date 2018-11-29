@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :edit, :update, :show, :dashboard]
   #before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @users = policy_scope(User).order(created_at: :desc)
   end
@@ -111,13 +112,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # raise
     authorize @user
-    @user.update(user_params)
-    params[:user][:service_ids].each do |id|
-      unless @user.services.map(&:id).include?(id)
-        UserService.create(user: @user, service_id: id)
+    if @user.update_attributes(user_params)
+      params[:user][:service_ids].each do |id|
+        unless @user.services.map(&:id).include?(id)
+          UserService.create(user: @user, service_id: id)
+        end
       end
+      # raise
+      redirect_to dashboard_path
+    else
+      # raise
+      render :edit
     end
-    redirect_to dashboard_path
+    # raise
   end
 
   private
@@ -136,7 +143,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :bio, :professional)
+    params.require(:user).permit(:first_name, :last_name, :bio, :professional, :photo)
   end
 
   def bid_params

@@ -8,9 +8,10 @@ class User < ApplicationRecord
   has_many :orders
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :password, presence: true
 
   # validates :service, presence: true, if: :is_professional?
+
+  mount_uploader :photo, PhotoUploader
 
 
   def is_professional?
