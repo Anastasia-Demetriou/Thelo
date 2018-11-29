@@ -18,9 +18,12 @@
                       input_html: { class: "form-inputs name-form half", autocomplete: "Last Name" } %>
         </div>
 
-      <%= f.input :bio,
-                      placeholder: "Tell us about yourself...",
-                      input_html: { class: "form-inputs name-form half"} %>
+
+        <%= f.input :bio,
+                    placeholder: "Tell us more about you...",
+                    input_html: { class: "form-inputs", autocomplete: "Tell us more about you..." } %>
+
+
 
         <h5>Are you a Professional?</h5>
         <p><%= f.input :professional %>(Check this box if you have a professional service to offer)</p>
@@ -31,6 +34,7 @@
                   :include_blank => false,
                   prompt: 'Select Service',
                   input_html: { class: "form-inputs" } %>
+
 
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
