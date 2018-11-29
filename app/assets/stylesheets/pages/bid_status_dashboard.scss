@@ -68,10 +68,10 @@
   padding-right: 24px;
   color: rgba(0,0,0,0.9);
   background-color: white;
-  height: 150px;
   position:relative;
   border-bottom: 1px solid #BFBFBF;
   margin-bottom: 3px;
+  flex-grow: 1;
 
   p{
     margin-bottom: 8px;
@@ -265,6 +265,24 @@
 
 }
 
+.pink-review-button{
+    width: auto;
+    height: 35px;
+    text-align: center;
+    padding-top: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #D22780 !important;
+    text-decoration:none;
+    a {
+      color:white;
+    }
+}
+
 a:hover{
   text-decoration: none !important;
 }
@@ -362,37 +380,6 @@ a:hover{
 
 }
 
-.form-card {
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    margin: 30px;
-    background: white;
-    border-radius: 5px;
-    padding: 10px 130px;
-
-    h2 {
-      font-size: 20px !important;
-      padding-bottom: 5px;
-      padding-top: 50px;
-    }
-
-
-}
-
-.edit-form{
-  display: flex;
-  width: 100% !important;
-}
-
-.user_first_name {
-  width:  50% !important;
-  padding-right: 10px;
-}
-
-.user_last_name {
-  width:  50% !important;
-  padding-left: 10px;
-}
-
 
 
 .pulse-button {
@@ -432,4 +419,26 @@ a:hover{
     }
 }
 
+.no-results-card.past {
+      background-color: #f9f9f9!important;
+  }
+.no-results-card{
+  margin: 0;
+  padding: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: rgba(0,0,0,0.9);
+  background-color: white;
+  height: 100px;
+  position:relative;
+  content-align:center;
+  text-align:center;
 
+  p{
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: rgba(0,0,0,0.6)
+
+  }
+
+}

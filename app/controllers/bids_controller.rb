@@ -85,7 +85,12 @@ class BidsController < ApplicationController
   def accept
     authorize @bid
     @bid.update(bid_params)
-    redirect_to event_path(@bid.event)
+    if bid_params["status"] == "accepted"
+      flash[:notice] = "You have successfully accepted #{@bid.user.first_name}"
+    elsif bid_params["status"] == "declined"
+      flash[:alert] = "You have declined #{@bid.user.first_name}"
+    end
+    redirect_to dashboard_path(anchor: "hostevents")
   end
 
 

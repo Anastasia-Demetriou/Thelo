@@ -8,9 +8,10 @@ class User < ApplicationRecord
   has_many :orders
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :password, presence: true
 
   # validates :service, presence: true, if: :is_professional?
+
+  mount_uploader :photo, PhotoUploader
 
 
   def is_professional?
@@ -24,6 +25,7 @@ class User < ApplicationRecord
   def average_review_score
     given_reviews = Review.where(reviewed_user: self).map(&:rating)
     if given_reviews.any?
+      given_reviews = given_reviews.reject {|v| v.nil?} if given_reviews.include?(nil)
       return (given_reviews.sum / given_reviews.count.to_f).round
     else
       return 0

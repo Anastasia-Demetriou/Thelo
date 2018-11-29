@@ -54,6 +54,13 @@
 .event-show-header{
   padding-left: 204px;
   padding-bottom: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  .date{
+    margin-top: 0px !important;
+    padding-top: 20px !important;
+  }
 
   h2{
     text-align: left;
@@ -83,12 +90,20 @@
   .header-description{
     display: flex;
     padding-left: 10px;
-    .text-yellow{
-      color: #F8B500;
+    .text-yellow-location{
+      position: absolute;
+      margin-top: 29px;
+      color: rgba(0,0,0,0.7);
     }
     p{
+      color: rgba(0,0,0,0.7) ;
       margin: 2px;
     }
+    .text-yellow{
+      color: #F8B500 !important;
+    }
+
+
   }
 }
 
@@ -193,9 +208,9 @@
     opacity: 0.9;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.2)
   }
-  .right-corner{
+  .card-top{
     display:flex;
-    justify-content: right;
+    justify-content: space-between;
     width: 80%;
     margin-top: 15px;
   }
@@ -235,14 +250,21 @@
 
 .show-edit-btn-div{
   margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
 
 }
 .show-edit-btn{
   color: black;
-  font-size: 14px;
+  color: #D22780;
+  font-size: 12px;
+  .fa-edit{
+    font-size: 34px;
+  }
 }
 .show-edit-btn:hover{
-  color: rgba(0,0,0,0.6);
+  color: #AC2069;
 }
 
 .empty-bid-text{
