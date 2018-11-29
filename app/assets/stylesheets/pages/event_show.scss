@@ -90,12 +90,20 @@
   .header-description{
     display: flex;
     padding-left: 10px;
-    .text-yellow{
-      color: #F8B500;
+    .text-yellow-location{
+      position: absolute;
+      margin-top: 29px;
+      color: rgba(0,0,0,0.7);
     }
     p{
+      color: rgba(0,0,0,0.7) ;
       margin: 2px;
     }
+    .text-yellow{
+      color: #F8B500 !important;
+    }
+
+
   }
 }
 

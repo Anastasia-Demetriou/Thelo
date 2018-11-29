@@ -35,7 +35,13 @@
         <div class="user-reviews">
           <% @reviews.each do |review| %>
             <div class="review-card">
-              <div class="r-avatar"></div>
+              <div class="r-avatar">
+                <%# if @user.photo %>
+          <!-- Display the photo -->
+        <%# else %>
+          <!-- Display a placeholder -->
+        <%# end %>
+              </div>
               <div class="stars">
                 <% if review.rating != nil %>
                   <% review.rating.times do %>
@@ -53,6 +59,13 @@
             </div>
           <% end %>
         </div>
+
+
+
+
+
+
+
 
         <!-- todo when we get the condition from Tiffany from the dashboard (arthur) -->
         <% if true %>
