@@ -1,38 +1,44 @@
-<div class="banner" style="background-color: #F2F4FB">
-  <div>
-    <h1 class="home-header">Do more of what you love</h1>
-      <p>Thelo helps you find professionals near you to come help you at your events</p>
-      <div class="button">
-        <%= link_to  %>
+<div class="homepage-wrapper">
+  <div class="top-part-homepage">
+    <div class="banner">
+      <h1 class="home-header">Do more of what you love</h1>
+        <p>Thelo helps you find professionals near you to come help you at your events</p>
+      <%= link_to new_event_path do %>
+      <div class="button button-homepage">
+        Get Started
       </div>
-</div>
-  <div style="background-image: url(<%= image_path "cover.png" %>);">
-</div>
+      <% end %>
+    </div>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-6">
+    <div class="banner-image"> <%= image_tag "cover.png" %>
+      <div class="user-link"></div>
+    </div>
+  </div>
+
+  <div class="card-container">
     <div class="card-header">
-      <h3>Create your event!</h3>
+      <h2 class="header-two">STEP ONE</h2>
+      <h3 class="header-three">Create your event!</h3>
+      <p>You will need to give a description of your event and put out the jobs that you need!</p>
+    </div>
+
+    <div class="card-header">
+      <h2 class="header-two">STEP TWO</h2>
+      <h3 class="header-three">Accept bids from pros</h3>
+      <p>You will need to give a description of your event and put out the jobs that you need!</p>
+    </div>
+
+    <div class="card-header">
+      <h2 class="header-two">STEP THREE</h2>
+      <h3 class="header-three">Enjoy your event</h3>
       <p>You will need to give a description of your event and put out the jobs that you need!</p>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <div class="card-header">
-      <h3>Accept bids from pros</h3>
-      <p>You will need to give a description of your event and put out the jobs that you need!</p>
-    </div>
+  <div class="long-button">
+    <span>Are you a professional looking for work near you?</span>
+    <%= link_to events_path do %>
+    <button class="button long-button-button">Start here</button>
+    <% end %>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <div class="card-header">
-      <h3>Enjoy your event</h3>
-      <p>You will need to give a description of your event and put out the jobs that you need!</p>
-    </div>
-  </div>
-</div>
-
