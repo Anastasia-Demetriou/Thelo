@@ -9,7 +9,7 @@
   </div>
 
   <div class= "avatar-dashboard sidenava">
-    <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-dash" %>
+    <%= cl_image_tag @user.photo, class: "avatar-dash" %>
     <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
   </div>
 

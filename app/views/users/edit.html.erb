@@ -19,17 +19,6 @@
         </div>
 
 
-        <%= f.input :email,
-                    autofocus: true,
-                    placeholder: "Email address",
-                    input_html: { class: "form-inputs", autocomplete: "email" }%>
-        <%= f.input :password,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    placeholder: "Create a password",
-                    input_html: { class: "form-inputs", autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    placeholder: "Confirm your password",
-                    input_html: { class: "form-inputs", autocomplete: "new-password" } %>
 
         <h5>Are you a Professional?</h5>
         <p><%= f.input :professional %>(Check this box if you have a professional service to offer)</p>
@@ -38,8 +27,12 @@
         <%= f.input :service_ids,
                     collection: Service.all,
                     :include_blank => false,
+                    :as => :check_boxes,
                     prompt: 'Select Service',
                     input_html: { class: "form-inputs" } %>
+
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
 <div class="flex-btn">
         <%= f.submit "Edit", class: "button" %>
 </div>

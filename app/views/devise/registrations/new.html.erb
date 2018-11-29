@@ -37,6 +37,9 @@
                   :include_blank => false,
                   prompt: 'Select Service',
                   input_html: { class: "form-inputs" } %>
+
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
       <div class="flex-btn">
         <%= f.submit "Sign Up", class: "button" %>
 

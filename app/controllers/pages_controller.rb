@@ -2,7 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   attr_reader
 
+
+
   def home
+    @user = current_user
   end
 
 
@@ -43,7 +46,7 @@ private
 
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :bio, :professional)
+    params.require(:user).permit(:email, :first_name, :last_name, :bio, :professional, :photo)
   end
 
   def bid_params
