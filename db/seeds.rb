@@ -1,9 +1,11 @@
 puts "Clearing database"
+Review.destroy_all
+Order.destroy_all
 UserService.destroy_all
 Service.destroy_all
 Event.destroy_all
-User.destroy_all
 Bid.destroy_all
+User.destroy_all
 puts "Cleared"
 puts "Seeding...."
 
