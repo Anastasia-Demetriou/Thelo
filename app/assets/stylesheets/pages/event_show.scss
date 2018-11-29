@@ -93,15 +93,17 @@
     .text-yellow-location{
       position: absolute;
       margin-top: 29px;
-      color: #F8B500;
+      color: rgba(0,0,0,0.7);
     }
-
-
-
     p{
-      color: #F8B500;
+      color: rgba(0,0,0,0.7) ;
       margin: 2px;
     }
+    .text-yellow{
+      color: #F8B500 !important;
+    }
+
+
   }
 }
 
