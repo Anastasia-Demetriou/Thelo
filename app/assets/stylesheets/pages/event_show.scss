@@ -52,7 +52,8 @@
 }
 
 .event-show-header{
-  padding-left: 204px;
+  // padding-left: 204px;
+  padding-top: 50px;
   padding-bottom: 10px;
   background-color: white;
   display: flex;
@@ -61,7 +62,10 @@
     margin-top: 0px !important;
     padding-top: 20px !important;
   }
-
+  .container{
+    // display: flex;
+    // justify-content: space-around;
+  }
   h2{
     text-align: left;
     margin: 0px;
