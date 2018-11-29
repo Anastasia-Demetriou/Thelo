@@ -269,7 +269,7 @@
     <% if @user.events.count >= 1 %>
     <p>Events you have hosted</p>
     <% else %>
-    <%if @accepted_bids.count == 0 %>
+    <%if @user.events.count  == 0 %>
           <div class="no-results-card "><p>You are not hosting any events</p> </div>
         <% end %>
     <% end %>

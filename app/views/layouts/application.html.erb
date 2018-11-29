@@ -49,7 +49,11 @@
 
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+
+    <% unless params[:controller] == 'users'&& params[:action] == 'dashboard' || 'users'&& params[:action] == 'edit'  %>
+      <%= render 'shared/footer' %>
+    <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
 

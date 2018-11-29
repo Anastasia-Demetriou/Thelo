@@ -3,7 +3,7 @@
     <p class="date">Posted on: <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
     <h2><%= @event.name %></h2>
     <div class="event-show-header-inline">
-      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+      <%= cl_image_tag @event.user.photo, class: "avatar", crop: :lfill %>
       <div class="header-description">
         <p>Hosted by</p>
         <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
@@ -59,7 +59,7 @@
                             £<%= bid.quote.to_i %>
                           </div>
                         </div>
-                        <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                        <%= cl_image_tag bid.user.photo, class: "avatar", crop: :lfill %>
                         <p class="bid-name"><%= bid.user.first_name %></p>
                         <p> <%= bid.description %></p>
                         <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn", target:"_blank"%>
@@ -93,7 +93,7 @@
                   <% accepted_bids_full = true %>
                   <div class="col-xs-6 col-md-3">
                     <div class="show-bid-card accepted-card">
-                      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                        <%= cl_image_tag bid.user.photo, class: "avatar", crop: :lfill %>
                       <p class="bid-name"><%= bid.user.first_name %></p>
                       <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn",  target:"_blank"%>
                     </div>
