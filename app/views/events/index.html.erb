@@ -38,7 +38,10 @@
                 <a href="/events/<%= event.id %>">
                   <div class="event-card">
                     <div class="card-top">
-                      <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                      <div class="event-card-date-location">
+                        <p><%= event.date.strftime("%b %e, %l:%M %p") %></p>
+                        <p class="event-card-location"><%= event.location %></p>
+                      </div>
                       <p><%= event.bids.count %> bids made</p>
                     </div>
                     <h2><%= event.name %></h2>
