@@ -5,7 +5,7 @@
       <p class="date">Posted on: <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
       <h2><%= @event.name %></h2>
       <div class="event-show-header-inline">
-        <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+        <img class="avatar" <%= cl_image_tag @event.user.photo %>
         <div class="header-description">
           <p>Hosted by</p>
           <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
