@@ -62,7 +62,7 @@
                         <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
                         <p class="bid-name"><%= bid.user.first_name %></p>
                         <p> <%= bid.description %></p>
-                        <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn", target:"_blank"%>
+                        <%= link_to "View Profile", user_path(bid.user) , class: "view-profile-btn", target:"_blank"%>
                         <p>Bid is pending, accept or decline below</p>
                         <div class="status-buttons">
                           <%= link_to(accept_bid_path(bid, :bid => {:status => "accepted"}) , {method: :accept}) do  %>
