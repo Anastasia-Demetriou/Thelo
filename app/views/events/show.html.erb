@@ -1,4 +1,5 @@
 <div class="event-show-header">
+
   <div class="container">
     <div class="event-show-header-left">
       <p class="date">Posted on: <%= @event.date.strftime("%b %e, %l:%M %p") %></p>
@@ -10,6 +11,7 @@
           <p class="text-yellow"><%= User.find(@event.user_id).first_name %> <%= User.find(@event.user_id).last_name %></p>
           <p class="text-yellow-location"><%= @event.location %></p>
         </div>
+
       </div>
     </div>
     <div class="event-show-header-right">
@@ -54,10 +56,10 @@
                             £<%= bid.quote.to_i %>
                           </div>
                         </div>
-                        <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                        <%= cl_image_tag bid.user.photo, class: "avatar", crop: :lfill %>
                         <p class="bid-name"><%= bid.user.first_name %></p>
                         <p> <%= bid.description %></p>
-                        <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn", target:"_blank"%>
+                        <%= link_to "View Profile", user_path(bid.user) , class: "view-profile-btn", target:"_blank"%>
                         <p>Bid is pending, accept or decline below</p>
                         <div class="status-buttons">
                           <%= link_to(accept_bid_path(bid, :bid => {:status => "accepted"}) , {method: :accept}) do  %>
@@ -88,7 +90,7 @@
                   <% accepted_bids_full = true %>
                   <div class="col-xs-6 col-md-3">
                     <div class="show-bid-card accepted-card">
-                      <img class="avatar" src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="avatar">
+                        <%= cl_image_tag bid.user.photo, class: "avatar", crop: :lfill %>
                       <p class="bid-name"><%= bid.user.first_name %></p>
                       <%= link_to "View Profile", user_path(@user) , class: "view-profile-btn",  target:"_blank"%>
                     </div>

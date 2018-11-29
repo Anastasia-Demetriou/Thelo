@@ -233,6 +233,10 @@
     font-size: 14px;
     font-weight: 600;
     background-color: #7ED321 !important;
+    margin: 0;
+    p {
+      margin: 0;
+    }
 }
 
 .red-button {
@@ -247,6 +251,7 @@
     font-size: 14px;
     font-weight: 600;
     background-color: #D0021B !important;
+    margin: 0;
 
 }
 
@@ -262,6 +267,7 @@
     font-size: 14px;
     font-weight: 600;
     background-color: rgba(0,0,0,0.2) !important;
+    margin: 0;
 
 }
 
@@ -278,6 +284,7 @@
     font-weight: 600;
     background-color: #D22780 !important;
     text-decoration:none;
+    margin: 0;
     a {
       color:white;
     }

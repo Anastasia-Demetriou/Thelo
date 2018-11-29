@@ -6,7 +6,6 @@
   justify-content: space-between;
 
   .footer-links{
-    margin: 20px;
     display: flex;
     flex-direction: column;
     margin-left: 20px 93px;
@@ -31,7 +30,8 @@
     }
   }
   .footer-media{
-    margin-left: 300px;
+   position: absolute;
+   right: 40px;
 
 
 
@@ -44,16 +44,16 @@
     }
     .fa-facebook-f{
       opacity: 0.5;
-      color:#4267B2;
+      color:#fff;
     }
     .fa-instagram{
       opacity: 0.5;
-      color: #c32aa3;
+      color: #fff;
     }
 
     .fa-twitter{
       opacity: 0.5;
-      color:#1DA1F3;
+      color:#fff;
     }
     .fa-facebook-f:hover{
       color: #314B82;

@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
-  has_many :bids
+  has_many :bids, dependent: :destroy
   belongs_to :user
 
   belongs_to :service
