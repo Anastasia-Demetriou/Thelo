@@ -1,3 +1,13 @@
+.bid-form-quote{
+  height: 30px !important;
+}
+// .bid_quote{
+//   height: 30px !important;
+//   input{
+//     height: 30px !important;
+//   }
+// }
+
 .bid-form{
   display: flex;
   flex-direction: column;
@@ -5,7 +15,8 @@
   margin-right: 0px !important;
   text-align: center;
   #bid_quote{
-    height: 48px !important;
+    // height: 30px !important;
+    padding: 10px !important;
   }
   #bid_description{
     height: 64px !important;
