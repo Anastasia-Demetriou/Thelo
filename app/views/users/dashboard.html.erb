@@ -266,16 +266,15 @@
 
 
   <div class="professional-events" id="hosteventspast">
-    <% if @user.events.count >= 1 %>
-    <p>Events you have hosted</p>
+    <%if @host_events.count == 0 %>
+        <p class="no-results-card ">You are not hosting any events</p>
     <% else %>
-    <%if @user.events.count  == 0 %>
-          <div class="no-results-card "><p>You are not hosting any events</p> </div>
-        <% end %>
-    <% end %>
+      <p>Events you have hosted</p>
+   <% end %>
+   <%= @host_events.first.name %>
+
   </div>
           <% @host_events.order(date: :asc).each do |event| %>
-
             <%if event.date.to_date.past? %>
               <a href="/events/<%= event.id %>">
                 <div class="event-dash-card past">
