@@ -113,10 +113,8 @@ class UsersController < ApplicationController
     # raise
     authorize @user
     if @user.update_attributes(user_params)
-      params[:user][:service_ids].each do |id|
-        unless @user.services.map(&:id).include?(id)
-          UserService.create(user: @user, service_id: id)
-        end
+      unless @user.services.map(&:id).include?(params[:user][:service_ids])
+        UserService.create(user: @user, service_id: params[:user][:service_ids])
       end
       # raise
       redirect_to dashboard_path

@@ -271,7 +271,6 @@
     <% else %>
       <p>Events you have hosted</p>
    <% end %>
-   <%= @host_events.first.name %>
 
   </div>
           <% @host_events.order(date: :asc).each do |event| %>
