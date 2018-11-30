@@ -17,22 +17,21 @@
                 required: false,
                 placeholder: "Description",
                 input_html: { class: "form-inputs" } %>
-    <div class="edit-form">
-      <span class="currencyinput">£<input type="text" name="currency">
+    <div class="edit-form relative">
       <%= f.input :min_price,
                 label: false,
                 required: false,
                 placeholder: "Minimum Price",
-                input_html: { class: "form-inputs" }  %>
-      </span>
-      <span class="currencyinput">£<input type="text" name="currency">
+                input_html: { class: "form-inputs" } %>
+      <div class="left"><p>£</p></div>
       <%= f.input :max_price,
                 label: false,
                 required: false,
                 placeholder: "Maximum Price",
-                input_html: { class: "form-inputs" }  %>
-      </span>
+                input_html: { class: "form-inputs" } %>
+      <div class="right"><p>£</p></div>
     </div>
+
     <div class="edit-form">
       <%= f.input :date,
                   as: :string,

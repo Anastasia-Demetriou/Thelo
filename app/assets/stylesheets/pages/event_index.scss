@@ -1,7 +1,21 @@
 .index-page-wrapper{
   background-color: #F2F4FB;
 }
+.relative {
+  position: relative;
+}
 
+.left {
+  position: absolute;
+  top: 26px;
+  left: 18px;
+}
+
+.right {
+  position: absolute;
+  top: 26px;
+  left: 590px;
+}
 
 .banner-header{
   background-color: #D22780;
