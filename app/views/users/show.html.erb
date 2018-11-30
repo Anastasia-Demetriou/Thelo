@@ -32,8 +32,24 @@
         <div class="user-reviews">
           <% @reviews.each do |review| %>
             <div class="review-card">
-              <div class="r-avatar">
+
+              <%if @user.photo? %>
+                <%= cl_image_tag @user.photo, class: 'revavatar' %>
+              <% else %>
+                <%= image_tag "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" , class: 'revavatar'%>
+              <% end %>
+        <%# else %>
+          <!-- Display a placeholder -->
+        <%# end %>
+              <div class="r-content">
+                <p><strong><%= review.user.first_name %></strong></p>
+
+                <p><%= review.content %></p>
+                <p><%= review.created_at.strftime("%e %b %Y") %></p>
+   <div class="r-avatar">
+
               </div>
+
               <div class="stars">
                 <% if review.rating != nil %>
                   <% review.rating.times do %>
@@ -41,12 +57,14 @@
                   <% end %>
                 <% end %>
               </div>
+
               <div class="r-content">
                 <p><strong><%= review.user.first_name %></strong></p>
 
                 <p><%= review.content %></p>
               </div>
               <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
+
             </div>
           <% end %>
         </div>

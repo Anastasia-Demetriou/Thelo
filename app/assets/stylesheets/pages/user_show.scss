@@ -41,8 +41,8 @@
   display: flex;
   align-items: flex-start;
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 175px;
+    height: 175px;
     border-radius: 50%;
   }
 }
@@ -58,9 +58,10 @@
 
 .stars {
   color: $secondary;
-  position: absolute;
-  top: 5px;
-  right: 40px;
+  flex: 0 0 130px;
+  // position: absolute;
+  // top: 5px;
+  // right: 40px;
 }
 
 
@@ -78,28 +79,39 @@ margin-top: 20px;
   background-color: white;
   position: relative;
   margin-top: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
 }
 
-.r-avatar {
-position: absolute;
-border-radius: 50%;
-background: gray;
-height: 50px;
-width: 50px;
-//   left: 20px;
-//   top: 20px;
+// .r-avatar {
+// position: absolute;
+// border-radius: 50%;
+// background: gray;
+// height: 50px;
+// width: 50px;
+// border-radius: 50%;
+// //   left: 20px;
+// //   top: 20px;
+// }
+
+.revavatar {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin-right: 20px;
 }
 
 .r-content {
-  position: relative;
-  margin-left: 70px;
+  flex: 1 1 auto;
+  // position: relative;
+  // margin-left: 140px;
 
 }
 
 .date-review {
-  position: relative;
-  margin-left: 70px;
+  // position: relative;
+  // margin-left: 140px;
 
 
 }
@@ -123,9 +135,7 @@ width: 50px;
   padding-top: 10px;
 }
 
-.reviews-form {
-  height: 200px;
-}
+
 
 .contact-email {
   margin-top: 50px;
