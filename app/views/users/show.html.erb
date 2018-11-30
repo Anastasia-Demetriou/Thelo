@@ -46,7 +46,6 @@
 
                 <p><%= review.content %></p>
                 <p><%= review.created_at.strftime("%e %b %Y") %></p>
-   <div class="r-avatar">
 
               </div>
 
@@ -57,14 +56,6 @@
                   <% end %>
                 <% end %>
               </div>
-
-              <div class="r-content">
-                <p><strong><%= review.user.first_name %></strong></p>
-
-                <p><%= review.content %></p>
-              </div>
-              <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
-
             </div>
           <% end %>
         </div>
