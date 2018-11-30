@@ -32,12 +32,12 @@
         <div class="user-reviews">
           <% @reviews.each do |review| %>
             <div class="review-card">
-
-              <%if @user.photo? %>
-                <%= cl_image_tag @user.photo, class: 'revavatar' %>
+              <% if review.user.photo %>
+                <%= cl_image_tag review.user.photo , class: 'revavatar' %>
               <% else %>
-                <%= image_tag "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" , class: 'revavatar'%>
+-                <%= image_tag "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png", class: 'revavatar'%>
               <% end %>
+
         <%# else %>
           <!-- Display a placeholder -->
         <%# end %>
