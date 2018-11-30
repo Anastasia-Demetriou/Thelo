@@ -1,9 +1,24 @@
 .index-page-wrapper{
   background-color: #F2F4FB;
 }
+.relative {
+  position: relative;
+}
 
-.date-input{
+.left {
+  position: absolute;
+  top: 26px;
+  left: 18px;
+}
+
+.right {
+  position: absolute;
+  top: 26px;
+  left: 590px;
+
+ .date-input{
   height: 46px;
+
 }
 
 .banner-header{
