@@ -29,6 +29,8 @@ jack = User.create!(first_name: "Jack", last_name:"Styles", email:"jack@gmail.co
 
 
 UserService.create!(service: chef , user: louise)
+UserService.create!(service: chef , user: lisa)
+UserService.create!(service: chef , user: steve)
 UserService.create!(service: waiter , user: john)
 UserService.create!(service: mixologist , user: andrew)
 

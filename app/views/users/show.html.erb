@@ -6,7 +6,6 @@
 
 <div class="wrapper">
   <div class="container">
-
     <div class="show-header">
       <%= cl_image_tag @user.photo, class: "avatar", crop: :lfill %>
       <div class="header-text">
@@ -26,15 +25,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-9">
-
         <div class="user-description">
           <h3>About <%="#{@user.first_name.capitalize}" %></h3>
           <p><%= @user.bio %></p>
         </div>
-
         <div class="user-reviews">
           <% @reviews.each do |review| %>
             <div class="review-card">
+
               <%if @user.photo? %>
                 <%= cl_image_tag @user.photo, class: 'revavatar' %>
               <% else %>
@@ -48,6 +46,8 @@
 
                 <p><%= review.content %></p>
                 <p><%= review.created_at.strftime("%e %b %Y") %></p>
+   <div class="r-avatar">
+
               </div>
 
               <div class="stars">
@@ -57,30 +57,18 @@
                   <% end %>
                 <% end %>
               </div>
+
+              <div class="r-content">
+                <p><strong><%= review.user.first_name %></strong></p>
+
+                <p><%= review.content %></p>
+              </div>
+              <div class="date-review"> <%= review.created_at.strftime("%e %b %Y") %></div>
+
             </div>
           <% end %>
         </div>
-
-
-
-
-
-
-
-
         <!-- todo when we get the condition from Tiffany from the dashboard (arthur) -->
-        <% if true %>
-          <div class="reviews-form">
-            <h3 class="review-heading-input">Add a review</h3>
-            <%= simple_form_for [@user, @review] do |f| %>
-              <%= f.input :content, placeholder: "Type your review here", class: 'reveiw-box'%>
-              <%= f.collection_radio_buttons :rating, [[1,"Hello"], [2], [3], [4], [5]], :first, :last, item_wrapper_class: "rating", boolean_style: :inline do |b| %>
-  <%= b.radio_button + b.label {''} %>
-<% end %>
-              <%= f.submit "Post Review", class: 'button btn-review' %>
-            <% end %>
-          </div>
-        <% end %>
       </div>
       <div class="col-xs-3">
         <div class="user-skills">
@@ -92,10 +80,21 @@
             <% end %>
           </div>
           <span class="info-box">CONTACT</span>
-          <spam class="contact-email"><%= @user.email %></span>
+          <span class="contact-email"><%= @user.email %></span>
         </div>
       </div>
     </div>
+    <div class="reviews-form">
+      <h3 class="review-heading-input">Add a review</h3>
+      <%= simple_form_for [@user, @review] do |f| %>
+        <%= f.input :content, placeholder: "Type your review here", class: 'reveiw-box'%>
+        <%= f.collection_radio_buttons :rating, [[1,"Hello"], [2], [3], [4], [5]], :first, :last, item_wrapper_class: "rating", boolean_style: :inline do |b| %>
+          <%= b.radio_button + b.label {''} %>
+        <% end %>
+        <%= f.submit "Post Review", class: 'button btn-review ml' %>
+      <% end %>
+    </div>
+    <div style="height: 200px;"></div>
   </div>
 </div>
 
