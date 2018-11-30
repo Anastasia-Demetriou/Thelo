@@ -49,6 +49,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @user = current_user
+    @event_user = @event.user
     @bid = Bid.new()
     authorize @event
   end
